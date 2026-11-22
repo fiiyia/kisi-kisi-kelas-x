@@ -2146,6 +2146,10 @@
     }
 
     function logoutToLoginScreen() {
+      if (timerIntervalId) {
+        clearInterval(timerIntervalId);
+        timerIntervalId = null;
+      }
       appState.isLoggedIn = false;
       saveStateToStorage();
       closeMobileSidebar();
@@ -2284,7 +2288,10 @@
         timerText.textContent = 'Mode Belajar';
         return;
       }
-      timerText.textContent = formatSecondsToHHMMSS(appState.timer.remainingSeconds);
+      const sec = Number.isFinite(appState.timer.remainingSeconds)
+        ? appState.timer.remainingSeconds
+        : EXAM_DURATION_SECONDS;
+      timerText.textContent = formatSecondsToHHMMSS(sec);
     }
 
     function startOrResumeSimulationTimer() {
@@ -2293,29 +2300,44 @@
         timerIntervalId = null;
       }
       if (appState.student.mode !== 'simulasi' || appState.isSubmitted || !appState.isLoggedIn) {
+        updateTimerDisplay();
         return;
       }
-      if (!appState.timer.targetEndTime) {
-        appState.timer.targetEndTime = Date.now() + appState.timer.remainingSeconds * 1000;
+      if (!Number.isFinite(appState.timer.targetEndTime) || appState.timer.targetEndTime <= Date.now()) {
+        const baseSeconds = (Number.isFinite(appState.timer.remainingSeconds) && appState.timer.remainingSeconds > 0)
+          ? appState.timer.remainingSeconds
+          : EXAM_DURATION_SECONDS;
+        appState.timer.remainingSeconds = baseSeconds;
+        appState.timer.targetEndTime = Date.now() + baseSeconds * 1000;
         saveStateToStorage();
       }
       const tick = () => {
-        if (appState.isSubmitted || appState.student.mode !== 'simulasi') {
-          clearInterval(timerIntervalId);
-          return;
+        if (appState.isSubmitted || appState.student.mode !== 'simulasi' || !appState.isLoggedIn) {
+          if (timerIntervalId) {
+            clearInterval(timerIntervalId);
+            timerIntervalId = null;
+          }
+          return false;
         }
-        const remaining = Math.max(0, Math.round((appState.timer.targetEndTime - Date.now()) / 1000));
+        const remaining = Math.max(0, Math.ceil((appState.timer.targetEndTime - Date.now()) / 1000));
         appState.timer.remainingSeconds = remaining;
         updateTimerDisplay();
         if (remaining <= 0) {
-          clearInterval(timerIntervalId);
+          if (timerIntervalId) {
+            clearInterval(timerIntervalId);
+            timerIntervalId = null;
+          }
+          appState.timer.targetEndTime = null;
           saveStateToStorage();
           alert('Waktu Simulasi UAS (120 menit) telah habis! Jawabanmu akan dikumpulkan secara otomatis.');
           submitAndOpenResults();
+          return false;
         }
+        return true;
       };
-      tick();
-      timerIntervalId = setInterval(tick, 1000);
+      if (tick()) {
+        timerIntervalId = setInterval(tick, 1000);
+      }
     }
 
     // 10. LOGIN FORM HANDLERS (NAMA LENGKAP + KELAS X-1 s.d. X-12 + NO. ABSEN)
@@ -2455,12 +2477,29 @@
         if (restoreBanner) restoreBanner.classList.add('hidden');
       }
 
+      const wasSubmitted = Boolean(appState.isSubmitted);
       appState.isLoggedIn = true;
       appState.activeView = 'dashboard';
 
-      if (selectedMode === 'simulasi' && (modeChanged || switchedStudent || !appState.timer.targetEndTime)) {
+      if (selectedMode === 'simulasi') {
+        // Jika siswa masuk ulang ke Mode Simulasi UAS (misal setelah selesai atau pindah mode),
+        // mulai ulang hitung mundur 120 menit agar timer berjalan normal.
+        if (wasSubmitted) {
+          appState.isSubmitted = false;
+        }
+        const needsFreshTimer =
+          modeChanged ||
+          switchedStudent ||
+          wasSubmitted ||
+          !Number.isFinite(appState.timer.targetEndTime) ||
+          appState.timer.targetEndTime <= Date.now();
+        if (needsFreshTimer) {
+          appState.timer.remainingSeconds = EXAM_DURATION_SECONDS;
+          appState.timer.targetEndTime = Date.now() + EXAM_DURATION_SECONDS * 1000;
+        }
+      } else {
+        appState.timer.targetEndTime = null;
         appState.timer.remainingSeconds = EXAM_DURATION_SECONDS;
-        appState.timer.targetEndTime = Date.now() + EXAM_DURATION_SECONDS * 1000;
       }
 
       saveStateToStorage();
