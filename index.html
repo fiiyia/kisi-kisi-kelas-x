@@ -297,7 +297,7 @@
             Ruang Belajar &amp; Simulasi SAS Matematika Kelas X
           </h1>
           <p class="mt-3 text-sm sm:text-base text-brand-100/90 leading-relaxed max-w-lg">
-            Latihan paralel dan kisi-kisi SAS Matematika Kelas X (X-1 s.d. X-12)
+            Latihan paralel dan kisi-kisi SAS Matematika Kelas X-1, X-2, X-3, dan X-4
           </p>
           <!-- Teacher Info Card -->
           <div class="mt-4 inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-sidebar-900/90 border border-sidebar-700/80 text-xs text-brand-100">
@@ -425,7 +425,7 @@
             </div>
           </div>
 
-          <!-- Pilih Kelas (X-1 s.d. X-12) -->
+          <!-- Pilih Kelas (X-1 s.d. X-4) -->
           <div>
             <label for="selectKelas" class="block text-sm font-bold text-slate-800 mb-2">
               Pilih Kelas <span class="text-red-600">*</span>
@@ -436,22 +436,14 @@
               onchange="document.getElementById('errorKelas').classList.add('hidden')"
               class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 bg-slate-50/50 focus:bg-white text-base sm:text-sm font-mono font-bold text-slate-900 focus:border-brand-600 transition min-h-[50px]"
             >
-              <option value="">-- Pilih Kelas (X-1 s.d. X-12) --</option>
+              <option value="">-- Pilih Kelas (X-1 s.d. X-4) --</option>
               <option value="X-1">Kelas X-1</option>
               <option value="X-2">Kelas X-2</option>
               <option value="X-3">Kelas X-3</option>
               <option value="X-4">Kelas X-4</option>
-              <option value="X-5">Kelas X-5</option>
-              <option value="X-6">Kelas X-6</option>
-              <option value="X-7">Kelas X-7</option>
-              <option value="X-8">Kelas X-8</option>
-              <option value="X-9">Kelas X-9</option>
-              <option value="X-10">Kelas X-10</option>
-              <option value="X-11">Kelas X-11</option>
-              <option value="X-12">Kelas X-12</option>
             </select>
             <p id="errorKelas" class="hidden mt-1.5 text-xs font-semibold text-red-700">
-              Silakan pilih Kelas X-1 sampai X-12 terlebih dahulu.
+              Silakan pilih Kelas X-1, X-2, X-3, atau X-4 terlebih dahulu.
             </p>
           </div>
 
@@ -1631,7 +1623,7 @@
   <!-- ========================================== -->
   <script>
     const STORAGE_KEY = 'kisi_uas_math_x_v1';
-    const ALLOWED_CLASSES = ['X-1', 'X-2', 'X-3', 'X-4', 'X-5', 'X-6', 'X-7', 'X-8', 'X-9', 'X-10', 'X-11', 'X-12'];
+    const ALLOWED_CLASSES = ['X-1', 'X-2', 'X-3', 'X-4'];
     const EXAM_DURATION_SECONDS = 120 * 60; // 120 minutes
 
     // Konfigurasi Supabase REST API (anon key bersifat publik & dilindungi RLS)
@@ -1915,7 +1907,7 @@
         activeView: 'dashboard',
         student: {
           nama: '',
-          kelas: '', // Restricted to 'X-1' .. 'X-12'
+          kelas: '', // Restricted to 'X-1' .. 'X-4'
           noAbsen: '', // 1 - 45
           mode: 'belajar',
           startedAt: null,
@@ -2340,7 +2332,7 @@
       }
     }
 
-    // 10. LOGIN FORM HANDLERS (NAMA LENGKAP + KELAS X-1 s.d. X-12 + NO. ABSEN)
+    // 10. LOGIN FORM HANDLERS (NAMA LENGKAP + KELAS X-1 s.d. X-4 + NO. ABSEN)
     function selectClassOption(kelasValue) {
       if (!ALLOWED_CLASSES.includes(kelasValue)) return;
       const selectEl = document.getElementById('selectKelas');
@@ -3121,7 +3113,7 @@
               <div>
                 <div style="font-size:10.5pt; font-weight:800; color:#0f291e; letter-spacing:0.01em;">SMA DON BOSCO II PULOMAS</div>
                 <div style="font-size:12pt; font-weight:800; letter-spacing:-0.01em; margin-top:1px;">LAPORAN BUKTI LATIHAN SAS MATEMATIKA KELAS X</div>
-                <div style="font-size:8pt; color:#334155; margin-top:1px;">Kelas X-1 s.d. X-12 &bull; Guru Pengampu: <strong>Bernadet Intan Dewi Safitri, S.Pd</strong></div>
+                <div style="font-size:8pt; color:#334155; margin-top:1px;">Kelas X-1, X-2, X-3, dan X-4 &bull; Guru Pengampu: <strong>Bernadet Intan Dewi Safitri, S.Pd</strong></div>
               </div>
             </div>
             <div style="text-align:right; font-size:8pt; color:#475569; white-space:nowrap;">
