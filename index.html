@@ -1,0 +1,3228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>SMA Don Bosco II Pulomas — Latihan &amp; Kisi-Kisi SAS Matematika Kelas X</title>
+  <link rel="icon" type="image/png" href="./logo-don-bosco.png" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- KaTeX CSS & JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
+          colors: {
+            /* Soft Botanical Forest Green — harmonizes with Don Bosco II Pulomas crest */
+            sidebar: {
+              950: '#0f291e',
+              900: '#163829',
+              800: '#204d39',
+              700: '#2d664c'
+            },
+            brand: {
+              50: '#edf7f1',
+              100: '#d7eee1',
+              200: '#b1ddc4',
+              400: '#49a87c',
+              500: '#2d8a60',
+              600: '#1f734e',
+              700: '#185c3e',
+              800: '#144932',
+              900: '#103a28',
+              950: '#0a261a'
+            },
+            /* Polinomial — Soft Crimson Rose (echoes the red DON BOSCO banner) */
+            poli: {
+              50: '#fdf3f4',
+              100: '#fbe4e6',
+              200: '#f5ccd0',
+              600: '#c2414b',
+              700: '#a6323c',
+              900: '#6e1d24'
+            },
+            /* Operasi Matriks — Soft Sage Emerald (echoes the green shield) */
+            matriks: {
+              50: '#edf7f1',
+              100: '#d7eee1',
+              200: '#b1ddc4',
+              600: '#1f734e',
+              700: '#185c3e',
+              900: '#103a28'
+            },
+            /* Translasi — Soft Honey Gold (echoes the 5 gold stars & palm) */
+            translasi: {
+              50: '#fef9eb',
+              100: '#fcf0cd',
+              200: '#f6de9b',
+              600: '#c78b1b',
+              700: '#a36e10',
+              900: '#664308'
+            }
+          },
+          boxShadow: {
+            'card': '0 4px 20px -2px rgba(15, 41, 30, 0.06), 0 1px 3px 0 rgba(15, 41, 30, 0.04)',
+            'elevated': '0 14px 36px -6px rgba(15, 41, 30, 0.12), 0 4px 12px -2px rgba(15, 41, 30, 0.05)',
+            'bottom-nav': '0 -4px 20px -2px rgba(15, 41, 30, 0.08)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: #f4f7f4;
+      color: #0f172a;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background-color: #d7eee1;
+      color: #0f291e;
+    }
+
+    /* Subtle geometric dot grid for Login showcase panel */
+    .math-grid-pattern {
+      background-image: radial-gradient(rgba(246, 222, 155, 0.18) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    .lms-canvas-bg {
+      background-color: #f4f7f4;
+      background-image:
+        radial-gradient(850px circle at 95% 0%, rgba(215, 238, 225, 0.65) 0%, transparent 50%),
+        radial-gradient(750px circle at 5% 100%, rgba(252, 240, 205, 0.55) 0%, transparent 48%),
+        radial-gradient(600px circle at 85% 95%, rgba(251, 228, 230, 0.35) 0%, transparent 45%);
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    .sidebar-scroll::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.28);
+    }
+
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    button:focus-visible {
+      outline: 2px solid #1f734e;
+      outline-offset: 2px;
+    }
+
+    /* KaTeX responsive overflow container */
+    .katex-display {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0.45rem 0.25rem;
+      margin: 0.5rem 0;
+      max-width: 100%;
+    }
+
+    .katex {
+      font-size: 1.05em;
+    }
+
+    /* Inline LKPD Input (16px prevents iOS Safari zoom) */
+    .lkpd-inline-input {
+      display: inline-block;
+      min-width: 7.5rem;
+      max-width: 11.5rem;
+      padding: 0.35rem 0.75rem;
+      margin: 0.2rem 0.25rem;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      font-variant-numeric: tabular-nums;
+      color: #1e1b4b;
+      background-color: #ffffff;
+      border: 2px solid #94a3b8;
+      border-radius: 0.5rem;
+      box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.05);
+      transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+      vertical-align: baseline;
+    }
+
+    .lkpd-inline-input::placeholder {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.825rem;
+      color: #64748b;
+    }
+
+    .lkpd-inline-input:focus {
+      border-color: #1f734e;
+      background-color: #edf7f1;
+      box-shadow: 0 0 0 3px rgba(31, 115, 78, 0.18);
+      outline: none;
+    }
+
+    .pb-safe {
+      padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0.5rem));
+    }
+
+    /* Print Layout Stylesheet — Compact 1-2 Page A4 Official Report */
+    @page {
+      size: A4 portrait;
+      margin: 12mm 14mm;
+    }
+
+    @media print {
+      html, body {
+        background: #ffffff !important;
+        background-image: none !important;
+        color: #0f172a !important;
+        font-size: 9.5pt !important;
+        line-height: 1.4 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-only {
+        display: block !important;
+      }
+      #lmsAppShell,
+      #lmsMainColumn,
+      main,
+      #view-hasil {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        min-height: auto !important;
+        background: #ffffff !important;
+      }
+      .print-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 8.5pt;
+      }
+      .print-table th,
+      .print-table td {
+        border: 1px solid #94a3b8;
+        padding: 4px 7px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .print-table th {
+        background-color: #f1f5f9 !important;
+        font-weight: 700;
+        color: #0f172a;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .print-section-avoid {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- =================================================================== -->
+  <!-- SCREEN 1: DEDICATED LMS LOGIN / ENTRY PORTAL (#lmsLoginScreen)      -->
+  <!-- =================================================================== -->
+  <div id="lmsLoginScreen" class="min-h-screen flex flex-col lg:flex-row no-print">
+
+    <!-- Left Visual Showcase Panel -->
+    <div class="lg:w-[46%] xl:w-[44%] bg-sidebar-950 text-white math-grid-pattern relative overflow-hidden flex flex-col justify-between p-6 sm:p-10 lg:p-12">
+      <!-- Soft Ambient Accents (Emerald & Warm Gold from Logo) -->
+      <div class="pointer-events-none absolute -top-24 -left-24 w-72 h-72 rounded-full bg-brand-500/25 blur-3xl"></div>
+      <div class="pointer-events-none absolute -bottom-28 -right-20 w-80 h-80 rounded-full bg-translasi-600/20 blur-3xl"></div>
+
+      <div class="relative z-10">
+        <!-- School Crest & Brand Identity -->
+        <div class="flex items-center gap-3.5">
+          <div class="w-14 h-14 rounded-2xl bg-white p-1.5 border border-brand-200/40 flex items-center justify-center shrink-0 shadow-lg">
+            <img src="./logo-don-bosco.png" alt="Logo SMA Don Bosco II Pulomas" class="w-full h-full object-contain" />
+          </div>
+          <div>
+            <div class="text-base sm:text-lg font-extrabold tracking-tight text-white leading-tight">SMA Don Bosco II Pulomas</div>
+            <div class="text-xs text-brand-200 font-semibold mt-0.5">Matematika &bull; Kelas X (Fase E)</div>
+          </div>
+        </div>
+
+        <!-- Main Headline -->
+        <div class="mt-7 lg:mt-10">
+          <h1 class="text-2xl sm:text-3xl xl:text-4xl font-extrabold text-white leading-tight tracking-tight">
+            Ruang Belajar &amp; Simulasi SAS Matematika Kelas X
+          </h1>
+          <p class="mt-3 text-sm sm:text-base text-brand-100/90 leading-relaxed max-w-lg">
+            Latihan paralel dan kisi-kisi SAS Matematika Kelas X (X-1 s.d. X-12)
+          </p>
+          <!-- Teacher Info Card -->
+          <div class="mt-4 inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-sidebar-900/90 border border-sidebar-700/80 text-xs text-brand-100">
+            <svg class="w-4 h-4 text-amber-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342" />
+            </svg>
+            <span>Guru Pengampu: <strong class="text-white">Bernadet Intan Dewi Safitri, S.Pd</strong></span>
+          </div>
+        </div>
+
+        <!-- Course Scope Highlights -->
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-3">
+          <div class="flex items-center gap-3.5 p-3.5 rounded-xl bg-sidebar-900/90 border border-sidebar-700/80">
+            <div class="w-10 h-10 rounded-lg bg-poli-600/30 border border-poli-200/30 text-rose-200 font-mono font-bold text-sm flex items-center justify-center shrink-0">
+              30%
+            </div>
+            <div class="min-w-0">
+              <div class="text-sm font-bold text-white">Eksponen &amp; Logaritma</div>
+              <div class="text-xs text-brand-100/80">6 Soal &bull; 30 Poin &bull; Pertumbuhan, Peluruhan &amp; ${}^a\log b$</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3.5 p-3.5 rounded-xl bg-sidebar-900/90 border border-sidebar-700/80">
+            <div class="w-10 h-10 rounded-lg bg-brand-500/30 border border-brand-200/30 text-brand-100 font-mono font-bold text-sm flex items-center justify-center shrink-0">
+              50%
+            </div>
+            <div class="min-w-0">
+              <div class="text-sm font-bold text-white">SPtLDV &amp; Program Linear</div>
+              <div class="text-xs text-brand-100/80">10 Soal &bull; 50 Poin &bull; Grafik DHP, Titik Pojok &amp; Optimasi</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3.5 p-3.5 rounded-xl bg-sidebar-900/90 border border-sidebar-700/80">
+            <div class="w-10 h-10 rounded-lg bg-translasi-600/30 border border-translasi-200/30 text-amber-200 font-mono font-bold text-sm flex items-center justify-center shrink-0">
+              20%
+            </div>
+            <div class="min-w-0">
+              <div class="text-sm font-bold text-white">Persamaan Kuadrat</div>
+              <div class="text-xs text-brand-100/80">4 Soal &bull; 20 Poin &bull; Pemfaktoran, Rumus ABC &amp; Aplikasi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Stats Strip -->
+      <div class="relative z-10 mt-8 pt-6 border-t border-sidebar-800 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-300">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-teal-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>Autosave</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-brand-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>Simulasi 120 Menit</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18" />
+          </svg>
+          <span>Cetak Bukti PDF</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Interactive Login Form Panel -->
+    <div class="flex-1 lms-canvas-bg flex items-center justify-center p-5 sm:p-8 lg:p-12">
+      <div class="w-full max-w-lg bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-elevated">
+        <div class="flex items-center justify-between gap-2">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">
+              Masuk ke Ruang Belajar
+            </h2>
+            <p class="mt-1 text-sm text-slate-600">
+              Tanpa password — cukup gunakan <strong>Nama Lengkap</strong>, <strong>Kelas</strong>, dan <strong>No. Absen</strong>. Progresmu otomatis tersimpan &amp; bisa dilanjutkan kapan saja.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cloud Restore Banner (shown if progress recovered) -->
+        <div id="cloudRestoreBanner" class="hidden mt-4 p-3.5 rounded-xl border border-emerald-300 bg-emerald-50 text-xs sm:text-sm font-semibold text-emerald-900">
+          Progres latihanmu berhasil dipulihkan dari Cloud Supabase!
+        </div>
+
+        <form id="identityForm" onsubmit="handleStartSession(event)" class="mt-6 space-y-5" novalidate>
+          <!-- Nama Lengkap & No. Absen -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
+            <div class="sm:col-span-8">
+              <label for="inputNama" class="block text-sm font-bold text-slate-800">
+                Nama Lengkap <span class="text-red-600">*</span>
+              </label>
+              <input
+                id="inputNama"
+                type="text"
+                required
+                minlength="3"
+                autocomplete="name"
+                placeholder="Contoh: Nadia Putri"
+                class="mt-1.5 w-full px-4 py-3 rounded-xl border-2 border-slate-200 bg-slate-50/50 focus:bg-white text-base sm:text-sm font-semibold text-slate-900 placeholder:text-slate-400 focus:border-brand-600 transition"
+              />
+              <p id="errorNama" class="hidden mt-1.5 text-xs font-semibold text-red-700">
+                Nama lengkap wajib diisi (minimal 3 karakter).
+              </p>
+            </div>
+
+            <div class="sm:col-span-4">
+              <label for="inputAbsen" class="block text-sm font-bold text-slate-800">
+                No. Absen <span class="text-red-600">*</span>
+              </label>
+              <input
+                id="inputAbsen"
+                type="number"
+                inputmode="numeric"
+                min="1"
+                max="45"
+                required
+                placeholder="1–45"
+                class="mt-1.5 w-full px-4 py-3 rounded-xl border-2 border-slate-200 bg-slate-50/50 focus:bg-white text-base sm:text-sm font-mono font-bold text-slate-900 placeholder:text-slate-400 focus:border-brand-600 transition tabular-nums"
+              />
+              <p id="errorAbsen" class="hidden mt-1.5 text-xs font-semibold text-red-700">
+                Isi No. Absen (1–45).
+              </p>
+            </div>
+          </div>
+
+          <!-- Pilih Kelas (X-1 s.d. X-12) -->
+          <div>
+            <label for="selectKelas" class="block text-sm font-bold text-slate-800 mb-2">
+              Pilih Kelas <span class="text-red-600">*</span>
+            </label>
+            <select
+              id="selectKelas"
+              required
+              onchange="document.getElementById('errorKelas').classList.add('hidden')"
+              class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 bg-slate-50/50 focus:bg-white text-base sm:text-sm font-mono font-bold text-slate-900 focus:border-brand-600 transition min-h-[50px]"
+            >
+              <option value="">-- Pilih Kelas (X-1 s.d. X-12) --</option>
+              <option value="X-1">Kelas X-1</option>
+              <option value="X-2">Kelas X-2</option>
+              <option value="X-3">Kelas X-3</option>
+              <option value="X-4">Kelas X-4</option>
+              <option value="X-5">Kelas X-5</option>
+              <option value="X-6">Kelas X-6</option>
+              <option value="X-7">Kelas X-7</option>
+              <option value="X-8">Kelas X-8</option>
+              <option value="X-9">Kelas X-9</option>
+              <option value="X-10">Kelas X-10</option>
+              <option value="X-11">Kelas X-11</option>
+              <option value="X-12">Kelas X-12</option>
+            </select>
+            <p id="errorKelas" class="hidden mt-1.5 text-xs font-semibold text-red-700">
+              Silakan pilih Kelas X-1 sampai X-12 terlebih dahulu.
+            </p>
+          </div>
+
+          <!-- Pilih Mode Pengerjaan -->
+          <div>
+            <span class="block text-sm font-bold text-slate-800 mb-2">
+              Mode Pengerjaan <span class="text-red-600">*</span>
+            </span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <label
+                id="cardModeBelajar"
+                class="relative flex flex-col p-3.5 rounded-xl border-2 cursor-pointer transition bg-brand-50/70 border-brand-600"
+              >
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-sm font-extrabold text-slate-900">Mode Belajar</span>
+                  <input
+                    type="radio"
+                    name="modeLatihan"
+                    value="belajar"
+                    checked
+                    onchange="updateModeCardSelection()"
+                    class="w-4 h-4 text-brand-600"
+                  />
+                </div>
+                <p class="mt-1 text-xs text-slate-600">
+                  Tanpa batas waktu &amp; tersedia tombol <strong>Petunjuk (Hint)</strong>.
+                </p>
+              </label>
+
+              <label
+                id="cardModeSimulasi"
+                class="relative flex flex-col p-3.5 rounded-xl border-2 cursor-pointer transition bg-white border-slate-200 hover:border-slate-300"
+              >
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-sm font-extrabold text-slate-900">Simulasi UAS</span>
+                  <input
+                    type="radio"
+                    name="modeLatihan"
+                    value="simulasi"
+                    onchange="updateModeCardSelection()"
+                    class="w-4 h-4 text-brand-600"
+                  />
+                </div>
+                <p class="mt-1 text-xs text-slate-600">
+                  Timer mundur <strong>120 menit</strong> tanpa tombol petunjuk.
+                </p>
+              </label>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white font-bold text-sm transition flex items-center justify-center gap-2 shadow-md min-h-[50px]"
+          >
+            <span id="btnStartLabel">Masuk ke Dashboard LMS</span>
+            <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================================================================== -->
+  <!-- SCREEN 2: LMS APPLICATION SHELL (LEFT SIDEBAR + WORKSPACE)          -->
+  <!-- =================================================================== -->
+  <div id="lmsAppShell" class="hidden min-h-screen flex lms-canvas-bg">
+
+    <!-- Mobile / Tablet Sidebar Backdrop Overlay -->
+    <div
+      id="sidebarBackdrop"
+      onclick="closeMobileSidebar()"
+      class="hidden fixed inset-0 z-40 bg-sidebar-950/60 backdrop-blur-xs lg:hidden no-print"
+    ></div>
+
+    <!-- ========================================== -->
+    <!-- LEFT LMS SIDEBAR (Fixed Desktop / Drawer)  -->
+    <!-- ========================================== -->
+    <aside
+      id="lmsSidebar"
+      class="fixed inset-y-0 left-0 z-50 w-72 bg-sidebar-950 text-white border-r border-sidebar-800 flex flex-col transform -translate-x-full lg:translate-x-0 transition-transform duration-200 ease-out no-print"
+      aria-label="Menu Navigasi LMS"
+    >
+      <!-- Sidebar Top Brand -->
+      <div class="flex items-center justify-between px-4 py-4 border-b border-sidebar-800">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shrink-0 shadow-sm">
+            <img src="./logo-don-bosco.png" alt="Logo SMA Don Bosco II Pulomas" class="w-full h-full object-contain" />
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-extrabold text-white leading-tight truncate">SMA Don Bosco II Pulomas</div>
+            <div class="text-[11px] text-brand-200 font-medium truncate">Matematika Kelas X (Fase E)</div>
+          </div>
+        </div>
+        <button
+          type="button"
+          onclick="closeMobileSidebar()"
+          class="lg:hidden p-2 rounded-lg text-brand-100 hover:bg-sidebar-800 hover:text-white shrink-0"
+          aria-label="Tutup menu samping"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Student Profile Card in Sidebar -->
+      <div class="px-4 py-4 border-b border-sidebar-800">
+        <div class="p-3.5 rounded-xl bg-sidebar-900 border border-sidebar-700/80 space-y-3">
+          <div class="flex items-center gap-3">
+            <div
+              id="sidebarAvatar"
+              class="w-10 h-10 rounded-xl bg-brand-600/30 border border-brand-400/50 text-brand-100 font-mono font-bold text-sm flex items-center justify-center shrink-0"
+            >
+              X
+            </div>
+            <div class="min-w-0 flex-1">
+              <div id="sidebarStudentName" class="text-sm font-extrabold text-white truncate">-</div>
+              <div id="sidebarStudentMeta" class="text-xs font-mono text-brand-200 truncate">-</div>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div>
+            <div class="flex items-center justify-between text-[11px] font-semibold text-slate-300 mb-1.5">
+              <span>Progres Latihan</span>
+              <span id="sidebarProgressText" class="font-mono font-bold text-white tabular-nums">0/20 (0%)</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-sidebar-800 overflow-hidden">
+              <div id="sidebarProgressBar" class="h-full bg-teal-400 rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <!-- Cloud Sync Pill -->
+          <div class="flex items-center gap-2 text-[11px] font-semibold text-slate-300 pt-0.5">
+            <span id="sidebarCloudDot" class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+            <span id="practiceSavedIndicator" class="truncate">Tersimpan otomatis di Cloud</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="flex-1 overflow-y-auto sidebar-scroll px-3 py-4 space-y-1.5">
+        <div class="px-3 pb-1 text-[11px] font-bold text-slate-400 tracking-wide">
+          MENU UTAMA
+        </div>
+
+        <button
+          type="button"
+          data-lms-view="dashboard"
+          onclick="navigateLMS('dashboard')"
+          class="lms-nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition text-left"
+        >
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+          </svg>
+          <span class="flex-1">Dashboard Belajar</span>
+        </button>
+
+        <button
+          type="button"
+          data-lms-view="kisikisi"
+          onclick="navigateLMS('kisikisi')"
+          class="lms-nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition text-left"
+        >
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />
+          </svg>
+          <span class="flex-1">Kisi-Kisi UAS</span>
+          <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-sidebar-800 text-slate-300">20</span>
+        </button>
+
+        <div class="px-3 pt-4 pb-1 text-[11px] font-bold text-slate-400 tracking-wide">
+          MODUL LATIHAN PARALEL
+        </div>
+
+        <button
+          type="button"
+          data-lms-view="bagian1"
+          onclick="navigateLMS('bagian1')"
+          class="lms-nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition text-left"
+        >
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z" />
+          </svg>
+          <span class="flex-1 truncate">Bagian I: Isian LKPD</span>
+          <span id="badgeB1Count" class="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md bg-sidebar-800 text-slate-200 tabular-nums">0/10</span>
+        </button>
+
+        <button
+          type="button"
+          data-lms-view="bagian2"
+          onclick="navigateLMS('bagian2')"
+          class="lms-nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition text-left"
+        >
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+          </svg>
+          <span class="flex-1 truncate">Bagian II: Menjodohkan</span>
+          <span id="badgeB2Count" class="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md bg-sidebar-800 text-slate-200 tabular-nums">0/5</span>
+        </button>
+
+        <button
+          type="button"
+          data-lms-view="bagian3"
+          onclick="navigateLMS('bagian3')"
+          class="lms-nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition text-left"
+        >
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+          </svg>
+          <span class="flex-1 truncate">Bagian III: Uraian HOTS</span>
+          <span id="badgeB3Count" class="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md bg-sidebar-800 text-slate-200 tabular-nums">0/5</span>
+        </button>
+
+        <div class="px-3 pt-4 pb-1 text-[11px] font-bold text-slate-400 tracking-wide">
+          EVALUASI &amp; LAPORAN
+        </div>
+
+        <button
+          type="button"
+          data-lms-view="hasil"
+          onclick="navigateLMS('hasil')"
+          class="lms-nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition text-left"
+        >
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="flex-1 truncate">Hasil, Rubrik &amp; PDF</span>
+          <span id="badgeSubmitStatus" class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-sidebar-800 text-slate-300">Belum</span>
+        </button>
+      </nav>
+
+      <!-- Sidebar Footer Actions -->
+      <div class="p-3.5 border-t border-sidebar-800 space-y-2.5">
+        <div class="px-2 text-[11px] text-brand-200/80 leading-snug">
+          <div class="text-slate-400">Guru Pengampu:</div>
+          <div class="font-bold text-white">Bernadet Intan Dewi Safitri, S.Pd</div>
+        </div>
+        <button
+          type="button"
+          onclick="logoutToLoginScreen()"
+          class="w-full flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-sidebar-900 hover:bg-sidebar-800 border border-sidebar-700 text-xs font-bold text-brand-100 transition"
+        >
+          <svg class="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+          </svg>
+          <span>Keluar / Ganti Murid</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ========================================== -->
+    <!-- RIGHT MAIN WORKSPACE COLUMN                -->
+    <!-- ========================================== -->
+    <div id="lmsMainColumn" class="flex-1 flex flex-col min-w-0 lg:ml-72">
+
+      <!-- Sticky Top Utility Bar -->
+      <header class="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-200/90 px-4 sm:px-6 py-3 flex items-center justify-between gap-3 no-print">
+        <div class="flex items-center gap-3 min-w-0">
+          <!-- Mobile/Tablet Sidebar Toggle -->
+          <button
+            type="button"
+            onclick="openMobileSidebar()"
+            class="lg:hidden p-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-100 text-slate-800 shrink-0"
+            aria-label="Buka menu samping"
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+
+          <div class="min-w-0">
+            <h2 id="topbarPageTitle" class="text-sm sm:text-base font-extrabold text-slate-900 truncate">
+              Dashboard Belajar
+            </h2>
+            <p id="topbarPageSubtitle" class="text-xs text-slate-500 truncate hidden sm:block">
+              Ringkasan progres latihan persiapan UAS Matematika Kelas X
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+          <!-- Mode / Timer Pill -->
+          <div id="headerModeBadge" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs sm:text-sm font-bold tabular-nums">
+            <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span id="headerTimerText">Mode Belajar</span>
+          </div>
+
+          <!-- Quick Submit CTA -->
+          <button
+            type="button"
+            onclick="submitAndOpenResults()"
+            class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs sm:text-sm font-bold transition shadow-sm"
+          >
+            <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Selesai &amp; Kumpulkan</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Workspace Content Views -->
+      <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+
+        <!-- ========================================== -->
+        <!-- VIEW 1: LMS DASHBOARD RINGKASAN            -->
+        <!-- ========================================== -->
+        <section id="view-dashboard" class="space-y-6 no-print">
+          <!-- Welcome Banner -->
+          <div class="rounded-2xl bg-sidebar-950 text-white p-6 sm:p-8 shadow-elevated border border-sidebar-800 relative overflow-hidden">
+            <div class="pointer-events-none absolute -right-12 -top-12 w-56 h-56 rounded-full bg-brand-500/25 blur-3xl"></div>
+            <div class="pointer-events-none absolute left-1/3 -bottom-16 w-48 h-48 rounded-full bg-translasi-600/20 blur-3xl"></div>
+            <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
+              <div class="flex items-start gap-4">
+                <div class="hidden sm:flex w-14 h-14 rounded-2xl bg-white p-1.5 items-center justify-center shrink-0 shadow-md">
+                  <img src="./logo-don-bosco.png" alt="Logo SMA Don Bosco II Pulomas" class="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <h1 class="text-xl sm:text-2xl font-extrabold text-white">
+                    Halo, <span id="dashStudentName">Siswa</span>! Siap berlatih hari ini?
+                  </h1>
+                  <p class="mt-1.5 text-sm text-brand-100/90 max-w-2xl">
+                    Kamu masuk sebagai <strong id="dashStudentMeta" class="text-amber-200">-</strong> &bull; <strong>SMA Don Bosco II Pulomas</strong>. Semua jawabanmu tersimpan otomatis.
+                  </p>
+                  <p class="mt-1 text-xs text-brand-200/90">
+                    Guru Matematika Kelas X: <strong class="text-white">Bernadet Intan Dewi Safitri, S.Pd</strong>
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onclick="navigateLMS('bagian1')"
+                class="self-start md:self-auto px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold transition flex items-center gap-2 shadow-md shrink-0"
+              >
+                <span>Lanjutkan Latihan</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Course Module Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <button
+              type="button"
+              onclick="navigateLMS('bagian1')"
+              class="text-left p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-brand-400 shadow-card transition group"
+            >
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-lg bg-poli-50 text-poli-700 border border-poli-200 text-xs font-mono font-bold">30 Menit &bull; 30 pt</span>
+                <span id="dashB1Status" class="text-xs font-mono font-bold text-slate-500 tabular-nums">0/10</span>
+              </div>
+              <h3 class="mt-3 text-base font-extrabold text-slate-900 group-hover:text-brand-700 transition">
+                Bagian I — Isian LKPD
+              </h3>
+              <p class="mt-1 text-xs text-slate-600">
+                10 rumpang dalam 3 wacana kontekstual (Video OSIS, Kerajinan Bazar + Grafik DHP, Panggung Pentas Seni).
+              </p>
+            </button>
+
+            <button
+              type="button"
+              onclick="navigateLMS('bagian2')"
+              class="text-left p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-brand-400 shadow-card transition group"
+            >
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-lg bg-matriks-50 text-matriks-700 border border-matriks-200 text-xs font-mono font-bold">25 Menit &bull; 20 pt</span>
+                <span id="dashB2Status" class="text-xs font-mono font-bold text-slate-500 tabular-nums">0/5</span>
+              </div>
+              <h3 class="mt-3 text-base font-extrabold text-slate-900 group-hover:text-brand-700 transition">
+                Bagian II — Menjodohkan
+              </h3>
+              <p class="mt-1 text-xs text-slate-600">
+                5 soal pilihan pasangan huruf A–G (Eksponen, ${}^2\log$, Grafik DHP, Uji Titik Pojok, Akar Persamaan Kuadrat).
+              </p>
+            </button>
+
+            <button
+              type="button"
+              onclick="navigateLMS('bagian3')"
+              class="text-left p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-brand-400 shadow-card transition group"
+            >
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-lg bg-translasi-50 text-translasi-700 border border-translasi-200 text-xs font-mono font-bold">65 Menit &bull; 50 pt</span>
+                <span id="dashB3Status" class="text-xs font-mono font-bold text-slate-500 tabular-nums">0/5</span>
+              </div>
+              <h3 class="mt-3 text-base font-extrabold text-slate-900 group-hover:text-brand-700 transition">
+                Bagian III — Uraian HOTS
+              </h3>
+              <p class="mt-1 text-xs text-slate-600">
+                5 soal mendalam (Peluruhan Obat, Grafik DHP Terbuka, Konveksi Maksimum, Pupuk Minimum, PK &amp; Bingkai Poster).
+              </p>
+            </button>
+          </div>
+
+          <!-- Topic Distribution Breakdown -->
+          <div class="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-7 shadow-card">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h3 class="text-base sm:text-lg font-extrabold text-slate-900">
+                  Peta Sebaran Materi &amp; Bobot UAS
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600">
+                  Pelajari proporsi soal berikut untuk mengatur strategi belajarmu.
+                </p>
+              </div>
+              <button
+                type="button"
+                onclick="navigateLMS('kisikisi')"
+                class="px-4 py-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs sm:text-sm font-bold text-slate-800 transition"
+              >
+                Buka Tabel Kisi-Kisi Lengkap
+              </button>
+            </div>
+
+            <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="p-4 rounded-xl bg-poli-50/70 border border-poli-200">
+                <div class="flex items-center justify-between text-sm font-extrabold text-poli-900">
+                  <span>Eksponen &amp; Logaritma</span>
+                  <span class="font-mono text-xs px-2 py-0.5 rounded bg-white border border-poli-200">30% &bull; 30 pt</span>
+                </div>
+                <div class="w-full h-2 bg-poli-100 rounded-full mt-2.5 overflow-hidden">
+                  <div class="h-full bg-poli-600 rounded-full" style="width: 30%"></div>
+                </div>
+                <p class="mt-2 text-xs text-poli-900/80">No. 1–3, No. 11–12, No. 16</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-matriks-50/80 border border-matriks-200">
+                <div class="flex items-center justify-between text-sm font-extrabold text-matriks-900">
+                  <span>SPtLDV</span>
+                  <span class="font-mono text-xs px-2 py-0.5 rounded bg-white border border-matriks-200">50% &bull; 50 pt</span>
+                </div>
+                <div class="w-full h-2 bg-matriks-100 rounded-full mt-2.5 overflow-hidden">
+                  <div class="h-full bg-matriks-600 rounded-full" style="width: 50%"></div>
+                </div>
+                <p class="mt-2 text-xs text-matriks-900/80">No. 4–8, No. 13–14, No. 17, 18, 19</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-translasi-50/80 border border-translasi-200">
+                <div class="flex items-center justify-between text-sm font-extrabold text-translasi-900">
+                  <span>Persamaan Kuadrat</span>
+                  <span class="font-mono text-xs px-2 py-0.5 rounded bg-white border border-translasi-200">20% &bull; 20 pt</span>
+                </div>
+                <div class="w-full h-2 bg-translasi-100 rounded-full mt-2.5 overflow-hidden">
+                  <div class="h-full bg-translasi-600 rounded-full" style="width: 20%"></div>
+                </div>
+                <p class="mt-2 text-xs text-translasi-900/80">No. 9–10, No. 15, No. 20</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 2: MODUL KISI-KISI UAS INTERAKTIF     -->
+        <!-- ========================================== -->
+        <section id="view-kisikisi" class="hidden space-y-6 no-print">
+          <div class="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-8 shadow-card">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">
+                  Kisi-Kisi Resmi UAS Matematika Kelas X (Fase E)
+                </h2>
+                <p class="mt-1 text-sm text-slate-600">
+                  Peta indikator kompetensi, level kognitif (C2–C5), bentuk soal, dan bobot poin untuk 20 butir soal UAS.
+                </p>
+              </div>
+              <button
+                type="button"
+                onclick="navigateLMS('bagian1')"
+                class="self-stretch md:self-auto px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-bold transition shrink-0 text-center min-h-[44px]"
+              >
+                Mulai Bagian I
+              </button>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="mt-6 pt-5 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4">
+              <div>
+                <label for="filterTopik" class="block text-xs font-bold text-slate-700 mb-1.5">
+                  Filter Topik Materi
+                </label>
+                <select
+                  id="filterTopik"
+                  onchange="renderKisiKisiTable()"
+                  class="w-full px-3.5 py-2.5 rounded-xl border-2 border-slate-200 text-sm font-semibold bg-white text-slate-900 min-h-[44px]"
+                >
+                  <option value="ALL">Semua Topik (20 Soal)</option>
+                  <option value="Eksponen & Logaritma">Eksponen &amp; Logaritma (6 Soal — 30%)</option>
+                  <option value="SPtLDV">SPtLDV (10 Soal — 50%)</option>
+                  <option value="Persamaan Kuadrat">Persamaan Kuadrat (4 Soal — 20%)</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="filterBentuk" class="block text-xs font-bold text-slate-700 mb-1.5">
+                  Filter Bentuk Soal
+                </label>
+                <select
+                  id="filterBentuk"
+                  onchange="renderKisiKisiTable()"
+                  class="w-full px-3.5 py-2.5 rounded-xl border-2 border-slate-200 text-sm font-semibold bg-white text-slate-900 min-h-[44px]"
+                >
+                  <option value="ALL">Semua Bentuk Soal</option>
+                  <option value="Isian Singkat">Bagian I — Isian Singkat LKPD (No. 1–10)</option>
+                  <option value="Menjodohkan">Bagian II — Menjodohkan (No. 11–15)</option>
+                  <option value="Uraian HOTS">Bagian III — Uraian HOTS (No. 16–20)</option>
+                </select>
+              </div>
+
+              <div class="flex items-end">
+                <div id="kisiFilterSummary" class="w-full px-4 py-2.5 rounded-xl bg-brand-50 border border-brand-200 text-xs sm:text-sm font-bold text-brand-900 tabular-nums min-h-[44px] flex items-center">
+                  Menampilkan 20 butir soal (Total 100 Poin)
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile Card List (< 768px) -->
+            <div id="kisiKisiMobileCards" class="mt-5 grid grid-cols-1 gap-3 md:hidden"></div>
+
+            <!-- Tablet & Desktop Data Table (>= 768px) -->
+            <div class="hidden md:block mt-6 overflow-x-auto rounded-xl border border-slate-200">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="bg-slate-100/90 border-b border-slate-200 text-xs font-extrabold text-slate-700">
+                    <th class="py-3.5 px-4 w-16 text-center">No.</th>
+                    <th class="py-3.5 px-4 w-44">Topik Materi</th>
+                    <th class="py-3.5 px-4 w-36">Bentuk Soal</th>
+                    <th class="py-3.5 px-4">Indikator Kompetensi &amp; Konteks Latihan Paralel</th>
+                    <th class="py-3.5 px-4 w-20 text-center">Level</th>
+                    <th class="py-3.5 px-4 w-24 text-center">Bobot</th>
+                  </tr>
+                </thead>
+                <tbody id="kisiKisiTableBody" class="divide-y divide-slate-200 text-sm"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 3: BAGIAN I — ISIAN LKPD (NO. 1-10)   -->
+        <!-- ========================================== -->
+        <section id="view-bagian1" class="hidden space-y-6 no-print">
+          <div class="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-8 shadow-card">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-200">
+              <div>
+                <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">
+                  Bagian I — Isian Singkat Model Narasi / LKPD (No. 1–10)
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-600 mt-0.5">
+                  Lengkapi kotak rumpang di dalam kalimat berikut dengan jawaban yang tepat. Estimasi waktu: <strong>30 menit</strong> (10 &times; 3 poin = 30 poin).
+                </p>
+              </div>
+              <span class="px-3.5 py-1.5 rounded-xl bg-brand-50 border border-brand-200 text-brand-900 text-xs font-mono font-bold tabular-nums">
+                Bobot: 30 Poin
+              </span>
+            </div>
+
+            <!-- KARTU NARASI 1: EKSPONEN & LOGARITMA (No. 1-3) -->
+            <div class="mt-6 rounded-2xl border border-poli-200 bg-poli-50/40 p-4 sm:p-6">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-lg bg-poli-600 text-white text-xs font-bold">
+                  Wacana 1 (No. 1–3) &bull; Eksponen &amp; Logaritma: Pelipatan Penonton Video OSIS
+                </span>
+                <span class="text-xs font-mono font-bold text-poli-900 tabular-nums">3 Soal &times; 3 Poin = 9 Poin</span>
+              </div>
+
+              <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
+                <p>
+                  Pengurus OSIS mengunggah video kampanye literasi di media sosial sekolah. Pada saat awal diunggah ($t = 0$ jam), video tersebut telah ditonton oleh $100$ orang. Karena dibagikan secara berantai, jumlah penonton bertambah mengikuti model eksponen berikut (dengan $t$ menyatakan waktu dalam jam):
+                </p>
+                <div class="bg-white p-3.5 rounded-xl border border-poli-200/80 text-sm overflow-x-auto shadow-sm">
+                  $$V(t) = 100 \cdot 3^t$$
+                </div>
+
+                <!-- Soal 1 -->
+                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="px-2.5 py-0.5 rounded-md bg-poli-50 text-poli-900 border border-poli-200 text-xs font-mono font-bold">
+                      Nomor 1 &bull; C2 &bull; 3 Poin
+                    </span>
+                    <button type="button" onclick="toggleHint(1)" class="hint-btn text-xs font-bold text-poli-600 hover:text-poli-900 underline">
+                      Petunjuk (Hint)
+                    </button>
+                  </div>
+                  <p class="leading-loose">
+                    Berdasarkan model tersebut, jumlah penonton video setelah $t = 3$ jam adalah $V(3) =$
+                    <input id="input-q1" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 1" oninput="handleBagian1Input(1, this.value)" class="lkpd-inline-input" /> orang.
+                  </p>
+                  <div id="hint-1" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
+                    <strong>Petunjuk No. 1:</strong> Substitusikan $t = 3$ ke fungsi $V(t) = 100 \cdot 3^t$, lalu hitung $3^3 = 27$ dan kalikan dengan $100$.
+                  </div>
+                </div>
+
+                <!-- Soal 2 -->
+                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="px-2.5 py-0.5 rounded-md bg-poli-50 text-poli-900 border border-poli-200 text-xs font-mono font-bold">
+                      Nomor 2 &bull; C3 &bull; 3 Poin
+                    </span>
+                    <button type="button" onclick="toggleHint(2)" class="hint-btn text-xs font-bold text-poli-600 hover:text-poli-900 underline">
+                      Petunjuk (Hint)
+                    </button>
+                  </div>
+                  <p class="leading-loose">
+                    Apabila total penonton video telah mencapai $8.100$ orang, maka lama waktu yang telah berlalu sejak video diunggah adalah $t =$
+                    <input id="input-q2" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 2" oninput="handleBagian1Input(2, this.value)" class="lkpd-inline-input" /> jam.
+                  </p>
+                  <div id="hint-2" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
+                    <strong>Petunjuk No. 2:</strong> Selesaikan $100 \cdot 3^t = 8.100 \implies 3^t = 81$. Nyatakan $81$ sebagai perpangkatan basis $3$.
+                  </div>
+                </div>
+
+                <!-- Soal 3 -->
+                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="px-2.5 py-0.5 rounded-md bg-poli-50 text-poli-900 border border-poli-200 text-xs font-mono font-bold">
+                      Nomor 3 &bull; C3 &bull; 3 Poin
+                    </span>
+                    <button type="button" onclick="toggleHint(3)" class="hint-btn text-xs font-bold text-poli-600 hover:text-poli-900 underline">
+                      Petunjuk (Hint)
+                    </button>
+                  </div>
+                  <p class="leading-loose">
+                    Untuk menaksir waktu saat jumlah penonton menjadi $18$ kali lipat dari jumlah awal, panitia perlu menghitung nilai ${}^3\log 18$. Jika diketahui ${}^3\log 2 \approx 0,63$, maka nilai taksiran ${}^3\log 18 \approx$
+                    <input id="input-q3" type="text" inputmode="decimal" placeholder="Contoh: 2,63" aria-label="Jawaban Nomor 3" oninput="handleBagian1Input(3, this.value)" class="lkpd-inline-input" />.
+                  </p>
+                  <div id="hint-3" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
+                    <strong>Petunjuk No. 3:</strong> Uraikan $18 = 9 \times 2 = 3^2 \times 2$, lalu gunakan sifat ${}^3\log(a \cdot b) = {}^3\log a + {}^3\log b$.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- KARTU NARASI 2: SPtLDV + GRAFIK SVG 1 (No. 4-8) -->
+            <div class="mt-6 rounded-2xl border border-matriks-200 bg-matriks-50/40 p-4 sm:p-6">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-lg bg-matriks-700 text-white text-xs font-bold">
+                  Wacana 2 (No. 4–8) &bull; SPtLDV: Produksi Kerajinan Bazar OSIS
+                </span>
+                <span class="text-xs font-mono font-bold text-matriks-900 tabular-nums">5 Soal &times; 3 Poin = 15 Poin</span>
+              </div>
+
+              <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
+                <p>
+                  Untuk menggalang dana bazar sekolah, pengurus OSIS memproduksi <strong>Gantungan Kunci</strong> ($x$ buah) dan <strong>Pin Akrilik</strong> ($y$ buah) dengan kendala bahan dan waktu sebagai berikut:
+                </p>
+                <ul class="list-disc pl-5 space-y-1 text-sm">
+                  <li>Total produksi gabungan maksimal $10$ buah: $x + y \le 10$.</li>
+                  <li>Pembuatan $1$ gantungan kunci butuh $1$ jam dan $1$ pin akrilik butuh $3$ jam, dengan total waktu kerja tersedia maksimal $18$ jam.</li>
+                  <li>Banyak produk tidak negatif: $x \ge 0,\; y \ge 0$.</li>
+                  <li>Harga jual: Gantungan Kunci $\text{Rp}15.000$/buah dan Pin Akrilik $\text{Rp}25.000$/buah, sehingga fungsi pendapatan $f(x, y) = 15.000x + 25.000y$.</li>
+                </ul>
+
+                <!-- Grafik SVG 1: DHP Produksi Kerajinan OSIS -->
+                <div class="bg-white p-4 rounded-xl border border-matriks-200/80 shadow-sm">
+                  <div class="text-xs font-bold text-matriks-900 mb-2">Grafik 1 — Daerah Himpunan Penyelesaian (DHP) Produksi Kerajinan OSIS:</div>
+                  <div class="w-full overflow-x-auto flex justify-center">
+                    <svg viewBox="0 0 420 270" class="w-full max-w-md h-auto" role="img" aria-label="Grafik DHP garis x + y = 10 dan x + 3y = 18">
+                      <!-- Grid lines -->
+                      <g stroke="#e2e8f0" stroke-width="1">
+                        <line x1="86" y1="30" x2="86" y2="230" />
+                        <line x1="122" y1="30" x2="122" y2="230" />
+                        <line x1="158" y1="30" x2="158" y2="230" />
+                        <line x1="194" y1="30" x2="194" y2="230" />
+                        <line x1="230" y1="30" x2="230" y2="230" />
+                        <line x1="266" y1="30" x2="266" y2="230" />
+                        <line x1="302" y1="30" x2="302" y2="230" />
+                        <line x1="338" y1="30" x2="338" y2="230" />
+                        <line x1="374" y1="30" x2="374" y2="230" />
+                        <line x1="50" y1="194" x2="395" y2="194" />
+                        <line x1="50" y1="158" x2="395" y2="158" />
+                        <line x1="50" y1="122" x2="395" y2="122" />
+                        <line x1="50" y1="86" x2="395" y2="86" />
+                        <line x1="50" y1="50" x2="395" y2="50" />
+                      </g>
+                      <!-- Shaded DHP Polygon: (0,0), (10,0), (6,4), (0,6) -->
+                      <polygon points="50,230 230,230 158,158 50,122" fill="#2d8a60" fill-opacity="0.22" stroke="none" />
+                      <!-- Axes -->
+                      <line x1="50" y1="230" x2="400" y2="230" stroke="#0f172a" stroke-width="2" />
+                      <line x1="50" y1="230" x2="50" y2="24" stroke="#0f172a" stroke-width="2" />
+                      <polygon points="400,230 392,226 392,234" fill="#0f172a" />
+                      <polygon points="50,24 46,32 54,32" fill="#0f172a" />
+                      <!-- Axis labels -->
+                      <text x="403" y="234" font-size="12" font-weight="700" fill="#0f172a">X</text>
+                      <text x="45" y="18" font-size="12" font-weight="700" fill="#0f172a">Y</text>
+                      <!-- Line 1: x + y = 10 -->
+                      <line x1="50" y1="50" x2="230" y2="230" stroke="#c2414b" stroke-width="2.4" />
+                      <text x="86" y="72" font-size="11" font-weight="700" fill="#a6323c">x + y = 10</text>
+                      <!-- Line 2: x + 3y = 18 -->
+                      <line x1="50" y1="122" x2="374" y2="230" stroke="#1f734e" stroke-width="2.4" />
+                      <text x="242" y="180" font-size="11" font-weight="700" fill="#144932">x + 3y = 18</text>
+                      <!-- DHP Text -->
+                      <text x="98" y="198" font-size="13" font-weight="800" fill="#103a28">DHP</text>
+                      <!-- Corner Points -->
+                      <circle cx="50" cy="230" r="3.5" fill="#0f172a" />
+                      <circle cx="230" cy="230" r="4" fill="#c2414b" />
+                      <circle cx="50" cy="50" r="3.5" fill="#c2414b" />
+                      <circle cx="374" cy="230" r="3.5" fill="#1f734e" />
+                      <circle cx="50" cy="122" r="4" fill="#1f734e" />
+                      <circle cx="158" cy="158" r="4.5" fill="#0f291e" stroke="#ffffff" stroke-width="1.5" />
+                      <!-- Ticks & Coordinate Labels -->
+                      <text x="38" y="244" font-size="11" font-weight="600" fill="#334155">0</text>
+                      <text x="223" y="246" font-size="11" font-weight="700" fill="#0f172a">10</text>
+                      <text x="367" y="246" font-size="11" font-weight="700" fill="#0f172a">18</text>
+                      <text x="28" y="54" font-size="11" font-weight="700" fill="#0f172a">10</text>
+                      <text x="20" y="126" font-size="11" font-weight="700" fill="#144932">y₀</text>
+                      <text x="166" y="152" font-size="11.5" font-weight="800" fill="#0f291e">B(x_B, y_B)</text>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Soal 4 -->
+                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">
+                      Nomor 4 &bull; C2 &bull; 3 Poin
+                    </span>
+                    <button type="button" onclick="toggleHint(4)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">
+                      Petunjuk (Hint)
+                    </button>
+                  </div>
+                  <p class="leading-loose">
+                    Model pertidaksamaan linear untuk kendala waktu pembuatan kerajinan adalah
+                    <input id="input-q4" type="text" placeholder="Contoh: x + 3y <= 18" aria-label="Jawaban Nomor 4" oninput="handleBagian1Input(4, this.value)" class="lkpd-inline-input" style="max-width: 13.5rem;" />
+                    <span class="inline-flex items-center gap-1 align-middle ml-1">
+                      <button type="button" onclick="insertSymbolIntoInput('input-q4', '≤')" class="px-2 py-1 rounded-md border border-matriks-300 bg-matriks-50 hover:bg-matriks-100 text-matriks-900 font-mono text-xs font-bold" title="Sisipkan simbol ≤">≤</button>
+                      <button type="button" onclick="insertSymbolIntoInput('input-q4', '≥')" class="px-2 py-1 rounded-md border border-matriks-300 bg-matriks-50 hover:bg-matriks-100 text-matriks-900 font-mono text-xs font-bold" title="Sisipkan simbol ≥">≥</button>
+                    </span>.
+                  </p>
+                  <div id="hint-4" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
+                    <strong>Petunjuk No. 4:</strong> $1$ gantungan kunci butuh $1$ jam ($x$), $1$ pin butuh $3$ jam ($3y$), dan kata "maksimal $18$ jam" menggunakan tanda $\le$. Boleh ketik <code>&lt;=</code> atau klik tombol <code>≤</code>.
+                  </div>
+                </div>
+
+                <!-- Soal 5 -->
+                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">
+                      Nomor 5 &bull; C2 &bull; 3 Poin
+                    </span>
+                    <button type="button" onclick="toggleHint(5)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">
+                      Petunjuk (Hint)
+                    </button>
+                  </div>
+                  <p class="leading-loose">
+                    Garis batas kendala waktu $x + 3y = 18$ memotong sumbu-$Y$ pada titik $(0, y_0)$. Nilai $y_0$ tersebut adalah
+                    <input id="input-q5" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 5" oninput="handleBagian1Input(5, this.value)" class="lkpd-inline-input" />.
+                  </p>
+                  <div id="hint-5" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
+                    <strong>Petunjuk No. 5:</strong> Titik potong sumbu-$Y$ terjadi saat $x = 0$, sehingga $0 + 3y_0 = 18$.
+                  </div>
+                </div>
+
+                <!-- Soal 6 -->
+                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">
+                      Nomor 6 &bull; C3 &bull; 3 Poin
+                    </span>
+                    <button type="button" onclick="toggleHint(6)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">
+                      Petunjuk (Hint)
+                    </button>
+                  </div>
+                  <p class="leading-loose">
+                    Titik pojok $B(x_B, y_B)$ merupakan titik potong garis $x + y = 10$ dan $x + 3y = 18$. Nilai absis $x_B$ dari titik potong tersebut adalah
+                    <input id="input-q6" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 6" oninput="handleBagian1Input(6, this.value)" class="lkpd-inline-input" />.
+                  </p>
+                  <div id="hint-6" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
+                    <strong>Petunjuk No. 6:</strong> Eliminasi $x$ dari $(x + 3y = 18)$ dan $(x + y = 10)$ untuk menemukan $y_B$, lalu substitusikan kembali untuk memperoleh $x_B$.
+                  </div>
+                </div>
+
+                <!-- Soal 7 -->
+                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">
+                      Nomor 7 &bull; C3 &bull; 3 Poin
+                    </span>
+                    <button type="button" onclick="toggleHint(7)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">
+                      Petunjuk (Hint)
+                    </button>
+                  </div>
+                  <p class="leading-loose">
+                    Sementara itu, nilai ordinat $y_B$ dari titik pojok $B(x_B, y_B)$ tersebut adalah
+                    <input id="input-q7" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 7" oninput="handleBagian1Input(7, this.value)" class="lkpd-inline-input" />.
+                  </p>
+                  <div id="hint-7" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
+                    <strong>Petunjuk No. 7:</strong> Kurangkan $(x + 3y = 18) - (x + y = 10)$ sehingga diperoleh $2y = 8$.
+                  </div>
+                </div>
+
+                <!-- Soal 8 -->
+                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">
+                      Nomor 8 &bull; C3 &bull; 3 Poin
+                    </span>
+                    <button type="button" onclick="toggleHint(8)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">
+                      Petunjuk (Hint)
+                    </button>
+                  </div>
+                  <p class="leading-loose">
+                    Dengan menguji semua titik pojok DHP ke fungsi pendapatan $f(x, y) = 15.000x + 25.000y$, pendapatan maksimum yang dapat diperoleh pengurus OSIS adalah $\text{Rp}$
+                    <input id="input-q8" type="text" inputmode="numeric" placeholder="Contoh: 190000" aria-label="Jawaban Nomor 8" oninput="handleBagian1Input(8, this.value)" class="lkpd-inline-input" />.
+                  </p>
+                  <div id="hint-8" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
+                    <strong>Petunjuk No. 8:</strong> Uji titik pojok $(10, 0)$, $(6, 4)$, dan $(0, 6)$ ke $f(x, y) = 15.000x + 25.000y$, lalu ambil nilai terbesar. Boleh ditulis dengan atau tanpa titik pemisah ribuan.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- KARTU NARASI 3: PERSAMAAN KUADRAT (No. 9-10) -->
+            <div class="mt-6 rounded-2xl border border-translasi-200 bg-translasi-50/50 p-4 sm:p-6">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-lg bg-translasi-700 text-white text-xs font-bold">
+                  Wacana 3 (No. 9–10) &bull; Persamaan Kuadrat: Desain Panggung Pentas Seni
+                </span>
+                <span class="text-xs font-mono font-bold text-translasi-900 tabular-nums">2 Soal &times; 3 Poin = 6 Poin</span>
+              </div>
+
+              <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
+                <p>
+                  Panitia Pentas Seni SMA Don Bosco II merancang panggung berbentuk persegi panjang dengan panjang $(x + 4)\text{ meter}$ dan lebar $x\text{ meter}$ (untuk $x > 0$). Luas panggung yang direncanakan adalah $96\text{ m}^2$, sehingga diperoleh persamaan kuadrat:
+                </p>
+                <div class="bg-white p-3.5 rounded-xl border border-translasi-200/80 text-sm overflow-x-auto shadow-sm">
+                  $$x(x + 4) = 96 \iff x^2 + 4x - 96 = 0$$
+                </div>
+
+                <!-- Soal 9 -->
+                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="px-2.5 py-0.5 rounded-md bg-translasi-50 text-translasi-900 border border-translasi-200 text-xs font-mono font-bold">
+                      Nomor 9 &bull; C3 &bull; 3 Poin
+                    </span>
+                    <button type="button" onclick="toggleHint(9)" class="hint-btn text-xs font-bold text-translasi-700 hover:text-translasi-900 underline">
+                      Petunjuk (Hint)
+                    </button>
+                  </div>
+                  <p class="leading-loose">
+                    Jika persamaan kuadrat $x^2 + 4x - 96 = 0$ difaktorkan menjadi $(x + 12)(x - p) = 0$, maka nilai bilangan bulat positif $p$ adalah
+                    <input id="input-q9" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 9" oninput="handleBagian1Input(9, this.value)" class="lkpd-inline-input" />.
+                  </p>
+                  <div id="hint-9" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
+                    <strong>Petunjuk No. 9:</strong> Cari bilangan $p$ sehingga $12 \times (-p) = -96$ dan $12 - p = 4$.
+                  </div>
+                </div>
+
+                <!-- Soal 10 -->
+                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="px-2.5 py-0.5 rounded-md bg-translasi-50 text-translasi-900 border border-translasi-200 text-xs font-mono font-bold">
+                      Nomor 10 &bull; C3 &bull; 3 Poin
+                    </span>
+                    <button type="button" onclick="toggleHint(10)" class="hint-btn text-xs font-bold text-translasi-700 hover:text-translasi-900 underline">
+                      Petunjuk (Hint)
+                    </button>
+                  </div>
+                  <p class="leading-loose">
+                    Berdasarkan lebar panggung $x > 0$ yang memenuhi, keliling panggung pentas seni tersebut adalah
+                    <input id="input-q10" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 10" oninput="handleBagian1Input(10, this.value)" class="lkpd-inline-input" /> meter.
+                  </p>
+                  <div id="hint-10" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
+                    <strong>Petunjuk No. 10:</strong> Karena lebar $x = 8\text{ m}$ dan panjang $x + 4 = 12\text{ m}$, hitung keliling persegi panjang $K = 2(\text{panjang} + \text{lebar})$.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 flex justify-end">
+              <button
+                type="button"
+                onclick="navigateLMS('bagian2')"
+                class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-bold transition flex items-center justify-center gap-2 min-h-[48px]"
+              >
+                <span>Lanjut ke Bagian II (Menjodohkan)</span>
+                <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 4: BAGIAN II — MENJODOHKAN (NO. 11-15)-->
+        <!-- ========================================== -->
+        <section id="view-bagian2" class="hidden space-y-6 no-print">
+          <div class="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-8 shadow-card">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-200">
+              <div>
+                <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">
+                  Bagian II — Menjodohkan Interaktif (No. 11–15)
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-600 mt-0.5">
+                  Pasangkan setiap soal dengan salah satu huruf pilihan jawaban (<strong>A</strong> sampai <strong>G</strong>) yang tersedia. Estimasi waktu: <strong>25 menit</strong> (5 &times; 4 poin = 20 poin).
+                </p>
+              </div>
+              <span class="px-3.5 py-1.5 rounded-xl bg-brand-50 border border-brand-200 text-brand-900 text-xs font-mono font-bold tabular-nums">
+                Bobot: 20 Poin
+              </span>
+            </div>
+
+            <!-- Duplicate Selection Soft Warning -->
+            <div id="duplicateMatchWarning" class="hidden mt-4 p-4 rounded-xl bg-amber-50 border-2 border-amber-300 text-xs sm:text-sm font-semibold text-amber-950 flex items-center gap-3">
+              <svg class="w-5 h-5 text-amber-700 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+              </svg>
+              <span id="duplicateMatchWarningText"></span>
+            </div>
+
+            <div class="mt-6 grid grid-cols-1 xl:grid-cols-12 gap-6">
+              <!-- Options Bank A-G -->
+              <div class="xl:col-span-5 order-1 xl:order-2">
+                <div class="xl:sticky xl:top-24 rounded-2xl border-2 border-brand-200 bg-brand-50/50 p-4 sm:p-5">
+                  <h3 class="text-sm sm:text-base font-extrabold text-brand-950">
+                    Daftar Pilihan Jawaban (A–G)
+                  </h3>
+                  <p class="mt-0.5 text-xs text-brand-800">
+                    Terdapat 5 jawaban benar dan 2 pilihan pengecoh.
+                  </p>
+                  <div id="matchingOptionsList" class="mt-3.5 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-2.5"></div>
+                </div>
+              </div>
+
+              <!-- 5 Questions -->
+              <div id="matchingQuestionsContainer" class="xl:col-span-7 order-2 xl:order-1 space-y-4"></div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+              <button
+                type="button"
+                onclick="navigateLMS('bagian1')"
+                class="px-5 py-3 rounded-xl border-2 border-slate-200 bg-white hover:bg-slate-50 text-slate-800 text-sm font-bold transition min-h-[48px]"
+              >
+                Kembali ke Bagian I
+              </button>
+              <button
+                type="button"
+                onclick="navigateLMS('bagian3')"
+                class="px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-bold transition flex items-center justify-center gap-2 min-h-[48px]"
+              >
+                <span>Lanjut ke Bagian III (Uraian HOTS)</span>
+                <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 5: BAGIAN III — URAIAN HOTS (16-20)   -->
+        <!-- ========================================== -->
+        <section id="view-bagian3" class="hidden space-y-6 no-print">
+          <div class="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-8 shadow-card">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-200">
+              <div>
+                <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">
+                  Bagian III — Uraian HOTS &amp; Catatan Langkah Kerja (No. 16–20)
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-600 mt-0.5">
+                  Tuliskan langkah penyelesaian ringkas dan jawaban akhir untuk sub-soal (<code>a</code>, <code>b</code>, <code>c</code>). Setelah menekan <strong>Selesai &amp; Kumpulkan</strong>, kamu akan melakukan cek rubrik penilaian mandiri. Estimasi waktu: <strong>65 menit</strong> (Total 50 poin).
+                </p>
+              </div>
+              <span class="px-3.5 py-1.5 rounded-xl bg-brand-50 border border-brand-200 text-brand-900 text-xs font-mono font-bold tabular-nums">
+                Bobot: 50 Poin
+              </span>
+            </div>
+
+            <div id="essayQuestionsContainer" class="mt-6 space-y-6"></div>
+
+            <div class="mt-8 pt-5 border-t border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+              <button
+                type="button"
+                onclick="navigateLMS('bagian2')"
+                class="px-5 py-3 rounded-xl border-2 border-slate-200 bg-white hover:bg-slate-50 text-slate-800 text-sm font-bold transition min-h-[48px]"
+              >
+                Kembali ke Bagian II
+              </button>
+              <button
+                type="button"
+                onclick="submitAndOpenResults()"
+                class="px-6 py-3.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-extrabold transition flex items-center justify-center gap-2 shadow-sm min-h-[48px]"
+              >
+                <span>Selesai &amp; Kumpulkan Jawaban</span>
+                <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 6: HASIL, RUBRIK MANDIRI & PEMBAHASAN -->
+        <!-- ========================================== -->
+        <section id="view-hasil" class="hidden space-y-6">
+
+          <!-- Compact Official A4 Print Report (Visible ONLY When Printing PDF) -->
+          <div id="printOfficialReport" class="hidden print-only"></div>
+
+          <!-- Not Submitted Notice -->
+          <div id="notSubmittedNotice" class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 no-print">
+            <div>
+              <h3 class="text-base font-extrabold text-amber-950">
+                Latihan Belum Dikumpulkan
+              </h3>
+              <p class="mt-0.5 text-sm text-amber-900">
+                Selesaikan pengerjaan soal terlebih dahulu lalu klik tombol <strong>Selesai &amp; Kumpulkan</strong> untuk membuka kunci jawaban, cek rubrik mandiri Bagian III, dan laporan hasil akhir.
+              </p>
+            </div>
+            <button
+              type="button"
+              onclick="navigateLMS('bagian1')"
+              class="px-5 py-2.5 rounded-xl bg-amber-900 hover:bg-amber-950 text-white text-sm font-bold shrink-0 transition min-h-[44px]"
+            >
+              Ke Modul Latihan
+            </button>
+          </div>
+
+          <!-- Interactive Screen-Only Results & Evaluation Wrapper -->
+          <div id="resultsContentWrapper" class="hidden space-y-6 no-print">
+
+            <!-- Summary Score & Identity Card -->
+            <div class="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-8 shadow-card print-card print-break-inside-avoid">
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+                <div>
+                  <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">
+                    Ringkasan Evaluasi &amp; Bukti Latihan Siswa
+                  </h2>
+                  <div class="mt-2.5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-700">
+                    <div>Nama: <strong id="resultStudentName" class="text-slate-950">-</strong></div>
+                    <div>Kelas: <strong id="resultStudentClass" class="px-2 py-0.5 rounded bg-brand-100 text-brand-800 font-mono">-</strong></div>
+                    <div>Mode: <strong id="resultModeName" class="text-slate-950">-</strong></div>
+                    <div>Waktu Selesai: <strong id="resultCompletedAt" class="text-slate-950 tabular-nums">-</strong></div>
+                  </div>
+                </div>
+
+                <!-- Action Buttons (Sync Cloud, Print PDF, Re-edit) -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 no-print">
+                  <button
+                    type="button"
+                    id="btnSyncSupabase"
+                    onclick="syncSubmissionToSupabase(false)"
+                    class="px-4 py-2.5 rounded-xl border-2 border-matriks-600 bg-matriks-50 hover:bg-matriks-100 text-matriks-900 text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 min-h-[44px]"
+                  >
+                    <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                    </svg>
+                    <span id="btnSyncSupabaseText">Simpan ke Cloud</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onclick="window.print()"
+                    class="px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 min-h-[44px]"
+                  >
+                    <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0021 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 00-1.913-.247M6.34 18H5.25A2.25 2.25 0 013 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 011.913-.247m10.5 0a48.536 48.536 0 00-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5zm-3 0h.008v.008H15V10.5z" />
+                    </svg>
+                    <span>Cetak / Simpan PDF</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Supabase Cloud Status Banner -->
+              <div id="supabaseStatusBanner" class="mt-4 p-3.5 rounded-xl border border-slate-200 bg-slate-50 text-xs sm:text-sm font-semibold text-slate-700 flex items-center justify-between gap-3 no-print">
+                <div class="flex items-center gap-2.5">
+                  <span id="supabaseStatusDot" class="w-2.5 h-2.5 rounded-full bg-slate-400 shrink-0"></span>
+                  <span id="supabaseStatusMessage">Menyiapkan koneksi penyimpanan permanen Supabase...</span>
+                </div>
+                <span id="supabaseLastSyncedTime" class="text-xs font-mono text-slate-500 tabular-nums shrink-0"></span>
+              </div>
+
+              <!-- Score Breakdown Grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+                <div class="p-4 rounded-xl bg-sidebar-950 text-white border border-sidebar-800">
+                  <span class="text-xs font-bold text-brand-200">Total Skor Akhir</span>
+                  <div class="mt-1 flex items-baseline gap-1.5">
+                    <span id="scoreTotalValue" class="text-3xl font-extrabold text-white font-mono tabular-nums">0</span>
+                    <span class="text-sm font-semibold text-brand-200">/ 100 Poin</span>
+                  </div>
+                  <p id="scorePredicateText" class="mt-1.5 text-xs font-semibold text-brand-100">-</p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <span class="text-xs font-bold text-slate-600">Bagian I (Isian LKPD)</span>
+                  <div class="mt-1 flex items-baseline gap-1.5">
+                    <span id="scoreBagian1Value" class="text-2xl font-extrabold text-slate-900 font-mono tabular-nums">0</span>
+                    <span class="text-xs font-bold text-slate-600">/ 30 Poin</span>
+                  </div>
+                  <p id="scoreBagian1Count" class="mt-1.5 text-xs text-slate-600 tabular-nums">0 dari 10 soal benar</p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <span class="text-xs font-bold text-slate-600">Bagian II (Menjodohkan)</span>
+                  <div class="mt-1 flex items-baseline gap-1.5">
+                    <span id="scoreBagian2Value" class="text-2xl font-extrabold text-slate-900 font-mono tabular-nums">0</span>
+                    <span class="text-xs font-bold text-slate-600">/ 20 Poin</span>
+                  </div>
+                  <p id="scoreBagian2Count" class="mt-1.5 text-xs text-slate-600 tabular-nums">0 dari 5 soal benar</p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <span class="text-xs font-bold text-slate-600">Bagian III (Rubrik Mandiri)</span>
+                  <div class="mt-1 flex items-baseline gap-1.5">
+                    <span id="scoreBagian3Value" class="text-2xl font-extrabold text-slate-900 font-mono tabular-nums">0</span>
+                    <span class="text-xs font-bold text-slate-600">/ 50 Poin</span>
+                  </div>
+                  <p class="mt-1.5 text-xs text-slate-600">Berdasarkan centang rubrik di bawah</p>
+                </div>
+              </div>
+
+              <!-- Mastery Analysis Per Topic -->
+              <div class="mt-6 pt-6 border-t border-slate-200">
+                <h3 class="text-base font-extrabold text-slate-900">
+                  Analisis Penguasaan Materi Per Topik
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600">
+                  Persentase ketepatan dihitung berdasarkan perolehan poin pada masing-masing topik dibandingkan bobot maksimal topik tersebut:
+                </p>
+                <div id="topicMasteryContainer" class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+              </div>
+            </div>
+
+            <!-- Interactive Self-Assessment Rubric for Bagian III -->
+            <div class="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-8 shadow-card print-card">
+              <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-200">
+                <div>
+                  <h3 class="text-lg sm:text-xl font-extrabold text-slate-900">
+                    Cek Rubrik Mandiri Bagian III — Uraian HOTS (No. 16–20)
+                  </h3>
+                  <p class="text-xs sm:text-sm text-slate-600 mt-0.5">
+                    Bandingkan catatan langkah kerjamu dengan kunci pembahasan di bawah ini, lalu <strong>centang tahapan penyelesaian yang berhasil kamu kerjakan dengan benar</strong> untuk menghitung skor Bagian III (Total 50 Poin).
+                  </p>
+                </div>
+                <span class="px-3 py-1 rounded-xl bg-matriks-50 border border-matriks-200 text-matriks-900 text-xs font-bold tabular-nums">
+                  Penilaian Mandiri Interaktif
+                </span>
+              </div>
+
+              <div id="selfAssessmentRubricContainer" class="mt-6 space-y-6"></div>
+            </div>
+
+            <!-- Step-by-Step Solutions for Bagian I & Bagian II -->
+            <div class="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-8 shadow-card print-card">
+              <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-200">
+                <div>
+                  <h3 class="text-lg sm:text-xl font-extrabold text-slate-900">
+                    Evaluasi &amp; Pembahasan Lengkap Bagian I &amp; Bagian II (No. 1–15)
+                  </h3>
+                  <p class="text-xs sm:text-sm text-slate-600 mt-0.5">
+                    Rincian jawabanmu beserta pembahasan langkah demi langkah untuk soal Isian Singkat LKPD dan Menjodohkan.
+                  </p>
+                </div>
+              </div>
+
+              <div id="objectiveSolutionsContainer" class="mt-6 space-y-4"></div>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- APPLICATION DATA & JAVASCRIPT LOGIC        -->
+  <!-- ========================================== -->
+  <script>
+    const STORAGE_KEY = 'kisi_uas_math_x_v1';
+    const ALLOWED_CLASSES = ['X-1', 'X-2', 'X-3', 'X-4', 'X-5', 'X-6', 'X-7', 'X-8', 'X-9', 'X-10', 'X-11', 'X-12'];
+    const EXAM_DURATION_SECONDS = 120 * 60; // 120 minutes
+
+    // Konfigurasi Supabase REST API (anon key bersifat publik & dilindungi RLS)
+    const SUPABASE_CONFIG = {
+      restUrl: 'https://qovcvptlrzgbmcrwrwiq.supabase.co/rest/v1',
+      table: 'hasil_latihan_uas_x',
+      anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFvdmN2cHRscnpnYm1jcndyd2lxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUzNjQ4NTQsImV4cCI6MjExMDk0MDg1NH0.Ew5-LClB6JSG4bNciUSC1HRvfWL_KOwn9KOyuSwiFdw'
+    };
+
+    const VIEW_METADATA = {
+      dashboard: {
+        title: 'Dashboard Belajar',
+        subtitle: 'Ringkasan progres latihan persiapan UAS Matematika Kelas X'
+      },
+      kisikisi: {
+        title: 'Kisi-Kisi UAS (20 Soal)',
+        subtitle: 'Peta indikator kompetensi, level kognitif, dan bobot poin resmi Kelas X'
+      },
+      bagian1: {
+        title: 'Bagian I — Isian Singkat LKPD (No. 1–10)',
+        subtitle: '3 wacana kontekstual dengan penilaian otomatis • Bobot 30 Poin'
+      },
+      bagian2: {
+        title: 'Bagian II — Menjodohkan Interaktif (No. 11–15)',
+        subtitle: 'Pasangkan 5 soal dengan 7 pilihan jawaban A–G • Bobot 20 Poin'
+      },
+      bagian3: {
+        title: 'Bagian III — Uraian HOTS (No. 16–20)',
+        subtitle: 'Catatan langkah kerja & persiapan cek rubrik mandiri • Bobot 50 Poin'
+      },
+      hasil: {
+        title: 'Hasil, Rubrik Mandiri & Cetak PDF',
+        subtitle: 'Skor akhir, analisis penguasaan per topik, dan pembahasan lengkap KaTeX'
+      }
+    };
+
+    // 1. DATA KISI-KISI UAS KELAS X (20 BUTIR SOAL)
+    const KISI_KISI_DATA = [
+      { no: 1, topik: 'Eksponen & Logaritma', bentuk: 'Isian Singkat', indikator: 'Menghitung nilai fungsi pertumbuhan eksponen $V(t) = a \\cdot b^t$ pada waktu $t$ tertentu.', konteks: 'Wacana 1: Pelipatan penonton video OSIS $V(t) = 100 \\cdot 3^t$ saat $t = 3$', level: 'C2', skor: 3 },
+      { no: 2, topik: 'Eksponen & Logaritma', bentuk: 'Isian Singkat', indikator: 'Menentukan waktu $t$ dari persamaan eksponen sederhana $a \\cdot b^t = k$.', konteks: 'Wacana 1: Mencari lama waktu saat penonton mencapai $8.100$ orang', level: 'C3', skor: 3 },
+      { no: 3, topik: 'Eksponen & Logaritma', bentuk: 'Isian Singkat', indikator: 'Menaksir nilai logaritma menggunakan sifat ${}^a\\log(b \\cdot c) = {}^a\\log b + {}^a\\log c$.', konteks: 'Wacana 1: Taksiran ${}^3\\log 18$ dengan diketahui ${}^3\\log 2 \\approx 0,63$', level: 'C3', skor: 3 },
+      { no: 4, topik: 'SPtLDV', bentuk: 'Isian Singkat', indikator: 'Memodelkan kendala masalah kontekstual ke dalam bentuk pertidaksamaan linear dua variabel.', konteks: 'Wacana 2: Kendala waktu produksi gantungan kunci &amp; pin OSIS ($x + 3y \\le 18$)', level: 'C2', skor: 3 },
+      { no: 5, topik: 'SPtLDV', bentuk: 'Isian Singkat', indikator: 'Menentukan titik potong garis batas pertidaksamaan linear terhadap sumbu-$Y$.', konteks: 'Wacana 2: Titik potong sumbu-$Y$ garis $x + 3y = 18$', level: 'C2', skor: 3 },
+      { no: 6, topik: 'SPtLDV', bentuk: 'Isian Singkat', indikator: 'Menentukan absis ($x$) titik potong dua garis pembatas DHP melalui metode eliminasi/substitusi.', konteks: 'Wacana 2: Absis titik pojok $B(x_B, y_B)$ pada Grafik 1', level: 'C3', skor: 3 },
+      { no: 7, topik: 'SPtLDV', bentuk: 'Isian Singkat', indikator: 'Menentukan ordinat ($y$) titik potong dua garis pembatas DHP dari sistem persamaan linear.', konteks: 'Wacana 2: Ordinat titik pojok $B(x_B, y_B)$ pada Grafik 1', level: 'C3', skor: 3 },
+      { no: 8, topik: 'SPtLDV', bentuk: 'Isian Singkat', indikator: 'Menentukan nilai maksimum fungsi objektif $f(x, y) = ax + by$ berdasarkan uji titik pojok DHP.', konteks: 'Wacana 2: Pendapatan maksimum bazar OSIS $f(x, y) = 15.000x + 25.000y$', level: 'C3', skor: 3 },
+      { no: 9, topik: 'Persamaan Kuadrat', bentuk: 'Isian Singkat', indikator: 'Melengkapi pemfaktoran persamaan kuadrat $x^2 + bx + c = 0$ dari model luas bangun datar.', konteks: 'Wacana 3: Pemfaktoran desain panggung $x^2 + 4x - 96 = 0$', level: 'C3', skor: 3 },
+      { no: 10, topik: 'Persamaan Kuadrat', bentuk: 'Isian Singkat', indikator: 'Menentukan ukuran dimensi dan keliling persegi panjang menggunakan akar positif persamaan kuadrat.', konteks: 'Wacana 3: Menghitung keliling panggung pentas seni', level: 'C3', skor: 3 },
+      { no: 11, topik: 'Eksponen & Logaritma', bentuk: 'Menjodohkan', indikator: 'Menyelesaikan persamaan eksponen $a^{f(x)} = b^{g(x)}$ dengan menyamakan bilangan pokok (basis).', konteks: 'Persamaan eksponen $4^{x+1} = 8^{x-1}$', level: 'C3', skor: 4 },
+      { no: 12, topik: 'Eksponen & Logaritma', bentuk: 'Menjodohkan', indikator: 'Menyederhanakan operasi penjumlahan dan pengurangan logaritma berbasis sama (${}^2\\log$).', konteks: 'Nilai dari ${}^2\\log 48 + {}^2\\log 4 - {}^2\\log 3$', level: 'C3', skor: 4 },
+      { no: 13, topik: 'SPtLDV', bentuk: 'Menjodohkan', indikator: 'Menentukan sistem pertidaksamaan linear dua variabel yang sesuai dengan grafik DHP tertutup.', konteks: 'Grafik 2: DHP tertutup dengan batas $(0,8)-(4,0)$ dan $(0,5)-(10,0)$', level: 'C3', skor: 4 },
+      { no: 14, topik: 'SPtLDV', bentuk: 'Menjodohkan', indikator: 'Menentukan nilai maksimum fungsi objektif dari daftar titik pojok DHP yang diberikan.', konteks: 'Uji titik pojok $O(0,0), A(5,0), B(3,4), C(0,6)$ pada $f(x,y) = 4x + 5y$', level: 'C3', skor: 4 },
+      { no: 15, topik: 'Persamaan Kuadrat', bentuk: 'Menjodohkan', indikator: 'Menentukan akar-akar persamaan kuadrat $ax^2 + bx + c = 0$ dengan $a > 1$ melalui pemfaktoran.', konteks: 'Himpunan penyelesaian $3x^2 + 5x - 2 = 0$', level: 'C3', skor: 4 },
+      { no: 16, topik: 'Eksponen & Logaritma', bentuk: 'Uraian HOTS', indikator: 'Menganalisis fungsi peluruhan eksponen, mencari waktu peluruhan, dan menaksir jadwal konsumsi dengan logaritma.', konteks: 'Peluruhan konsentrasi obat $D(t) = 320 \\cdot (\\frac{1}{2})^t$ &amp; taksiran ${}^2\\log 5$', level: 'C4', skor: 13 },
+      { no: 17, topik: 'SPtLDV', bentuk: 'Uraian HOTS', indikator: 'Menentukan SPtLDV, koordinat titik pojok, dan nilai minimum fungsi objektif dari grafik DHP terbuka.', konteks: 'Grafik 3: DHP terbuka ke kanan atas &amp; fungsi objektif $f(x,y) = 5x + 3y$', level: 'C4', skor: 8 },
+      { no: 18, topik: 'SPtLDV', bentuk: 'Uraian HOTS', indikator: 'Memodelkan masalah program linear maksimum dengan konversi satuan, menentukan titik pojok, dan laba maksimum.', konteks: 'Konveksi Jaket &amp; Kaus (konversi meter ke sentimeter) &amp; laba maksimum', level: 'C4', skor: 9 },
+      { no: 19, topik: 'SPtLDV', bentuk: 'Uraian HOTS', indikator: 'Memodelkan masalah program linear minimum, menghitung biaya minimum, serta mengevaluasi kecukupan anggaran.', konteks: 'Pembelian Pupuk X &amp; Y untuk kebutuhan Nitrogen/Fosfor + evaluasi anggaran', level: 'C5', skor: 10 },
+      { no: 20, topik: 'Persamaan Kuadrat', bentuk: 'Uraian HOTS', indikator: 'Menyelesaikan persamaan kuadrat dengan pemfaktoran ($a > 1$), Rumus ABC bentuk akar, dan aplikasi luas bingkai.', konteks: 'Pemfaktoran $2x^2+7x-15=0$, Rumus ABC $x^2-4x+1=0$, dan margin poster', level: 'C4', skor: 10 }
+    ];
+
+    // 2. DATA KUNCI & PEMBAHASAN BAGIAN I (ISIAN SINGKAT LKPD NO. 1-10 | 30 POIN)
+    const BAGIAN1_QUESTIONS = [
+      { no: 1, topik: 'Eksponen & Logaritma', skor: 3, promptShort: 'Jumlah penonton video OSIS setelah $t = 3$ jam pada model $V(t) = 100 \\cdot 3^t$', acceptedAnswers: ['2700', '2700orang'], displayAnswer: '2.700', explanation: 'Substitusikan $t = 3$ ke fungsi eksponen: $$V(3) = 100 \\cdot 3^3 = 100 \\cdot 27 = 2.700\\text{ orang}$$' },
+      { no: 2, topik: 'Eksponen & Logaritma', skor: 3, promptShort: 'Lama waktu $t$ (jam) saat total penonton mencapai $8.100$ orang', acceptedAnswers: ['4', '4jam'], displayAnswer: '4', explanation: 'Selesaikan persamaan eksponen: $$100 \\cdot 3^t = 8.100 \\implies 3^t = 81 \\implies 3^t = 3^4 \\implies t = 4\\text{ jam}$$' },
+      { no: 3, topik: 'Eksponen & Logaritma', skor: 3, promptShort: 'Nilai taksiran ${}^3\\log 18$ jika diketahui ${}^3\\log 2 \\approx 0,63$', acceptedAnswers: ['2.63', '2,63'], displayAnswer: '2,63', explanation: 'Uraikan $18 = 9 \\times 2 = 3^2 \\times 2$, lalu terapkan sifat logaritma: $${}^3\\log 18 = {}^3\\log(3^2 \\cdot 2) = {}^3\\log 3^2 + {}^3\\log 2 = 2 + 0,63 = 2,63$$' },
+      { no: 4, topik: 'SPtLDV', skor: 3, promptShort: 'Model pertidaksamaan linear untuk kendala waktu pembuatan kerajinan (maksimal $18$ jam)', acceptedAnswers: ['x+3y<=18', '1x+3y<=18', '3y+x<=18', '3y+1x<=18'], displayAnswer: 'x + 3y ≤ 18', explanation: 'Gantungan kunci ($x$) butuh $1$ jam dan pin ($y$) butuh $3$ jam dengan batas waktu maksimal $18$ jam, sehingga model pertidaksamaannya adalah $x + 3y \\le 18$.' },
+      { no: 5, topik: 'SPtLDV', skor: 3, promptShort: 'Nilai $y_0$ pada titik potong sumbu-$Y$ garis $x + 3y = 18$', acceptedAnswers: ['6', '(0,6)'], displayAnswer: '6', explanation: 'Saat memotong sumbu-$Y$, nilai $x = 0$: $$0 + 3y_0 = 18 \\implies y_0 = \\frac{18}{3} = 6$$ Titik potongnya adalah $(0, 6)$.' },
+      { no: 6, topik: 'SPtLDV', skor: 3, promptShort: 'Nilai absis $x_B$ dari titik potong garis $x + y = 10$ dan $x + 3y = 18$', acceptedAnswers: ['6'], displayAnswer: '6', explanation: 'Eliminasi $x$: $(x + 3y) - (x + y) = 18 - 10 \\implies 2y = 8 \\implies y_B = 4$. Substitusikan $y_B = 4$ ke $x + y = 10 \\implies x_B = 10 - 4 = 6$.' },
+      { no: 7, topik: 'SPtLDV', skor: 3, promptShort: 'Nilai ordinat $y_B$ dari titik potong garis $x + y = 10$ dan $x + 3y = 18$', acceptedAnswers: ['4'], displayAnswer: '4', explanation: 'Dari eliminasi $(x + 3y = 18) - (x + y = 10)$ diperoleh $2y_B = 8 \\implies y_B = 4$. Jadi koordinat titik pojok $B(6, 4)$.' },
+      { no: 8, topik: 'SPtLDV', skor: 3, promptShort: 'Pendapatan maksimum bazar OSIS dari fungsi objektif $f(x, y) = 15.000x + 25.000y$', acceptedAnswers: ['190000', 'rp190000'], displayAnswer: '190.000', explanation: 'Uji titik pojok DHP ke $f(x, y) = 15.000x + 25.000y$: $(10, 0) \\to 150.000$; $(0, 6) \\to 150.000$; $(6, 4) \\to 15.000(6) + 25.000(4) = 90.000 + 100.000 = 190.000$. Jadi pendapatan maksimum adalah $\\text{Rp}190.000$.' },
+      { no: 9, topik: 'Persamaan Kuadrat', skor: 3, promptShort: 'Nilai bilangan bulat positif $p$ pada pemfaktoran $x^2 + 4x - 96 = (x + 12)(x - p) = 0$', acceptedAnswers: ['8'], displayAnswer: '8', explanation: 'Faktorkan $x^2 + 4x - 96 = 0$: karena $12 \\times (-8) = -96$ dan $12 + (-8) = 4$, maka bentuk faktornya adalah $(x + 12)(x - 8) = 0$. Jadi $p = 8$.' },
+      { no: 10, topik: 'Persamaan Kuadrat', skor: 3, promptShort: 'Keliling panggung pentas seni persegi panjang dengan lebar $x$ dan panjang $(x + 4)$ meter', acceptedAnswers: ['40', '40m', '40meter'], displayAnswer: '40', explanation: 'Dari $(x + 12)(x - 8) = 0$ dan syarat $x > 0$, diperoleh lebar $x = 8\\text{ m}$ dan panjang $= 8 + 4 = 12\\text{ m}$. Maka kelilingnya $K = 2(12 + 8) = 2(20) = 40\\text{ m}$.' }
+    ];
+
+    // 3. DATA BAGIAN II — MENJODOHKAN (NO. 11-15 & OPSI A-G | 20 POIN)
+    const SVG_GRAFIK_2 = `
+      <div class="mt-3 bg-slate-50 p-3 rounded-xl border border-slate-200 flex justify-center">
+        <svg viewBox="0 0 340 230" class="w-full max-w-xs h-auto" role="img" aria-label="Grafik DHP tertutup melalui (0,8)-(4,0) dan (0,5)-(10,0)">
+          <g stroke="#e2e8f0" stroke-width="1">
+            <line x1="95" y1="25" x2="95" y2="195" />
+            <line x1="145" y1="25" x2="145" y2="195" />
+            <line x1="195" y1="25" x2="195" y2="195" />
+            <line x1="245" y1="25" x2="245" y2="195" />
+            <line x1="295" y1="25" x2="295" y2="195" />
+            <line x1="45" y1="155" x2="315" y2="155" />
+            <line x1="45" y1="115" x2="315" y2="115" />
+            <line x1="45" y1="75" x2="315" y2="75" />
+            <line x1="45" y1="35" x2="315" y2="35" />
+          </g>
+          <polygon points="45,195 145,195 95,115 45,95" fill="#2d8a60" fill-opacity="0.24" />
+          <line x1="45" y1="195" x2="322" y2="195" stroke="#0f172a" stroke-width="2" />
+          <line x1="45" y1="195" x2="45" y2="18" stroke="#0f172a" stroke-width="2" />
+          <polygon points="322,195 314,191 314,199" fill="#0f172a" />
+          <polygon points="45,18 41,26 49,26" fill="#0f172a" />
+          <text x="325" y="199" font-size="11" font-weight="700" fill="#0f172a">X</text>
+          <text x="41" y="13" font-size="11" font-weight="700" fill="#0f172a">Y</text>
+          <line x1="45" y1="35" x2="145" y2="195" stroke="#c2414b" stroke-width="2.2" />
+          <line x1="45" y1="95" x2="295" y2="195" stroke="#1f734e" stroke-width="2.2" />
+          <circle cx="45" cy="35" r="3.5" fill="#c2414b" />
+          <circle cx="145" cy="195" r="3.5" fill="#c2414b" />
+          <circle cx="45" cy="95" r="3.5" fill="#1f734e" />
+          <circle cx="295" cy="195" r="3.5" fill="#1f734e" />
+          <circle cx="95" cy="115" r="4" fill="#0f291e" stroke="#ffffff" stroke-width="1.2" />
+          <text x="68" y="164" font-size="12" font-weight="800" fill="#103a28">DHP</text>
+          <text x="33" y="209" font-size="10.5" font-weight="600" fill="#334155">0</text>
+          <text x="141" y="211" font-size="11" font-weight="700" fill="#0f172a">4</text>
+          <text x="288" y="211" font-size="11" font-weight="700" fill="#0f172a">10</text>
+          <text x="30" y="99" font-size="11" font-weight="700" fill="#0f172a">5</text>
+          <text x="30" y="39" font-size="11" font-weight="700" fill="#0f172a">8</text>
+        </svg>
+      </div>
+    `;
+
+    const BAGIAN2_OPTIONS = [
+      { code: 'A', labelLatex: '$x = 1$' },
+      { code: 'B', labelLatex: '$x + 2y \\le 8,\\; 2x + y \\le 10,\\; x \\ge 0,\\; y \\ge 0$' },
+      { code: 'C', labelLatex: '$6$' },
+      { code: 'D', labelLatex: '$32$' },
+      { code: 'E', labelLatex: '$x = 5$' },
+      { code: 'F', labelLatex: '$x = -2 \\text{ atau } x = \\frac{1}{3}$' },
+      { code: 'G', labelLatex: '$2x + y \\le 8,\\; x + 2y \\le 10,\\; x \\ge 0,\\; y \\ge 0$' }
+    ];
+
+    const BAGIAN2_QUESTIONS = [
+      { no: 11, topik: 'Eksponen & Logaritma', level: 'C3', skor: 4, questionLatex: 'Nilai $x$ yang memenuhi persamaan eksponen $4^{x+1} = 8^{x-1}$ adalah ....', hint: 'Ubah kedua ruas ke basis $2$: $4 = 2^2$ dan $8 = 2^3$, lalu samakan pangkatnya: $2(x + 1) = 3(x - 1)$.', correctOption: 'E', explanation: 'Samakan bilangan pokok ke basis $2$: $$(2^2)^{x+1} = (2^3)^{x-1} \\implies 2x + 2 = 3x - 3 \\implies x = 5$$ Jawaban yang tepat adalah <strong>E ($x = 5$)</strong>.' },
+      { no: 12, topik: 'Eksponen & Logaritma', level: 'C3', skor: 4, questionLatex: 'Nilai dari ${}^2\\log 48 + {}^2\\log 4 - {}^2\\log 3$ adalah ....', hint: 'Gunakan sifat logaritma basis sama: ${}^a\\log b + {}^a\\log c - {}^a\\log d = {}^a\\log\\left(\\frac{b \\cdot c}{d}\\right)$.', correctOption: 'C', explanation: 'Gabungkan ke dalam satu logaritma basis $2$: $${}^2\\log\\left(\\frac{48 \\times 4}{3}\\right) = {}^2\\log(16 \\times 4) = {}^2\\log 64 = {}^2\\log 2^6 = 6$$ Jawaban yang tepat adalah <strong>C ($6$)</strong>.' },
+      { no: 13, topik: 'SPtLDV', level: 'C3', skor: 4, questionLatex: 'Perhatikan grafik DHP tertutup di bawah ini. Sistem pertidaksamaan linear dua variabel yang sesuai dengan daerah yang diarsir adalah ....' + SVG_GRAFIK_2, hint: 'Garis melalui $(0, a)$ dan $(b, 0)$ persamaannya $ax + by = ab$. Cek $(0, 8)$–$(4, 0) \\implies 8x + 4y = 32 \\iff 2x + y = 8$, dan $(0, 5)$–$(10, 0) \\implies 5x + 10y = 50 \\iff x + 2y = 10$.', correctOption: 'G', explanation: 'Garis 1 melalui $(0,8)$ dan $(4,0)$: $8x + 4y \\le 32 \\iff 2x + y \\le 8$. Garis 2 melalui $(0,5)$ dan $(10,0)$: $5x + 10y \\le 50 \\iff x + 2y \\le 10$. Karena DHP di kuadran I memuat $(0,0)$, sistemnya adalah $2x + y \\le 8,\\; x + 2y \\le 10,\\; x \\ge 0,\\; y \\ge 0$. Jawaban yang tepat adalah <strong>G</strong>.' },
+      { no: 14, topik: 'SPtLDV', level: 'C3', skor: 4, questionLatex: 'Diketahui titik-titik pojok suatu DHP adalah $O(0, 0)$, $A(5, 0)$, $B(3, 4)$, dan $C(0, 6)$. Nilai <strong>maksimum</strong> fungsi objektif $f(x, y) = 4x + 5y$ adalah ....', hint: 'Substitusikan setiap koordinat titik pojok $(x, y)$ ke $f(x, y) = 4x + 5y$, lalu pilih nilai terbesar.', correctOption: 'D', explanation: 'Uji titik pojok ke $f(x, y) = 4x + 5y$: $O(0,0) \\to 0$; $A(5,0) \\to 20$; $B(3,4) \\to 4(3) + 5(4) = 12 + 20 = 32$; $C(0,6) \\to 30$. Nilai maksimumnya adalah $32$. Jawaban yang tepat adalah <strong>D ($32$)</strong>.' },
+      { no: 15, topik: 'Persamaan Kuadrat', level: 'C3', skor: 4, questionLatex: 'Himpunan penyelesaian (akar-akar) dari persamaan kuadrat $3x^2 + 5x - 2 = 0$ adalah ....', hint: 'Faktorkan $3x^2 + 5x - 2 = 0$ menjadi $(3x - 1)(x + 2) = 0$.', correctOption: 'F', explanation: 'Dengan pemfaktoran: $$3x^2 + 5x - 2 = 0 \\implies (3x - 1)(x + 2) = 0 \\implies x = \\frac{1}{3} \\text{ atau } x = -2$$ Jawaban yang tepat adalah <strong>F ($x = -2 \\text{ atau } x = \\frac{1}{3}$)</strong>.' }
+    ];
+
+    // 4. DATA BAGIAN III — URAIAN HOTS & RUBRIK MANDIRI (NO. 16-20 | TOTAL 50 POIN)
+    const SVG_GRAFIK_3 = `
+      <div class="mt-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex justify-center">
+        <svg viewBox="0 0 360 260" class="w-full max-w-sm h-auto" role="img" aria-label="Grafik DHP terbuka ke kanan atas melalui (0,12)-(6,0) dan (0,6)-(12,0)">
+          <g stroke="#e2e8f0" stroke-width="1">
+            <line x1="85" y1="29" x2="85" y2="225" />
+            <line x1="125" y1="29" x2="125" y2="225" />
+            <line x1="165" y1="29" x2="165" y2="225" />
+            <line x1="205" y1="29" x2="205" y2="225" />
+            <line x1="245" y1="29" x2="245" y2="225" />
+            <line x1="285" y1="29" x2="285" y2="225" />
+            <line x1="325" y1="29" x2="325" y2="225" />
+            <line x1="45" y1="197" x2="325" y2="197" />
+            <line x1="45" y1="169" x2="325" y2="169" />
+            <line x1="45" y1="141" x2="325" y2="141" />
+            <line x1="45" y1="113" x2="325" y2="113" />
+            <line x1="45" y1="85" x2="325" y2="85" />
+            <line x1="45" y1="57" x2="325" y2="57" />
+          </g>
+          <polygon points="45,57 125,169 285,225 325,225 325,29 45,29" fill="#2d8a60" fill-opacity="0.22" />
+          <line x1="45" y1="225" x2="338" y2="225" stroke="#0f172a" stroke-width="2" />
+          <line x1="45" y1="225" x2="45" y2="18" stroke="#0f172a" stroke-width="2" />
+          <polygon points="338,225 330,221 330,229" fill="#0f172a" />
+          <polygon points="45,18 41,26 49,26" fill="#0f172a" />
+          <text x="342" y="229" font-size="11" font-weight="700" fill="#0f172a">X</text>
+          <text x="41" y="13" font-size="11" font-weight="700" fill="#0f172a">Y</text>
+          <line x1="45" y1="57" x2="165" y2="225" stroke="#c2414b" stroke-width="2.2" />
+          <line x1="45" y1="141" x2="285" y2="225" stroke="#1f734e" stroke-width="2.2" />
+          <circle cx="45" cy="57" r="3.8" fill="#c2414b" />
+          <circle cx="165" cy="225" r="3.5" fill="#c2414b" />
+          <circle cx="45" cy="141" r="3.5" fill="#1f734e" />
+          <circle cx="285" cy="225" r="3.8" fill="#1f734e" />
+          <circle cx="125" cy="169" r="4.2" fill="#0f291e" stroke="#ffffff" stroke-width="1.3" />
+          <text x="205" y="108" font-size="13" font-weight="800" fill="#103a28">DHP</text>
+          <text x="33" y="239" font-size="10.5" font-weight="600" fill="#334155">0</text>
+          <text x="161" y="241" font-size="11" font-weight="700" fill="#0f172a">6</text>
+          <text x="278" y="241" font-size="11" font-weight="700" fill="#0f172a">12</text>
+          <text x="30" y="145" font-size="11" font-weight="700" fill="#0f172a">6</text>
+          <text x="23" y="61" font-size="11" font-weight="700" fill="#0f172a">12</text>
+        </svg>
+      </div>
+    `;
+
+    const BAGIAN3_QUESTIONS = [
+      {
+        no: 16, topik: 'Eksponen & Logaritma', level: 'C4', skor: 13,
+        title: 'Peluruhan Konsentrasi Obat & Taksiran Jadwal Konsumsi',
+        stemLatex: 'Seorang pasien mengonsumsi obat dengan dosis awal $320\\text{ mg}$. Konsentrasi obat dalam darah meluruh menjadi setengahnya setiap $1$ jam mengikuti fungsi eksponen: $$D(t) = 320 \\cdot \\left(\\frac{1}{2}\\right)^t$$ dengan $t$ menyatakan waktu dalam jam. Diketahui nilai pendekatan ${}^2\\log 5 \\approx 2,32$.',
+        subQuestions: [
+          { id: 'a', label: 'a. Hitunglah sisa konsentrasi obat dalam tubuh pasien setelah $4$ jam! (3 poin)' },
+          { id: 'b', label: 'b. Tentukan lama waktu $t$ (dalam jam) saat konsentrasi obat tepat tersisa $10\\text{ mg}$! (4 poin)' },
+          { id: 'c', label: 'c. Dosis berikutnya baru boleh diminum setelah konsentrasi obat turun hingga $32\\text{ mg}$. Taksirlah waktu $t$ saat $D(t) = 32\\text{ mg}$ menggunakan ${}^2\\log 5 \\approx 2,32$, lalu simpulkan apakah pasien sudah boleh meminum dosis berikutnya pada jam ke-3! (6 poin)' }
+        ],
+        hint: 'Untuk sub-soal (c), ubah $320 \\cdot (\\frac{1}{2})^t = 32$ menjadi $(\\frac{1}{2})^t = \\frac{1}{10} \\iff 2^t = 10$, lalu gunakan $t = {}^2\\log 10 = {}^2\\log(2 \\times 5) = {}^2\\log 2 + {}^2\\log 5$.',
+        rubricItems: [
+          { id: '16_1', points: 3, text: 'Menghitung sisa konsentrasi setelah $4$ jam: $D(4) = 320 \\cdot (\\frac{1}{2})^4 = \\frac{320}{16} = 20\\text{ mg}$.' },
+          { id: '16_2', points: 2, text: 'Menyusun persamaan eksponen $320 \\cdot (\\frac{1}{2})^t = 10 \\iff (\\frac{1}{2})^t = \\frac{1}{32}$.' },
+          { id: '16_3', points: 2, text: 'Menentukan waktu saat konsentrasi tersisa $10\\text{ mg}$ yaitu $t = 5$ jam.' },
+          { id: '16_4', points: 3, text: 'Menyelesaikan $2^t = 10$ menggunakan logaritma: $t = {}^2\\log 10 = {}^2\\log 2 + {}^2\\log 5 \\approx 1 + 2,32 = 3,32$ jam.' },
+          { id: '16_5', points: 3, text: 'Menyimpulkan bahwa pasien <strong>belum boleh</strong> minum obat pada jam ke-3 karena konsentrasi baru mencapai $32\\text{ mg}$ setelah $3,32$ jam (sekitar 3 jam 19 menit).' }
+        ],
+        solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Sisa Konsentrasi Setelah 4 Jam):</strong></p><p>$$D(4) = 320 \\cdot \\left(\\frac{1}{2}\\right)^4 = 320 \\cdot \\frac{1}{16} = 20\\text{ mg}$$</p><p><strong>Langkah b (Waktu Saat Tersisa $10\\text{ mg}$):</strong></p><p>$$320 \\cdot \\left(\\frac{1}{2}\\right)^t = 10 \\implies \\left(\\frac{1}{2}\\right)^t = \\frac{10}{320} = \\frac{1}{32} = \\left(\\frac{1}{2}\\right)^5 \\implies t = 5\\text{ jam}$$</p><p><strong>Langkah c (Taksiran Waktu $D(t) = 32\\text{ mg}$ &amp; Kesimpulan):</strong></p><p>$$320 \\cdot \\left(\\frac{1}{2}\\right)^t = 32 \\implies \\left(\\frac{1}{2}\\right)^t = \\frac{1}{10} \\implies 2^t = 10$$</p><p>$$t = {}^2\\log 10 = {}^2\\log(2 \\times 5) = {}^2\\log 2 + {}^2\\log 5 \\approx 1 + 2,32 = 3,32\\text{ jam}$$</p><p><strong>Kesimpulan:</strong> Pada jam ke-3 ($t = 3$), konsentrasi obat masih $40\\text{ mg} > 32\\text{ mg}$. Jadi pasien <strong>belum boleh</strong> meminum dosis berikutnya pada jam ke-3 (harus menunggu melewati $3,32$ jam).</p></div>`
+      },
+      {
+        no: 17, topik: 'SPtLDV', level: 'C4', skor: 8,
+        title: 'Analisis Grafik DHP Terbuka & Nilai Minimum Fungsi Objektif',
+        stemLatex: 'Perhatikan grafik Daerah Himpunan Penyelesaian (DHP) terbuka ke kanan atas berikut dengan fungsi objektif $f(x, y) = 5x + 3y$:' + SVG_GRAFIK_3,
+        subQuestions: [
+          { id: 'a', label: 'a. Tentukan sistem pertidaksamaan linear dua variabel (SPtLDV) yang membentuk DHP terbuka pada grafik tersebut! (3 poin)' },
+          { id: 'b', label: 'b. Tentukan seluruh koordinat titik pojok DHP tersebut (termasuk titik potong kedua garis batas)! (3 poin)' },
+          { id: 'c', label: 'c. Hitunglah nilai minimum fungsi objektif $f(x, y) = 5x + 3y$ pada DHP tersebut! (2 poin)' }
+        ],
+        hint: 'Garis 1 melalui $(0,12)$ dan $(6,0) \\implies 2x + y = 12$. Garis 2 melalui $(0,6)$ dan $(12,0) \\implies x + 2y = 12$. Karena DHP terbuka ke kanan atas (tidak memuat $(0,0)$), gunakan tanda $\\ge$.',
+        rubricItems: [
+          { id: '17_1', points: 3, text: 'Menyusun SPtLDV dengan tepat: $2x + y \\ge 12$, $x + 2y \\ge 12$, $x \\ge 0$, dan $y \\ge 0$.' },
+          { id: '17_2', points: 3, text: 'Menentukan ketiga titik pojok DHP terbuka secara lengkap yaitu $(0, 12)$, $(4, 4)$, dan $(12, 0)$.' },
+          { id: '17_3', points: 2, text: 'Menguji titik pojok ke $f(x, y) = 5x + 3y$ dan menemukan nilai minimum sebesar $32$ pada titik $(4, 4)$.' }
+        ],
+        solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Menentukan SPtLDV):</strong></p><p>&bull; Garis 1 melalui $(0, 12)$ dan $(6, 0)$: $12x + 6y = 72 \\iff 2x + y = 12$. Karena DHP di atas garis, maka $2x + y \\ge 12$.</p><p>&bull; Garis 2 melalui $(0, 6)$ dan $(12, 0)$: $6x + 12y = 72 \\iff x + 2y = 12$. Karena DHP di atas garis, maka $x + 2y \\ge 12$.</p><p>&bull; Syarat kuadran I: $x \\ge 0,\\; y \\ge 0$.</p><p><strong>Langkah b (Titik Pojok DHP):</strong></p><p>Titik potong $2x + y = 12$ dan $x + 2y = 12$: jumlahkan kedua persamaan $\\implies 3x + 3y = 24 \\implies x + y = 8$, sehingga $x = 4$ dan $y = 4$. Titik pojoknya: $(0, 12)$, $(4, 4)$, dan $(12, 0)$.</p><p><strong>Langkah c (Uji Nilai Minimum $f(x,y) = 5x + 3y$):</strong></p><p>&bull; $(0, 12) \\to 5(0) + 3(12) = 36$<br/>&bull; $(4, 4) \\to 5(4) + 3(4) = 20 + 12 = 32$ <strong>(Minimum)</strong><br/>&bull; $(12, 0) \\to 5(12) + 3(0) = 60$</p><p>Jadi nilai minimumnya adalah <strong>$32$</strong> di titik $(4, 4)$.</p></div>`
+      },
+      {
+        no: 18, topik: 'SPtLDV', level: 'C4', skor: 9,
+        title: 'Optimasi Maksimum Konveksi Jaket & Kaus (Konversi Satuan)',
+        stemLatex: 'Sebuah usaha konveksi memproduksi <strong>Jaket</strong> ($x$ potong) dan <strong>Kaus</strong> ($y$ potong) dengan persediaan bahan baku sebagai berikut:<br/>&bull; <strong>Kain Katun:</strong> $1$ jaket membutuhkan $150\\text{ cm}$ dan $1$ kaus membutuhkan $100\\text{ cm}$, sedangkan persediaan kain katun adalah $30\\text{ meter}$.<br/>&bull; <strong>Kain Rib Kerah:</strong> $1$ jaket membutuhkan $40\\text{ cm}$ dan $1$ kaus membutuhkan $40\\text{ cm}$, sedangkan persediaan kain rib adalah $10\\text{ meter}$.<br/>Keuntungan penjualan setiap $1$ jaket adalah $\\text{Rp}50.000$ dan setiap $1$ kaus adalah $\\text{Rp}40.000$.',
+        subQuestions: [
+          { id: 'a', label: 'a. Lakukan konversi satuan (meter ke sentimeter), lalu susunlah model SPtLDV yang paling sederhana beserta fungsi objektif keuntungannya! (3 poin)' },
+          { id: 'b', label: 'b. Gambarkan sketsa DHP pada kertas burammu, lalu tentukan seluruh koordinat titik pojok DHP tersebut! (3 poin)' },
+          { id: 'c', label: 'c. Tentukan banyak jaket dan kaus yang harus diproduksi agar memperoleh keuntungan maksimum, serta hitung besar keuntungan maksimumnya! (3 poin)' }
+        ],
+        hint: 'Ingat $1\\text{ meter} = 100\\text{ cm}$: persediaan kain katun $30\\text{ m} = 3.000\\text{ cm}$ dan kain rib $10\\text{ m} = 1.000\\text{ cm}$. Sederhanakan $150x + 100y \\le 3.000$ (bagi $50$) dan $40x + 40y \\le 1.000$ (bagi $40$).',
+        rubricItems: [
+          { id: '18_1', points: 3, text: 'Mengonversi satuan ($30\\text{ m} = 3.000\\text{ cm}$, $10\\text{ m} = 1.000\\text{ cm}$) dan menyusun SPtLDV: $3x + 2y \\le 60$, $x + y \\le 25$, $x \\ge 0$, $y \\ge 0$, serta $f(x, y) = 50.000x + 40.000y$.' },
+          { id: '18_2', points: 3, text: 'Menentukan seluruh koordinat titik pojok DHP tertutup: $(0, 0)$, $(20, 0)$, $(10, 15)$, dan $(0, 25)$.' },
+          { id: '18_3', points: 3, text: 'Menguji seluruh titik pojok dan menyimpulkan keuntungan maksimum $\\text{Rp}1.100.000$ saat memproduksi $10$ jaket dan $15$ kaus.' }
+        ],
+        solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Konversi Satuan &amp; Model SPtLDV):</strong></p><p>&bull; Kain Katun ($30\\text{ m} = 3.000\\text{ cm}$): $150x + 100y \\le 3.000 \\iff 3x + 2y \\le 60$</p><p>&bull; Kain Rib ($10\\text{ m} = 1.000\\text{ cm}$): $40x + 40y \\le 1.000 \\iff x + y \\le 25$</p><p>&bull; Syarat: $x \\ge 0,\\; y \\ge 0$ dengan fungsi keuntungan $f(x, y) = 50.000x + 40.000y$.</p><p><strong>Langkah b (Titik Pojok DHP):</strong></p><p>Titik potong $3x + 2y = 60$ dan $x + y = 25$: $(3x + 2y) - 2(x + y) = 60 - 50 \\implies x = 10$ dan $y = 15$. Titik pojok DHP: $(0,0)$, $(20,0)$, $(10,15)$, dan $(0,25)$.</p><p><strong>Langkah c (Uji Keuntungan Maksimum):</strong></p><p>&bull; $(20, 0) \\to 50.000(20) = \\text{Rp}1.000.000$<br/>&bull; $(10, 15) \\to 50.000(10) + 40.000(15) = 500.000 + 600.000 = \\text{Rp}1.100.000$ <strong>(Maksimum)</strong><br/>&bull; $(0, 25) \\to 40.000(25) = \\text{Rp}1.000.000$</p><p>Jadi keuntungan maksimum adalah <strong>$\\text{Rp}1.100.000$</strong> dengan memproduksi <strong>$10$ jaket dan $15$ kaus</strong>.</p></div>`
+      },
+      {
+        no: 19, topik: 'SPtLDV', level: 'C5', skor: 10,
+        title: 'Optimasi Minimum Pembelian Pupuk & Evaluasi Kecukupan Anggaran (HOTS)',
+        stemLatex: 'Seorang petani membutuhkan sedikitnya $18\\text{ kg}$ zat <strong>Nitrogen</strong> dan $20\\text{ kg}$ zat <strong>Fosfor</strong> untuk memupuk lahannya. Di toko pertanian tersedia dua jenis pupuk:<br/>&bull; <strong>Pupuk X</strong> (harga $\\text{Rp}40.000$/karung) mengandung $3\\text{ kg}$ Nitrogen dan $2\\text{ kg}$ Fosfor.<br/>&bull; <strong>Pupuk Y</strong> (harga $\\text{Rp}30.000$/karung) mengandung $2\\text{ kg}$ Nitrogen dan $4\\text{ kg}$ Fosfor.<br/>Saat ini petani hanya memiliki anggaran dana sebesar $\\text{Rp}220.000$.',
+        subQuestions: [
+          { id: 'a', label: 'a. Buatlah model SPtLDV dan fungsi objektif biaya pembelian pupuk (misalkan $x$ = banyak karung Pupuk X dan $y$ = banyak karung Pupuk Y)! (3 poin)' },
+          { id: 'b', label: 'b. Tentukan seluruh koordinat titik pojok DHP terbuka dan hitunglah biaya minimum pembelian pupuk! (4 poin)' },
+          { id: 'c', label: 'c. Evaluasilah apakah anggaran petani sebesar $\\text{Rp}220.000$ mencukupi! Jika belum mencukupi, berapa rupiah kekurangan dananya? (3 poin)' }
+        ],
+        hint: 'Kata "sedikitnya" berarti tanda pertidaksamaan $\\ge$. Susun kendala Nitrogen ($3x + 2y \\ge 18$) dan Fosfor ($2x + 4y \\ge 20 \\iff x + 2y \\ge 10$), lalu cari titik potongnya dengan eliminasi $2y$.',
+        rubricItems: [
+          { id: '19_1', points: 3, text: 'Menyusun SPtLDV: $3x + 2y \\ge 18$, $x + 2y \\ge 10$, $x \\ge 0$, $y \\ge 0$, dan fungsi biaya $Z(x, y) = 40.000x + 30.000y$.' },
+          { id: '19_2', points: 2, text: 'Menentukan ketiga titik pojok DHP terbuka secara tepat: $(0, 9)$, $(4, 3)$, dan $(10, 0)$.' },
+          { id: '19_3', points: 2, text: 'Menghitung biaya tiap titik pojok dan menemukan biaya minimum $\\text{Rp}250.000$ ($4$ karung Pupuk X dan $3$ karung Pupuk Y).' },
+          { id: '19_4', points: 3, text: 'Menyimpulkan bahwa anggaran $\\text{Rp}220.000$ <strong>tidak mencukupi</strong>, dengan kekurangan dana sebesar $\\text{Rp}250.000 - \\text{Rp}220.000 = \\text{Rp}30.000$.' }
+        ],
+        solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Model SPtLDV &amp; Fungsi Biaya):</strong></p><p>&bull; Nitrogen: $3x + 2y \\ge 18$<br/>&bull; Fosfor: $2x + 4y \\ge 20 \\iff x + 2y \\ge 10$<br/>&bull; Syarat: $x \\ge 0,\\; y \\ge 0$ dengan fungsi biaya $Z(x, y) = 40.000x + 30.000y$.</p><p><strong>Langkah b (Titik Pojok DHP Terbuka &amp; Biaya Minimum):</strong></p><p>Titik potong $(3x + 2y = 18) - (x + 2y = 10) \\implies 2x = 8 \\implies x = 4$ dan $y = 3$. Titik pojok DHP terbuka: $(0, 9)$, $(4, 3)$, dan $(10, 0)$.</p><p>&bull; $(0, 9) \\to 30.000(9) = \\text{Rp}270.000$<br/>&bull; $(4, 3) \\to 40.000(4) + 30.000(3) = 160.000 + 90.000 = \\text{Rp}250.000$ <strong>(Minimum)</strong><br/>&bull; $(10, 0) \\to 40.000(10) = \\text{Rp}400.000$</p><p><strong>Langkah c (Evaluasi Kecukupan Anggaran):</strong></p><p>Karena biaya minimum adalah $\\text{Rp}250.000$ sedangkan anggaran petani hanya $\\text{Rp}220.000$, maka anggaran tersebut <strong>tidak mencukupi</strong>. Petani mengalami kekurangan dana sebesar $\\text{Rp}250.000 - \\text{Rp}220.000 = \\text{Rp}30.000$.</p></div>`
+      },
+      {
+        no: 20, topik: 'Persamaan Kuadrat', level: 'C4', skor: 10,
+        title: 'Pemfaktoran ($a > 1$), Rumus ABC Bentuk Akar & Aplikasi Bingkai Poster',
+        stemLatex: 'Selesaikan ketiga permasalahan persamaan kuadrat berikut secara sistematis:',
+        subQuestions: [
+          { id: 'a', label: 'a. Tentukan himpunan penyelesaian dari $2x^2 + 7x - 15 = 0$ menggunakan metode pemfaktoran! (3 poin)' },
+          { id: 'b', label: 'b. Tentukan akar-akar dari $x^2 - 4x + 1 = 0$ menggunakan Rumus ABC dalam bentuk akar paling sederhana! (3 poin)' },
+          { id: 'c', label: 'c. Sebuah poster berukuran $12\\text{ cm} \\times 8\\text{ cm}$ diberi bingkai/margin seragam selebar $x\\text{ cm}$ di sekelilingnya sehingga luas total poster beserta bingkai menjadi $192\\text{ cm}^2$. Susunlah persamaan kuadratnya dan tentukan lebar bingkai $x$! (4 poin)' }
+        ],
+        hint: 'Pada sub-soal (c), karena bingkai berada di kiri-kanan dan atas-bawah poster, ukuran totalnya menjadi $(12 + 2x)$ cm dan $(8 + 2x)$ cm (jangan lupa faktor $2x$).',
+        rubricItems: [
+          { id: '20_1', points: 3, text: 'Memfaktorkan $2x^2 + 7x - 15 = (2x - 3)(x + 5) = 0$ dan menentukan akar $x = -5$ atau $x = \\frac{3}{2}$.' },
+          { id: '20_2', points: 3, text: 'Menggunakan Rumus ABC pada $x^2 - 4x + 1 = 0$ dengan $D = 12$ dan menyederhanakan akar menjadi $x = 2 \\pm \\sqrt{3}$.' },
+          { id: '20_3', points: 2, text: 'Menyusun persamaan luas bingkai $(12 + 2x)(8 + 2x) = 192$ hingga bentuk baku $x^2 + 10x - 24 = 0$.' },
+          { id: '20_4', points: 2, text: 'Memfaktorkan $(x + 12)(x - 2) = 0$ dan menyimpulkan lebar bingkai yang memenuhi adalah $x = 2\\text{ cm}$ (karena $x > 0$).' }
+        ],
+        solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Pemfaktoran $2x^2 + 7x - 15 = 0$):</strong></p><p>$$(2x - 3)(x + 5) = 0 \\implies x = \\frac{3}{2} \\text{ atau } x = -5$$</p><p><strong>Langkah b (Rumus ABC untuk $x^2 - 4x + 1 = 0$):</strong></p><p>$a = 1,\\; b = -4,\\; c = 1 \\implies D = (-4)^2 - 4(1)(1) = 16 - 4 = 12$</p><p>$$x_{1,2} = \\frac{-(-4) \\pm \\sqrt{12}}{2(1)} = \\frac{4 \\pm 2\\sqrt{3}}{2} = 2 \\pm \\sqrt{3}$$</p><p>Jadi akar-akarnya adalah $x_1 = 2 + \\sqrt{3}$ atau $x_2 = 2 - \\sqrt{3}$.</p><p><strong>Langkah c (Aplikasi Bingkai Poster):</strong></p><p>Panjang total $= 12 + 2x$ dan lebar total $= 8 + 2x$:</p><p>$$(12 + 2x)(8 + 2x) = 192 \\implies 96 + 40x + 4x^2 = 192 \\implies 4x^2 + 40x - 96 = 0$$</p><p>Bagi kedua ruas dengan $4$: $$x^2 + 10x - 24 = 0 \\implies (x + 12)(x - 2) = 0$$</p><p>Karena lebar bingkai harus positif ($x > 0$), maka lebar bingkai adalah <strong>$x = 2\\text{ cm}$</strong>.</p></div>`
+      }
+    ];
+
+    // 5. STATE MANAGEMENT & DETERMINISTIC STUDENT SESSION ID
+    function buildStudentSessionId(kelas, noAbsen) {
+      if (!ALLOWED_CLASSES.includes(kelas) || !noAbsen) {
+        return `uas_x_temp_${Date.now()}`;
+      }
+      const paddedAbsen = String(parseInt(noAbsen, 10)).padStart(2, '0');
+      return `${kelas.toLowerCase()}_absen_${paddedAbsen}`;
+    }
+
+    function getDefaultState() {
+      return {
+        sessionId: '',
+        lastSyncedAt: null,
+        isLoggedIn: false,
+        activeView: 'dashboard',
+        student: {
+          nama: '',
+          kelas: '', // Restricted to 'X-1' .. 'X-12'
+          noAbsen: '', // 1 - 45
+          mode: 'belajar',
+          startedAt: null,
+          completedAt: null
+        },
+        timer: {
+          targetEndTime: null,
+          remainingSeconds: EXAM_DURATION_SECONDS
+        },
+        isSubmitted: false,
+        answers: {
+          bagian1: {},
+          bagian2: {},
+          bagian3Text: {},
+          bagian3Rubric: {}
+        }
+      };
+    }
+
+    let appState = getDefaultState();
+    let timerIntervalId = null;
+    let supabaseSyncTimeoutId = null;
+
+    function loadStateFromStorage() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const parsed = JSON.parse(raw);
+        appState = {
+          ...getDefaultState(),
+          ...parsed,
+          student: { ...getDefaultState().student, ...(parsed.student || {}) },
+          timer: { ...getDefaultState().timer, ...(parsed.timer || {}) },
+          answers: {
+            bagian1: { ...((parsed.answers && parsed.answers.bagian1) || {}) },
+            bagian2: { ...((parsed.answers && parsed.answers.bagian2) || {}) },
+            bagian3Text: { ...((parsed.answers && parsed.answers.bagian3Text) || {}) },
+            bagian3Rubric: { ...((parsed.answers && parsed.answers.bagian3Rubric) || {}) }
+          }
+        };
+        if (appState.student.kelas && !ALLOWED_CLASSES.includes(appState.student.kelas)) {
+          appState.student.kelas = 'X-1';
+        }
+        if (appState.student.kelas && appState.student.noAbsen) {
+          appState.sessionId = buildStudentSessionId(appState.student.kelas, appState.student.noAbsen);
+        }
+        if (!VIEW_METADATA[appState.activeView]) {
+          appState.activeView = 'dashboard';
+        }
+      } catch (e) {
+        console.warn('Gagal memuat state dari localStorage:', e);
+      }
+    }
+
+    function saveStateToStorage() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+      } catch (e) {
+        console.warn('Gagal menyimpan state ke localStorage:', e);
+      }
+    }
+
+    function hasValidStudentIdentity() {
+      const absenNum = parseInt(appState.student.noAbsen, 10);
+      return Boolean(
+        appState.student.nama &&
+        appState.student.nama.trim().length >= 3 &&
+        ALLOWED_CLASSES.includes(appState.student.kelas) &&
+        absenNum >= 1 &&
+        absenNum <= 45
+      );
+    }
+
+    // 6. MATH RENDERING (KaTeX)
+    function triggerMathRender(containerEl) {
+      const target = containerEl || document.body;
+      if (typeof renderMathInElement === 'function') {
+        renderMathInElement(target, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false }
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    // 7. ANSWER NORMALIZATION & AUTO-GRADING
+    function normalizeAnswer(rawValue) {
+      if (rawValue === null || rawValue === undefined) return '';
+      return String(rawValue)
+        .trim()
+        .toLowerCase()
+        .replace(/[\u2212\u2013\u2014]/g, '-')
+        .replace(/≤/g, '<=')
+        .replace(/≥/g, '>=')
+        .replace(/\.(?=\d{3}(?:\D|$))/g, '')
+        .replace(/,/g, '.')
+        .replace(/\s+/g, '')
+        .replace(/^\(+|\)+$/g, '');
+    }
+
+    function insertSymbolIntoInput(inputId, symbol) {
+      const el = document.getElementById(inputId);
+      if (!el) return;
+      const start = el.selectionStart || el.value.length;
+      const end = el.selectionEnd || el.value.length;
+      const newVal = el.value.slice(0, start) + symbol + el.value.slice(end);
+      el.value = newVal;
+      el.focus();
+      const qMatch = inputId.match(/input-q(\d+)/);
+      if (qMatch) {
+        handleBagian1Input(parseInt(qMatch[1], 10), newVal);
+      }
+    }
+
+    function isBagian1Correct(questionNo) {
+      const q = BAGIAN1_QUESTIONS.find((item) => item.no === questionNo);
+      if (!q) return false;
+      const userRaw = appState.answers.bagian1[questionNo] || '';
+      const normUser = normalizeAnswer(userRaw);
+      if (!normUser) return false;
+      return q.acceptedAnswers.some((ans) => normalizeAnswer(ans) === normUser);
+    }
+
+    function isBagian2Correct(questionNo) {
+      const q = BAGIAN2_QUESTIONS.find((item) => item.no === questionNo);
+      if (!q) return false;
+      const userChoice = (appState.answers.bagian2[questionNo] || '').trim().toUpperCase();
+      return userChoice === q.correctOption;
+    }
+
+    function calculateScores() {
+      let b1Score = 0;
+      let b1CorrectCount = 0;
+      let b2Score = 0;
+      let b2CorrectCount = 0;
+      let b3Score = 0;
+
+      const topicStats = {
+        'Eksponen & Logaritma': { earned: 0, max: 30, correctItems: 0, totalItems: 6 },
+        'SPtLDV': { earned: 0, max: 50, correctItems: 0, totalItems: 10 },
+        'Persamaan Kuadrat': { earned: 0, max: 20, correctItems: 0, totalItems: 4 }
+      };
+
+      BAGIAN1_QUESTIONS.forEach((q) => {
+        if (isBagian1Correct(q.no)) {
+          b1Score += q.skor;
+          b1CorrectCount += 1;
+          topicStats[q.topik].earned += q.skor;
+          topicStats[q.topik].correctItems += 1;
+        }
+      });
+
+      BAGIAN2_QUESTIONS.forEach((q) => {
+        if (isBagian2Correct(q.no)) {
+          b2Score += q.skor;
+          b2CorrectCount += 1;
+          topicStats[q.topik].earned += q.skor;
+          topicStats[q.topik].correctItems += 1;
+        }
+      });
+
+      BAGIAN3_QUESTIONS.forEach((q) => {
+        let qEarned = 0;
+        q.rubricItems.forEach((r) => {
+          if (appState.answers.bagian3Rubric[r.id]) {
+            qEarned += r.points;
+          }
+        });
+        b3Score += qEarned;
+        topicStats[q.topik].earned += qEarned;
+        if (qEarned >= Math.ceil(q.skor * 0.7)) {
+          topicStats[q.topik].correctItems += 1;
+        }
+      });
+
+      const totalScore = b1Score + b2Score + b3Score;
+      return { b1Score, b1CorrectCount, b2Score, b2CorrectCount, b3Score, totalScore, topicStats };
+    }
+
+    function getAnsweredBreakdown() {
+      let b1 = 0;
+      for (let i = 1; i <= 10; i++) {
+        if ((appState.answers.bagian1[i] || '').trim() !== '') b1++;
+      }
+      let b2 = 0;
+      for (let i = 11; i <= 15; i++) {
+        if ((appState.answers.bagian2[i] || '').trim() !== '') b2++;
+      }
+      let b3 = 0;
+      for (let i = 16; i <= 20; i++) {
+        const hasSub = ['a', 'b', 'c'].some(
+          (sub) => (appState.answers.bagian3Text[`${i}_${sub}`] || '').trim() !== ''
+        );
+        if (hasSub) b3++;
+      }
+      return { b1, b2, b3, total: b1 + b2 + b3 };
+    }
+
+    // 8. SCREEN SWITCHING (LOGIN SCREEN VS LMS SHELL) & SIDEBAR DRAWER
+    function showLoginScreen() {
+      document.getElementById('lmsLoginScreen').classList.remove('hidden');
+      document.getElementById('lmsAppShell').classList.add('hidden');
+      populateIdentityFormFromState();
+      triggerMathRender(document.getElementById('lmsLoginScreen'));
+    }
+
+    function showLMSShell() {
+      document.getElementById('lmsLoginScreen').classList.add('hidden');
+      document.getElementById('lmsAppShell').classList.remove('hidden');
+      updateLMSChromeUI();
+      navigateLMS(appState.activeView || 'dashboard');
+    }
+
+    function openMobileSidebar() {
+      const sidebar = document.getElementById('lmsSidebar');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      if (sidebar) sidebar.classList.remove('-translate-x-full');
+      if (backdrop) backdrop.classList.remove('hidden');
+    }
+
+    function closeMobileSidebar() {
+      const sidebar = document.getElementById('lmsSidebar');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      if (sidebar) sidebar.classList.add('-translate-x-full');
+      if (backdrop) backdrop.classList.add('hidden');
+    }
+
+    function logoutToLoginScreen() {
+      appState.isLoggedIn = false;
+      saveStateToStorage();
+      closeMobileSidebar();
+      showLoginScreen();
+    }
+
+    function navigateLMS(viewId) {
+      if (!VIEW_METADATA[viewId]) viewId = 'dashboard';
+      appState.activeView = viewId;
+      saveStateToStorage();
+      closeMobileSidebar();
+
+      Object.keys(VIEW_METADATA).forEach((id) => {
+        const el = document.getElementById(`view-${id}`);
+        if (el) {
+          if (id === viewId) el.classList.remove('hidden');
+          else el.classList.add('hidden');
+        }
+      });
+
+      // Highlight active sidebar button
+      document.querySelectorAll('.lms-nav-item').forEach((btn) => {
+        const isCurrent = btn.getAttribute('data-lms-view') === viewId;
+        if (isCurrent) {
+          btn.className = 'lms-nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold transition text-left bg-brand-600 text-white shadow-sm';
+        } else {
+          btn.className = 'lms-nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition text-left text-slate-300 hover:bg-sidebar-800 hover:text-white';
+        }
+      });
+
+      // Update Topbar title & subtitle
+      const meta = VIEW_METADATA[viewId];
+      const titleEl = document.getElementById('topbarPageTitle');
+      const subEl = document.getElementById('topbarPageSubtitle');
+      if (titleEl) titleEl.textContent = meta.title;
+      if (subEl) subEl.textContent = meta.subtitle;
+
+      if (viewId === 'hasil') {
+        renderResultsTab();
+      }
+
+      triggerMathRender(document.getElementById(`view-${viewId}`));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateLMSChromeUI() {
+      const counts = getAnsweredBreakdown();
+      const pct = Math.round((counts.total / 20) * 100);
+
+      // Student profile in Sidebar & Dashboard
+      const nama = appState.student.nama || 'Siswa';
+      const metaText = `${appState.student.kelas || '-'} • Absen ${appState.student.noAbsen || '-'}`;
+      const initials = nama
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map((w) => w[0].toUpperCase())
+        .join('') || 'X';
+
+      const avatarEl = document.getElementById('sidebarAvatar');
+      const sideName = document.getElementById('sidebarStudentName');
+      const sideMeta = document.getElementById('sidebarStudentMeta');
+      const dashName = document.getElementById('dashStudentName');
+      const dashMeta = document.getElementById('dashStudentMeta');
+
+      if (avatarEl) avatarEl.textContent = initials;
+      if (sideName) sideName.textContent = nama;
+      if (sideMeta) sideMeta.textContent = metaText;
+      if (dashName) dashName.textContent = nama;
+      if (dashMeta) dashMeta.textContent = `${nama} (${metaText})`;
+
+      // Progress bars & section badges
+      const sideProgText = document.getElementById('sidebarProgressText');
+      const sideProgBar = document.getElementById('sidebarProgressBar');
+      if (sideProgText) sideProgText.textContent = `${counts.total}/20 (${pct}%)`;
+      if (sideProgBar) sideProgBar.style.width = `${pct}%`;
+
+      const b1Badge = document.getElementById('badgeB1Count');
+      const b2Badge = document.getElementById('badgeB2Count');
+      const b3Badge = document.getElementById('badgeB3Count');
+      const d1 = document.getElementById('dashB1Status');
+      const d2 = document.getElementById('dashB2Status');
+      const d3 = document.getElementById('dashB3Status');
+      if (b1Badge) b1Badge.textContent = `${counts.b1}/10`;
+      if (b2Badge) b2Badge.textContent = `${counts.b2}/5`;
+      if (b3Badge) b3Badge.textContent = `${counts.b3}/5`;
+      if (d1) d1.textContent = `${counts.b1}/10 terjawab`;
+      if (d2) d2.textContent = `${counts.b2}/5 terjawab`;
+      if (d3) d3.textContent = `${counts.b3}/5 terjawab`;
+
+      const submitBadge = document.getElementById('badgeSubmitStatus');
+      if (submitBadge) {
+        if (appState.isSubmitted) {
+          submitBadge.textContent = 'Selesai';
+          submitBadge.className = 'text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/40';
+        } else {
+          submitBadge.textContent = 'Belum';
+          submitBadge.className = 'text-[10px] font-bold px-2 py-0.5 rounded-md bg-sidebar-800 text-slate-300';
+        }
+      }
+
+      // Mode / Timer badge
+      const modeBadge = document.getElementById('headerModeBadge');
+      if (modeBadge) {
+        if (appState.student.mode === 'simulasi') {
+          modeBadge.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-amber-300 bg-amber-50 text-amber-950 text-xs sm:text-sm font-mono font-bold tabular-nums';
+          updateTimerDisplay();
+        } else {
+          modeBadge.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-brand-200 bg-brand-50 text-brand-800 text-xs sm:text-sm font-bold';
+          document.getElementById('headerTimerText').textContent = 'Mode Belajar';
+        }
+      }
+
+      // Show/hide hints depending on mode
+      const isSimulasi = appState.student.mode === 'simulasi';
+      document.querySelectorAll('.hint-btn').forEach((btn) => {
+        if (isSimulasi) btn.classList.add('hidden');
+        else btn.classList.remove('hidden');
+      });
+    }
+
+    // 9. SIMULATION TIMER (120 MINUTES)
+    function formatSecondsToHHMMSS(totalSec) {
+      const sec = Math.max(0, Math.floor(totalSec));
+      const h = Math.floor(sec / 3600);
+      const m = Math.floor((sec % 3600) / 60);
+      const s = sec % 60;
+      const pad = (n) => String(n).padStart(2, '0');
+      return `${pad(h)}:${pad(m)}:${pad(s)}`;
+    }
+
+    function updateTimerDisplay() {
+      const timerText = document.getElementById('headerTimerText');
+      if (!timerText) return;
+      if (appState.student.mode !== 'simulasi') {
+        timerText.textContent = 'Mode Belajar';
+        return;
+      }
+      timerText.textContent = formatSecondsToHHMMSS(appState.timer.remainingSeconds);
+    }
+
+    function startOrResumeSimulationTimer() {
+      if (timerIntervalId) {
+        clearInterval(timerIntervalId);
+        timerIntervalId = null;
+      }
+      if (appState.student.mode !== 'simulasi' || appState.isSubmitted || !appState.isLoggedIn) {
+        return;
+      }
+      if (!appState.timer.targetEndTime) {
+        appState.timer.targetEndTime = Date.now() + appState.timer.remainingSeconds * 1000;
+        saveStateToStorage();
+      }
+      const tick = () => {
+        if (appState.isSubmitted || appState.student.mode !== 'simulasi') {
+          clearInterval(timerIntervalId);
+          return;
+        }
+        const remaining = Math.max(0, Math.round((appState.timer.targetEndTime - Date.now()) / 1000));
+        appState.timer.remainingSeconds = remaining;
+        updateTimerDisplay();
+        if (remaining <= 0) {
+          clearInterval(timerIntervalId);
+          saveStateToStorage();
+          alert('Waktu Simulasi UAS (120 menit) telah habis! Jawabanmu akan dikumpulkan secara otomatis.');
+          submitAndOpenResults();
+        }
+      };
+      tick();
+      timerIntervalId = setInterval(tick, 1000);
+    }
+
+    // 10. LOGIN FORM HANDLERS (NAMA LENGKAP + KELAS X-1 s.d. X-12 + NO. ABSEN)
+    function selectClassOption(kelasValue) {
+      if (!ALLOWED_CLASSES.includes(kelasValue)) return;
+      const selectEl = document.getElementById('selectKelas');
+      if (selectEl) selectEl.value = kelasValue;
+      const errEl = document.getElementById('errorKelas');
+      if (errEl) errEl.classList.add('hidden');
+    }
+
+    function updateModeCardSelection() {
+      const selected = document.querySelector('input[name="modeLatihan"]:checked')?.value || 'belajar';
+      const cardBelajar = document.getElementById('cardModeBelajar');
+      const cardSimulasi = document.getElementById('cardModeSimulasi');
+      if (selected === 'belajar') {
+        cardBelajar.className = 'relative flex flex-col p-3.5 rounded-xl border-2 cursor-pointer transition bg-brand-50/70 border-brand-600 shadow-sm';
+        cardSimulasi.className = 'relative flex flex-col p-3.5 rounded-xl border-2 cursor-pointer transition bg-white border-slate-200 hover:border-slate-300';
+      } else {
+        cardSimulasi.className = 'relative flex flex-col p-3.5 rounded-xl border-2 cursor-pointer transition bg-brand-50/70 border-brand-600 shadow-sm';
+        cardBelajar.className = 'relative flex flex-col p-3.5 rounded-xl border-2 cursor-pointer transition bg-white border-slate-200 hover:border-slate-300';
+      }
+    }
+
+    function populateIdentityFormFromState() {
+      const inputNama = document.getElementById('inputNama');
+      const inputAbsen = document.getElementById('inputAbsen');
+      if (inputNama && appState.student.nama) inputNama.value = appState.student.nama;
+      if (inputAbsen && appState.student.noAbsen) inputAbsen.value = appState.student.noAbsen;
+      if (ALLOWED_CLASSES.includes(appState.student.kelas)) selectClassOption(appState.student.kelas);
+      const modeRadio = document.querySelector(`input[name="modeLatihan"][value="${appState.student.mode}"]`);
+      if (modeRadio) {
+        modeRadio.checked = true;
+        updateModeCardSelection();
+      }
+    }
+
+    async function fetchProgressFromSupabase(sessionId) {
+      try {
+        const baseRest = SUPABASE_CONFIG.restUrl.replace(/\/+$/, '');
+        const endpoint = `${baseRest}/${SUPABASE_CONFIG.table}?session_id=eq.${encodeURIComponent(sessionId)}&select=*&limit=1`;
+        const response = await fetch(endpoint, {
+          method: 'GET',
+          headers: {
+            apikey: SUPABASE_CONFIG.anonKey,
+            Authorization: `Bearer ${SUPABASE_CONFIG.anonKey}`
+          }
+        });
+        if (!response.ok) return null;
+        const rows = await response.json();
+        return Array.isArray(rows) && rows.length > 0 ? rows[0] : null;
+      } catch (err) {
+        console.warn('Tidak dapat mengecek progres cloud:', err);
+        return null;
+      }
+    }
+
+    async function handleStartSession(event) {
+      event.preventDefault();
+      const inputNama = document.getElementById('inputNama');
+      const inputAbsen = document.getElementById('inputAbsen');
+      const selectKelas = document.getElementById('selectKelas');
+      const errorNama = document.getElementById('errorNama');
+      const errorAbsen = document.getElementById('errorAbsen');
+      const errorKelas = document.getElementById('errorKelas');
+      const startLabel = document.getElementById('btnStartLabel');
+      const restoreBanner = document.getElementById('cloudRestoreBanner');
+
+      const nama = inputNama.value.trim();
+      const noAbsenRaw = inputAbsen ? inputAbsen.value.trim() : '';
+      const noAbsenNum = parseInt(noAbsenRaw, 10);
+      const kelas = selectKelas.value.trim();
+
+      let isValid = true;
+      if (nama.length < 3) {
+        errorNama.classList.remove('hidden');
+        isValid = false;
+      } else {
+        errorNama.classList.add('hidden');
+      }
+
+      if (!noAbsenRaw || isNaN(noAbsenNum) || noAbsenNum < 1 || noAbsenNum > 45) {
+        if (errorAbsen) errorAbsen.classList.remove('hidden');
+        isValid = false;
+      } else {
+        if (errorAbsen) errorAbsen.classList.add('hidden');
+      }
+
+      if (!ALLOWED_CLASSES.includes(kelas)) {
+        errorKelas.classList.remove('hidden');
+        isValid = false;
+      } else {
+        errorKelas.classList.add('hidden');
+      }
+
+      if (!isValid) return;
+
+      const selectedMode = document.querySelector('input[name="modeLatihan"]:checked')?.value || 'belajar';
+      const newSessionId = buildStudentSessionId(kelas, noAbsenNum);
+      const switchedStudent = appState.sessionId && appState.sessionId !== newSessionId;
+      const modeChanged = appState.student.mode !== selectedMode;
+
+      if (startLabel) startLabel.textContent = 'Memeriksa Progres Cloud...';
+
+      const cloudRow = await fetchProgressFromSupabase(newSessionId);
+
+      if (cloudRow) {
+        appState.sessionId = newSessionId;
+        appState.student.nama = nama;
+        appState.student.kelas = kelas;
+        appState.student.noAbsen = String(noAbsenNum);
+        appState.student.mode = selectedMode;
+        appState.student.startedAt = cloudRow.waktu_mulai || appState.student.startedAt || new Date().toISOString();
+        appState.isSubmitted = Boolean(cloudRow.is_submitted);
+        appState.answers = {
+          bagian1: cloudRow.jawaban_bagian_1 || {},
+          bagian2: cloudRow.jawaban_bagian_2 || {},
+          bagian3Text: cloudRow.jawaban_bagian_3_teks || {},
+          bagian3Rubric: cloudRow.jawaban_bagian_3_rubrik || {}
+        };
+        if (restoreBanner) {
+          restoreBanner.textContent = `Progres tersimpan ditemukan untuk ${nama} (${kelas}, Absen ${noAbsenNum})!`;
+          restoreBanner.classList.remove('hidden');
+        }
+      } else {
+        if (switchedStudent) {
+          appState = getDefaultState();
+        }
+        appState.sessionId = newSessionId;
+        appState.student.nama = nama;
+        appState.student.kelas = kelas;
+        appState.student.noAbsen = String(noAbsenNum);
+        appState.student.mode = selectedMode;
+        if (!appState.student.startedAt) {
+          appState.student.startedAt = new Date().toISOString();
+        }
+        if (restoreBanner) restoreBanner.classList.add('hidden');
+      }
+
+      appState.isLoggedIn = true;
+      appState.activeView = 'dashboard';
+
+      if (selectedMode === 'simulasi' && (modeChanged || switchedStudent || !appState.timer.targetEndTime)) {
+        appState.timer.remainingSeconds = EXAM_DURATION_SECONDS;
+        appState.timer.targetEndTime = Date.now() + EXAM_DURATION_SECONDS * 1000;
+      }
+
+      saveStateToStorage();
+      restoreBagian1Inputs();
+      renderBagian2Matching();
+      renderBagian3Essays();
+      if (startLabel) startLabel.textContent = 'Masuk ke Dashboard LMS';
+
+      showLMSShell();
+      startOrResumeSimulationTimer();
+      syncSubmissionToSupabase(true);
+    }
+
+    // 11. RENDER KISI-KISI INTERAKTIF
+    function renderKisiKisiTable() {
+      const topFilter = document.getElementById('filterTopik').value;
+      const bentukFilter = document.getElementById('filterBentuk').value;
+      const tbody = document.getElementById('kisiKisiTableBody');
+      const mobileCards = document.getElementById('kisiKisiMobileCards');
+      const summaryEl = document.getElementById('kisiFilterSummary');
+
+      const filtered = KISI_KISI_DATA.filter((item) => {
+        const matchTopik = topFilter === 'ALL' || item.topik === topFilter;
+        const matchBentuk = bentukFilter === 'ALL' || item.bentuk === bentukFilter;
+        return matchTopik && matchBentuk;
+      });
+
+      const totalSkor = filtered.reduce((acc, cur) => acc + cur.skor, 0);
+      summaryEl.textContent = `Menampilkan ${filtered.length} butir soal (Total ${totalSkor} Poin)`;
+
+      const topicBadgeClass = (topik) => {
+        if (topik === 'Eksponen & Logaritma') return 'bg-poli-100 text-poli-900 border border-poli-200';
+        if (topik === 'SPtLDV') return 'bg-matriks-100 text-matriks-900 border border-matriks-200';
+        return 'bg-translasi-100 text-translasi-900 border border-translasi-200';
+      };
+
+      tbody.innerHTML = filtered
+        .map((row) => `
+          <tr class="hover:bg-slate-50/90 transition">
+            <td class="py-3.5 px-4 text-center font-mono font-bold text-slate-900 tabular-nums">${row.no}</td>
+            <td class="py-3.5 px-4"><span class="inline-block px-2.5 py-1 rounded-lg text-xs font-bold ${topicBadgeClass(row.topik)}">${row.topik}</span></td>
+            <td class="py-3.5 px-4 text-xs font-bold text-slate-700">${row.bentuk}</td>
+            <td class="py-3.5 px-4"><div class="text-slate-900 font-semibold">${row.indikator}</div><div class="text-xs text-slate-500 mt-0.5">${row.konteks}</div></td>
+            <td class="py-3.5 px-4 text-center"><span class="px-2.5 py-0.5 rounded-md bg-slate-100 border border-slate-200 text-xs font-mono font-bold text-slate-800">${row.level}</span></td>
+            <td class="py-3.5 px-4 text-center font-mono font-bold text-brand-700 tabular-nums">${row.skor} pt</td>
+          </tr>
+        `)
+        .join('');
+
+      if (mobileCards) {
+        mobileCards.innerHTML = filtered
+          .map((row) => `
+            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70 space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded-md bg-brand-700 text-white font-mono font-bold text-xs tabular-nums">No. ${row.no}</span>
+                  <span class="px-2.5 py-0.5 rounded-md text-xs font-bold ${topicBadgeClass(row.topik)}">${row.topik}</span>
+                </div>
+                <span class="font-mono font-bold text-xs text-brand-800 bg-brand-50 border border-brand-200 px-2 py-0.5 rounded-md tabular-nums">${row.level} &bull; ${row.skor} pt</span>
+              </div>
+              <div class="text-xs font-bold text-slate-600">${row.bentuk}</div>
+              <p class="text-sm font-semibold text-slate-900 leading-snug">${row.indikator}</p>
+              <p class="text-xs text-slate-500">${row.konteks}</p>
+            </div>
+          `)
+          .join('');
+      }
+      triggerMathRender(document.getElementById('view-kisikisi'));
+    }
+
+    // 12. RENDER & HANDLE BAGIAN I, II, III
+    function restoreBagian1Inputs() {
+      for (let i = 1; i <= 10; i++) {
+        const el = document.getElementById(`input-q${i}`);
+        if (el) el.value = appState.answers.bagian1[i] || '';
+      }
+    }
+
+    function handleBagian1Input(no, value) {
+      appState.answers.bagian1[no] = value;
+      saveStateToStorage();
+      updateLMSChromeUI();
+      scheduleAutoSaveToSupabase();
+    }
+
+    function toggleHint(no) {
+      const el = document.getElementById(`hint-${no}`);
+      if (el) {
+        el.classList.toggle('hidden');
+        triggerMathRender(el);
+      }
+    }
+
+    function getTopicBadgeForQuestion(topik) {
+      if (topik === 'Eksponen & Logaritma') return 'bg-poli-100 text-poli-900 border-poli-200';
+      if (topik === 'SPtLDV') return 'bg-matriks-100 text-matriks-900 border-matriks-200';
+      return 'bg-translasi-100 text-translasi-900 border-translasi-200';
+    }
+
+    function renderBagian2Matching() {
+      const qContainer = document.getElementById('matchingQuestionsContainer');
+      const optContainer = document.getElementById('matchingOptionsList');
+
+      optContainer.innerHTML = BAGIAN2_OPTIONS.map((opt) => `
+        <div class="flex items-center gap-3 p-3 rounded-xl bg-white border border-brand-200/80 shadow-sm">
+          <span class="w-8 h-8 rounded-lg bg-brand-700 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">${opt.code}</span>
+          <div class="text-sm font-bold text-slate-900 overflow-x-auto">${opt.labelLatex}</div>
+        </div>
+      `).join('');
+
+      qContainer.innerHTML = BAGIAN2_QUESTIONS.map((q) => {
+        const currentVal = appState.answers.bagian2[q.no] || '';
+        return `
+          <div class="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-slate-50/70 space-y-3.5 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="px-2.5 py-1 rounded-lg bg-brand-700 text-white font-mono text-xs font-bold tabular-nums">Nomor ${q.no}</span>
+                <span class="px-2.5 py-0.5 rounded-md border text-xs font-bold ${getTopicBadgeForQuestion(q.topik)}">${q.topik}</span>
+                <span class="text-xs font-mono font-semibold text-slate-600">${q.level} &bull; ${q.skor} Poin</span>
+              </div>
+              <button type="button" onclick="toggleHint(${q.no})" class="hint-btn text-xs font-bold text-brand-700 hover:underline">Petunjuk (Hint)</button>
+            </div>
+            <div class="text-sm sm:text-base text-slate-900 bg-white p-3.5 rounded-xl border border-slate-200/80 overflow-x-auto">${q.questionLatex}</div>
+            <div class="pt-1 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-700">Pilih Pasangan Huruf Jawaban (A–G):</span>
+                ${currentVal ? `<span class="text-xs font-mono font-bold text-brand-700">Terpilih: Pilihan ${currentVal}</span>` : `<span class="text-xs text-slate-500">Belum dipilih</span>`}
+              </div>
+              <div class="flex flex-wrap items-center gap-2">
+                ${BAGIAN2_OPTIONS.map((opt) => {
+                  const isSelected = currentVal === opt.code;
+                  const btnClass = isSelected
+                    ? 'bg-brand-600 text-white border-brand-600 shadow-sm'
+                    : 'bg-white text-slate-800 border-slate-300 hover:border-brand-500 hover:bg-brand-50';
+                  return `<button type="button" onclick="handleBagian2Select(${q.no}, '${isSelected ? '' : opt.code}')" class="w-11 h-11 rounded-xl border-2 font-mono font-bold text-sm transition flex items-center justify-center ${btnClass}" aria-label="Pilih jawaban ${opt.code} untuk nomor ${q.no}">${opt.code}</button>`;
+                }).join('')}
+              </div>
+            </div>
+            <div id="hint-${q.no}" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. ${q.no}:</strong> ${q.hint}</div>
+          </div>
+        `;
+      }).join('');
+
+      checkDuplicateMatchingSelections();
+    }
+
+    function handleBagian2Select(no, value) {
+      appState.answers.bagian2[no] = value;
+      saveStateToStorage();
+      renderBagian2Matching();
+      triggerMathRender(document.getElementById('view-bagian2'));
+      updateLMSChromeUI();
+      scheduleAutoSaveToSupabase();
+    }
+
+    function checkDuplicateMatchingSelections() {
+      const counts = {};
+      Object.entries(appState.answers.bagian2).forEach(([qNo, letter]) => {
+        if (letter) {
+          counts[letter] = counts[letter] || [];
+          counts[letter].push(qNo);
+        }
+      });
+      const duplicates = Object.entries(counts).filter(([, list]) => list.length > 1);
+      const warningEl = document.getElementById('duplicateMatchWarning');
+      const warningTextEl = document.getElementById('duplicateMatchWarningText');
+      if (duplicates.length > 0) {
+        const details = duplicates.map(([letter, nums]) => `Huruf ${letter} dipilih pada No. ${nums.join(' & ')}`).join('; ');
+        warningTextEl.textContent = `Perhatian: Terdeteksi pilihan ganda (${details}). Setiap soal memiliki pasangan jawaban yang unik.`;
+        warningEl.classList.remove('hidden');
+      } else {
+        warningEl.classList.add('hidden');
+      }
+    }
+
+    function renderBagian3Essays() {
+      const container = document.getElementById('essayQuestionsContainer');
+      container.innerHTML = BAGIAN3_QUESTIONS.map((q) => `
+        <div class="p-4 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50/70 space-y-4 shadow-sm">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-3 py-1 rounded-lg bg-brand-700 text-white font-mono text-xs font-bold tabular-nums">Nomor ${q.no}</span>
+              <span class="px-2.5 py-0.5 rounded-md border text-xs font-bold ${getTopicBadgeForQuestion(q.topik)}">${q.topik}</span>
+              <span class="text-sm sm:text-base font-extrabold text-slate-900">${q.title}</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-800 font-mono text-xs font-bold tabular-nums">${q.skor} Poin</span>
+              <button type="button" onclick="toggleHint(${q.no})" class="hint-btn text-xs font-bold text-brand-700 hover:underline">Petunjuk (Hint)</button>
+            </div>
+          </div>
+          <div class="p-4 rounded-xl bg-white border border-slate-200 text-sm sm:text-base text-slate-900 leading-relaxed overflow-x-auto">${q.stemLatex}</div>
+          <div id="hint-${q.no}" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. ${q.no}:</strong> ${q.hint}</div>
+          <div class="space-y-3">
+            ${q.subQuestions.map((sub) => {
+              const key = `${q.no}_${sub.id}`;
+              const val = appState.answers.bagian3Text[key] || '';
+              return `
+                <div class="p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200">
+                  <label for="essay-${key}" class="block text-xs sm:text-sm font-bold text-slate-800">${sub.label}</label>
+                  <textarea id="essay-${key}" rows="2" placeholder="Tuliskan langkah penyelesaian ringkas dan jawaban akhir untuk sub-soal (${sub.id})..." oninput="handleBagian3Text('${key}', this.value)" class="mt-2 w-full px-3.5 py-2.5 rounded-xl border-2 border-slate-200 text-base sm:text-sm text-slate-900 placeholder:text-slate-400 focus:border-brand-600 transition">${val}</textarea>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function handleBagian3Text(key, value) {
+      appState.answers.bagian3Text[key] = value;
+      saveStateToStorage();
+      updateLMSChromeUI();
+      scheduleAutoSaveToSupabase();
+    }
+
+    function handleRubricToggle(rubricId, isChecked) {
+      appState.answers.bagian3Rubric[rubricId] = Boolean(isChecked);
+      saveStateToStorage();
+      updateScoreSummaryCards();
+      renderPrintOfficialReport();
+      scheduleAutoSaveToSupabase(700);
+    }
+
+    // 13. SUPABASE AUTO-SAVE & CLOUD SYNC
+    function scheduleAutoSaveToSupabase(delayMs = 1200) {
+      if (!hasValidStudentIdentity()) return;
+      const indicator = document.getElementById('practiceSavedIndicator');
+      const dot = document.getElementById('sidebarCloudDot');
+      if (indicator) indicator.textContent = 'Menyimpan ke Cloud...';
+      if (dot) dot.className = 'w-2 h-2 rounded-full bg-brand-400 animate-pulse shrink-0';
+      if (supabaseSyncTimeoutId) clearTimeout(supabaseSyncTimeoutId);
+      supabaseSyncTimeoutId = setTimeout(() => {
+        syncSubmissionToSupabase(true);
+      }, delayMs);
+    }
+
+    function updateSupabaseStatusUI(state, message) {
+      const banner = document.getElementById('supabaseStatusBanner');
+      const dot = document.getElementById('supabaseStatusDot');
+      const msgEl = document.getElementById('supabaseStatusMessage');
+      const timeEl = document.getElementById('supabaseLastSyncedTime');
+      const btn = document.getElementById('btnSyncSupabase');
+      const btnText = document.getElementById('btnSyncSupabaseText');
+      const indicator = document.getElementById('practiceSavedIndicator');
+      const sideDot = document.getElementById('sidebarCloudDot');
+
+      if (indicator && sideDot) {
+        if (state === 'loading') {
+          indicator.textContent = 'Menyimpan ke Cloud...';
+          sideDot.className = 'w-2 h-2 rounded-full bg-brand-400 animate-pulse shrink-0';
+        } else if (state === 'success') {
+          indicator.textContent = appState.lastSyncedAt ? `Cloud tersinkron (${appState.lastSyncedAt})` : 'Tersimpan di Cloud';
+          sideDot.className = 'w-2 h-2 rounded-full bg-emerald-400 shrink-0';
+        } else if (state === 'error') {
+          indicator.textContent = 'Tersimpan lokal (Cloud offline)';
+          sideDot.className = 'w-2 h-2 rounded-full bg-amber-400 shrink-0';
+        }
+      }
+
+      if (!banner || !dot || !msgEl) return;
+
+      if (state === 'loading') {
+        banner.className = 'mt-4 p-3.5 rounded-xl border border-brand-200 bg-brand-50 text-xs sm:text-sm font-semibold text-brand-900 flex items-center justify-between gap-3 no-print';
+        dot.className = 'w-2.5 h-2.5 rounded-full bg-brand-600 animate-pulse shrink-0';
+        msgEl.textContent = message || 'Menyimpan data jawaban ke Supabase...';
+        if (btn) btn.disabled = true;
+        if (btnText) btnText.textContent = 'Menyimpan...';
+      } else if (state === 'success') {
+        banner.className = 'mt-4 p-3.5 rounded-xl border border-emerald-300 bg-emerald-50 text-xs sm:text-sm font-semibold text-emerald-900 flex items-center justify-between gap-3 no-print';
+        dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0';
+        msgEl.textContent = message || 'Seluruh data isian & skor berhasil tersimpan permanen di Supabase.';
+        if (timeEl) timeEl.textContent = appState.lastSyncedAt ? `Sinkron: ${appState.lastSyncedAt}` : '';
+        if (btn) btn.disabled = false;
+        if (btnText) btnText.textContent = 'Sinkronkan Ulang';
+      } else if (state === 'error') {
+        banner.className = 'mt-4 p-3.5 rounded-xl border border-red-300 bg-red-50 text-xs sm:text-sm font-semibold text-red-900 flex items-center justify-between gap-3 no-print';
+        dot.className = 'w-2.5 h-2.5 rounded-full bg-red-600 shrink-0';
+        msgEl.textContent = message || 'Gagal menyimpan ke Supabase. Pastikan skema SQL sudah dijalankan & internet aktif.';
+        if (btn) btn.disabled = false;
+        if (btnText) btnText.textContent = 'Coba Simpan Lagi';
+      } else {
+        banner.className = 'mt-4 p-3.5 rounded-xl border border-slate-200 bg-slate-50 text-xs sm:text-sm font-semibold text-slate-700 flex items-center justify-between gap-3 no-print';
+        dot.className = 'w-2.5 h-2.5 rounded-full bg-slate-400 shrink-0';
+        msgEl.textContent = message || 'Data tersimpan di perangkat. Klik "Simpan ke Cloud" untuk mengirim ke Supabase.';
+        if (timeEl) timeEl.textContent = appState.lastSyncedAt ? `Sinkron: ${appState.lastSyncedAt}` : '';
+        if (btn) btn.disabled = false;
+        if (btnText) btnText.textContent = 'Simpan ke Cloud';
+      }
+    }
+
+    function buildSupabasePayload() {
+      const scores = calculateScores();
+      const absenNum = parseInt(appState.student.noAbsen, 10) || 0;
+      const sessionId = appState.sessionId || buildStudentSessionId(appState.student.kelas, absenNum);
+      return {
+        session_id: sessionId,
+        nama_lengkap: appState.student.nama,
+        kelas: appState.student.kelas,
+        no_absen: absenNum,
+        mode_latihan: appState.student.mode,
+        is_submitted: Boolean(appState.isSubmitted),
+        skor_bagian_1: scores.b1Score,
+        skor_bagian_2: scores.b2Score,
+        skor_bagian_3: scores.b3Score,
+        total_skor: scores.totalScore,
+        skor_eksponen_logaritma: scores.topicStats['Eksponen & Logaritma'].earned,
+        skor_sptldv: scores.topicStats['SPtLDV'].earned,
+        skor_persamaan_kuadrat: scores.topicStats['Persamaan Kuadrat'].earned,
+        jawaban_bagian_1: appState.answers.bagian1,
+        jawaban_bagian_2: appState.answers.bagian2,
+        jawaban_bagian_3_teks: appState.answers.bagian3Text,
+        jawaban_bagian_3_rubrik: appState.answers.bagian3Rubric,
+        waktu_mulai: appState.student.startedAt || new Date().toISOString(),
+        waktu_selesai: new Date().toISOString()
+      };
+    }
+
+    async function syncSubmissionToSupabase(silentMode = false) {
+      if (!hasValidStudentIdentity()) return false;
+      if (!appState.sessionId) {
+        appState.sessionId = buildStudentSessionId(appState.student.kelas, appState.student.noAbsen);
+        saveStateToStorage();
+      }
+      updateSupabaseStatusUI('loading', 'Menyimpan data isian & skor ke Supabase...');
+      try {
+        const baseRest = SUPABASE_CONFIG.restUrl.replace(/\/+$/, '');
+        const endpoint = `${baseRest}/${SUPABASE_CONFIG.table}?on_conflict=session_id`;
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            apikey: SUPABASE_CONFIG.anonKey,
+            Authorization: `Bearer ${SUPABASE_CONFIG.anonKey}`,
+            Prefer: 'resolution=merge-duplicates,return=minimal'
+          },
+          body: JSON.stringify(buildSupabasePayload())
+        });
+        if (!response.ok) {
+          const errText = await response.text();
+          throw new Error(`HTTP ${response.status}: ${errText}`);
+        }
+        appState.lastSyncedAt = new Date().toLocaleTimeString('id-ID', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        });
+        saveStateToStorage();
+        updateSupabaseStatusUI('success', 'Seluruh data isian & skor murid berhasil tersimpan permanen di Supabase.');
+        return true;
+      } catch (err) {
+        if (!silentMode) console.error('Supabase sync error:', err);
+        updateSupabaseStatusUI('error', 'Gagal mengirim ke Supabase. Pastikan skema SQL terbaru sudah dijalankan & internet aktif.');
+        return false;
+      }
+    }
+
+    // 14. SUBMIT & RENDER EVALUATION RESULTS
+    function submitAndOpenResults() {
+      if (!hasValidStudentIdentity()) {
+        showLoginScreen();
+        return;
+      }
+      appState.isSubmitted = true;
+      appState.student.completedAt = new Date().toLocaleString('id-ID', {
+        dateStyle: 'medium',
+        timeStyle: 'short'
+      });
+      saveStateToStorage();
+      if (timerIntervalId) {
+        clearInterval(timerIntervalId);
+        timerIntervalId = null;
+      }
+      updateLMSChromeUI();
+      navigateLMS('hasil');
+      syncSubmissionToSupabase(false);
+    }
+
+    function getReadinessPredicate(score) {
+      if (score >= 85) return 'Sangat Siap Menghadapi UAS (Penguasaan Sangat Baik)';
+      if (score >= 75) return 'Siap Menghadapi UAS (Penguasaan Baik)';
+      if (score >= 60) return 'Cukup Siap (Perlu Penguatan Konsep Tertentu)';
+      return 'Perlu Latihan Ulang Secara Intensif';
+    }
+
+    function updateScoreSummaryCards() {
+      const scores = calculateScores();
+      document.getElementById('scoreTotalValue').textContent = scores.totalScore;
+      document.getElementById('scorePredicateText').textContent = getReadinessPredicate(scores.totalScore);
+      document.getElementById('scoreBagian1Value').textContent = scores.b1Score;
+      document.getElementById('scoreBagian1Count').textContent = `${scores.b1CorrectCount} dari 10 soal benar`;
+      document.getElementById('scoreBagian2Value').textContent = scores.b2Score;
+      document.getElementById('scoreBagian2Count').textContent = `${scores.b2CorrectCount} dari 5 soal benar`;
+      document.getElementById('scoreBagian3Value').textContent = scores.b3Score;
+
+      const topicContainer = document.getElementById('topicMasteryContainer');
+      const topics = [
+        { name: 'Eksponen & Logaritma', cardBg: 'bg-poli-50/70 border-poli-200', colorBar: 'bg-poli-600', trackBar: 'bg-poli-100', badgeBg: 'bg-white text-poli-900 border-poli-200' },
+        { name: 'SPtLDV', cardBg: 'bg-matriks-50/70 border-matriks-200', colorBar: 'bg-matriks-600', trackBar: 'bg-matriks-100', badgeBg: 'bg-white text-matriks-900 border-matriks-200' },
+        { name: 'Persamaan Kuadrat', cardBg: 'bg-translasi-50/80 border-translasi-200', colorBar: 'bg-translasi-600', trackBar: 'bg-translasi-100', badgeBg: 'bg-white text-translasi-900 border-translasi-200' }
+      ];
+
+      topicContainer.innerHTML = topics.map((t) => {
+        const stat = scores.topicStats[t.name];
+        const pct = Math.round((stat.earned / stat.max) * 100);
+        const statusLabel = pct >= 75 ? 'Tuntas / Kuat' : pct >= 55 ? 'Perlu Latihan Tambahan' : 'Prioritas Dipelajari Ulang';
+        return `
+          <div class="p-4 rounded-xl border ${t.cardBg} flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-sm font-extrabold text-slate-900">${t.name}</span>
+                <span class="text-sm font-mono font-extrabold text-slate-900 tabular-nums">${pct}%</span>
+              </div>
+              <div class="w-full h-2.5 ${t.trackBar} rounded-full mt-2 overflow-hidden">
+                <div class="h-full ${t.colorBar} rounded-full transition-all" style="width: ${pct}%"></div>
+              </div>
+              <p class="mt-2.5 text-xs text-slate-700 tabular-nums">Skor Topik: <strong>${stat.earned} / ${stat.max} Poin</strong> (${stat.correctItems}/${stat.totalItems} butir dikuasai)</p>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-slate-200/70">
+              <span class="inline-block px-2.5 py-0.5 rounded-md border text-xs font-bold ${t.badgeBg}">Status: ${statusLabel}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderResultsTab() {
+      const noticeEl = document.getElementById('notSubmittedNotice');
+      const wrapperEl = document.getElementById('resultsContentWrapper');
+
+      if (!appState.isSubmitted) {
+        noticeEl.classList.remove('hidden');
+        wrapperEl.classList.add('hidden');
+        return;
+      }
+
+      noticeEl.classList.add('hidden');
+      wrapperEl.classList.remove('hidden');
+
+      document.getElementById('resultStudentName').textContent = appState.student.nama || '-';
+      document.getElementById('resultStudentClass').textContent = appState.student.kelas
+        ? `${appState.student.kelas} • Absen ${appState.student.noAbsen || '-'}`
+        : '-';
+      document.getElementById('resultModeName').textContent =
+        appState.student.mode === 'simulasi' ? 'Mode Simulasi UAS (120 Menit)' : 'Mode Belajar Mandiri';
+      document.getElementById('resultCompletedAt').textContent = appState.student.completedAt || '-';
+
+      updateScoreSummaryCards();
+      updateSupabaseStatusUI(appState.lastSyncedAt ? 'success' : 'idle');
+      renderPrintOfficialReport();
+
+      const rubricContainer = document.getElementById('selfAssessmentRubricContainer');
+      rubricContainer.innerHTML = BAGIAN3_QUESTIONS.map((q) => {
+        const earnedForQ = q.rubricItems.reduce((acc, r) => acc + (appState.answers.bagian3Rubric[r.id] ? r.points : 0), 0);
+        return `
+          <div class="p-4 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50/70 space-y-4 print-break-inside-avoid">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-200">
+              <div>
+                <span class="text-xs font-bold text-brand-700">Soal Uraian Nomor ${q.no} (${q.topik})</span>
+                <h4 class="text-base font-extrabold text-slate-900">${q.title}</h4>
+              </div>
+              <span class="px-3 py-1 rounded-xl bg-white border border-slate-200 text-xs font-mono font-bold text-slate-900 tabular-nums">Skor Mandiri No. ${q.no}: ${earnedForQ} / ${q.skor} Poin</span>
+            </div>
+            <div class="p-3.5 rounded-xl bg-white border border-slate-200 space-y-2">
+              <div class="text-xs font-bold text-slate-700">Catatan Jawabanmu:</div>
+              ${q.subQuestions.map((sub) => {
+                const key = `${q.no}_${sub.id}`;
+                const userText = (appState.answers.bagian3Text[key] || '').trim();
+                return `<div class="text-xs sm:text-sm text-slate-800"><span class="font-bold">Sub-soal (${sub.id}):</span> <span class="whitespace-pre-line">${userText ? escapeHtml(userText) : '<em class="text-slate-400">Tidak diisi</em>'}</span></div>`;
+              }).join('')}
+            </div>
+            <div class="p-4 rounded-xl bg-brand-50/60 border border-brand-200 overflow-x-auto">
+              <div class="text-xs font-extrabold text-brand-950 mb-2">Kunci Jawaban &amp; Pembahasan Langkah demi Langkah:</div>
+              ${q.solutionLatex}
+            </div>
+            <div class="p-4 rounded-xl bg-white border border-slate-200 space-y-2.5">
+              <div class="text-xs font-extrabold text-slate-800">Daftar Centang Rubrik Penilaian Mandiri:</div>
+              ${q.rubricItems.map((r) => {
+                const checked = Boolean(appState.answers.bagian3Rubric[r.id]);
+                return `
+                  <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 cursor-pointer border ${checked ? 'border-brand-300 bg-brand-50/40' : 'border-slate-200/70'} transition">
+                    <input type="checkbox" ${checked ? 'checked' : ''} onchange="handleRubricToggle('${r.id}', this.checked); renderResultsTab();" class="mt-1 w-5 h-5 rounded text-brand-700 shrink-0" />
+                    <span class="flex-1 min-w-0 text-xs sm:text-sm font-medium text-slate-800 leading-relaxed overflow-x-auto">${r.text}</span>
+                    <span class="px-2.5 py-0.5 rounded-md bg-brand-100 text-brand-900 font-mono text-xs font-bold tabular-nums shrink-0">+${r.points} pt</span>
+                  </label>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const objContainer = document.getElementById('objectiveSolutionsContainer');
+      const b1Html = BAGIAN1_QUESTIONS.map((q) => {
+        const userAns = (appState.answers.bagian1[q.no] || '').trim();
+        const correct = isBagian1Correct(q.no);
+        const badgeClass = correct ? 'bg-emerald-100 text-emerald-900 border-emerald-300' : 'bg-red-100 text-red-900 border-red-300';
+        const statusText = correct ? `Benar (+${q.skor} Poin)` : 'Belum Tepat (0 Poin)';
+        return `
+          <div class="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-slate-50/60 space-y-2.5 print-break-inside-avoid">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-xs sm:text-sm font-extrabold text-slate-900">Nomor ${q.no} &bull; Bagian I (${q.topik})</span>
+              <span class="px-2.5 py-0.5 rounded-md border text-xs font-bold ${badgeClass}">${statusText}</span>
+            </div>
+            <p class="text-xs text-slate-600 overflow-x-auto">${q.promptShort}</p>
+            <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm pt-1">
+              <div>Jawabanmu: <strong class="font-mono text-slate-900">${userAns ? escapeHtml(userAns) : '<em>Kosong</em>'}</strong></div>
+              <div>Kunci Jawaban: <strong class="font-mono text-emerald-800">${escapeHtml(q.displayAnswer)}</strong></div>
+            </div>
+            <div class="pt-2.5 border-t border-slate-200 text-xs sm:text-sm text-slate-800 overflow-x-auto">${q.explanation}</div>
+          </div>
+        `;
+      }).join('');
+
+      const b2Html = BAGIAN2_QUESTIONS.map((q) => {
+        const userAns = (appState.answers.bagian2[q.no] || '').trim();
+        const correct = isBagian2Correct(q.no);
+        const badgeClass = correct ? 'bg-emerald-100 text-emerald-900 border-emerald-300' : 'bg-red-100 text-red-900 border-red-300';
+        const statusText = correct ? `Benar (+${q.skor} Poin)` : 'Belum Tepat (0 Poin)';
+        return `
+          <div class="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-slate-50/60 space-y-2.5 print-break-inside-avoid">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-xs sm:text-sm font-extrabold text-slate-900">Nomor ${q.no} &bull; Bagian II Menjodohkan (${q.topik})</span>
+              <span class="px-2.5 py-0.5 rounded-md border text-xs font-bold ${badgeClass}">${statusText}</span>
+            </div>
+            <div class="text-xs sm:text-sm text-slate-800 overflow-x-auto">${q.questionLatex}</div>
+            <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm pt-1">
+              <div>Pilihanmu: <strong class="font-mono text-slate-900">${userAns || '<em>Kosong</em>'}</strong></div>
+              <div>Kunci Jawaban: <strong class="font-mono text-emerald-800">Pilihan ${q.correctOption}</strong></div>
+            </div>
+            <div class="pt-2.5 border-t border-slate-200 text-xs sm:text-sm text-slate-800 overflow-x-auto">${q.explanation}</div>
+          </div>
+        `;
+      }).join('');
+
+      objContainer.innerHTML = b1Html + b2Html;
+      triggerMathRender(wrapperEl);
+    }
+
+    function renderPrintOfficialReport() {
+      const container = document.getElementById('printOfficialReport');
+      if (!container) return;
+
+      const scores = calculateScores();
+      const nama = escapeHtml(appState.student.nama || '-');
+      const kelas = escapeHtml(appState.student.kelas || '-');
+      const absen = escapeHtml(appState.student.noAbsen || '-');
+      const modeText = appState.student.mode === 'simulasi' ? 'Simulasi SAS/UAS (120 Menit)' : 'Mode Belajar Mandiri';
+      const waktuSelesai = escapeHtml(appState.student.completedAt || new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' }));
+      const predikat = getReadinessPredicate(scores.totalScore);
+
+      // Tabel Rekap Bagian I (No. 1-10)
+      const b1Rows = BAGIAN1_QUESTIONS.map((q) => {
+        const userAns = (appState.answers.bagian1[q.no] || '').trim();
+        const ok = isBagian1Correct(q.no);
+        return `
+          <tr>
+            <td style="text-align:center; font-weight:700;">${q.no}</td>
+            <td>${q.topik}</td>
+            <td style="font-family:monospace;">${userAns ? escapeHtml(userAns) : '-'}</td>
+            <td style="font-family:monospace;">${escapeHtml(q.displayAnswer)}</td>
+            <td style="text-align:center; font-weight:700; color:${ok ? '#15803d' : '#b91c1c'};">${ok ? 'Benar (+3)' : 'Salah (0)'}</td>
+          </tr>
+        `;
+      }).join('');
+
+      // Tabel Rekap Bagian II (No. 11-15)
+      const b2Rows = BAGIAN2_QUESTIONS.map((q) => {
+        const userAns = (appState.answers.bagian2[q.no] || '').trim();
+        const ok = isBagian2Correct(q.no);
+        return `
+          <tr>
+            <td style="text-align:center; font-weight:700;">${q.no}</td>
+            <td>${q.topik}</td>
+            <td style="text-align:center; font-family:monospace;">${userAns || '-'}</td>
+            <td style="text-align:center; font-family:monospace;">${q.correctOption}</td>
+            <td style="text-align:center; font-weight:700; color:${ok ? '#15803d' : '#b91c1c'};">${ok ? 'Benar (+4)' : 'Salah (0)'}</td>
+          </tr>
+        `;
+      }).join('');
+
+      // Tabel Rekap Bagian III (No. 16-20)
+      const b3Rows = BAGIAN3_QUESTIONS.map((q) => {
+        const earned = q.rubricItems.reduce((acc, r) => acc + (appState.answers.bagian3Rubric[r.id] ? r.points : 0), 0);
+        const filledCount = q.subQuestions.filter((sub) => (appState.answers.bagian3Text[`${q.no}_${sub.id}`] || '').trim() !== '').length;
+        const checkedCount = q.rubricItems.filter((r) => appState.answers.bagian3Rubric[r.id]).length;
+        return `
+          <tr>
+            <td style="text-align:center; font-weight:700;">${q.no}</td>
+            <td>${q.topik}</td>
+            <td>${filledCount}/3 sub-soal diisi</td>
+            <td style="text-align:center;">${checkedCount}/${q.rubricItems.length} kriteria</td>
+            <td style="text-align:center; font-weight:700;">${earned} / ${q.skor} pt</td>
+          </tr>
+        `;
+      }).join('');
+
+      // Tabel Analisis Topik
+      const topicRows = ['Eksponen & Logaritma', 'SPtLDV', 'Persamaan Kuadrat'].map((name) => {
+        const st = scores.topicStats[name];
+        const pct = Math.round((st.earned / st.max) * 100);
+        const status = pct >= 75 ? 'Tuntas / Kuat' : pct >= 55 ? 'Perlu Latihan Tambahan' : 'Prioritas Dipelajari Ulang';
+        return `
+          <tr>
+            <td style="font-weight:700;">${name}</td>
+            <td style="text-align:center;">${st.correctItems} / ${st.totalItems} soal</td>
+            <td style="text-align:center; font-weight:700;">${st.earned} / ${st.max} pt</td>
+            <td style="text-align:center; font-weight:700;">${pct}%</td>
+            <td>${status}</td>
+          </tr>
+        `;
+      }).join('');
+
+      container.innerHTML = `
+        <div style="font-family:'Plus Jakarta Sans',system-ui,sans-serif; color:#0f172a;">
+          <!-- Kop Laporan Resmi SMA Don Bosco II Pulomas -->
+          <div style="border-bottom:2px solid #0f291e; padding-bottom:8px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; gap:12px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <img src="./logo-don-bosco.png" alt="Logo SMA Don Bosco II Pulomas" style="width:44px; height:44px; object-fit:contain;" />
+              <div>
+                <div style="font-size:10.5pt; font-weight:800; color:#0f291e; letter-spacing:0.01em;">SMA DON BOSCO II PULOMAS</div>
+                <div style="font-size:12pt; font-weight:800; letter-spacing:-0.01em; margin-top:1px;">LAPORAN BUKTI LATIHAN SAS MATEMATIKA KELAS X</div>
+                <div style="font-size:8pt; color:#334155; margin-top:1px;">Kelas X-1 s.d. X-12 &bull; Guru Pengampu: <strong>Bernadet Intan Dewi Safitri, S.Pd</strong></div>
+              </div>
+            </div>
+            <div style="text-align:right; font-size:8pt; color:#475569; white-space:nowrap;">
+              <div><strong>Eksponen &amp; Logaritma &bull; SPtLDV &bull; Pers. Kuadrat</strong></div>
+              <div>Dicetak: ${waktuSelesai}</div>
+            </div>
+          </div>
+
+          <!-- Identitas & Skor Ringkas -->
+          <div class="print-section-avoid" style="display:grid; grid-template-columns: 1.35fr 1fr; gap:10px; margin-bottom:12px;">
+            <table class="print-table">
+              <tbody>
+                <tr><th style="width:36%;">Nama Lengkap</th><td style="font-weight:700;">${nama}</td></tr>
+                <tr><th>Kelas / No. Absen</th><td style="font-weight:700;">${kelas} / Absen ${absen}</td></tr>
+                <tr><th>Mode Latihan</th><td>${modeText}</td></tr>
+                <tr><th>Waktu Selesai</th><td>${waktuSelesai}</td></tr>
+              </tbody>
+            </table>
+
+            <table class="print-table">
+              <tbody>
+                <tr>
+                  <th style="width:55%;">Total Skor Akhir</th>
+                  <td style="font-size:12pt; font-weight:800; text-align:center; background:#f8fafc;">${scores.totalScore} / 100</td>
+                </tr>
+                <tr><th>Bagian I (Isian LKPD)</th><td style="text-align:center;">${scores.b1Score} / 30 (${scores.b1CorrectCount}/10 benar)</td></tr>
+                <tr><th>Bagian II (Menjodohkan)</th><td style="text-align:center;">${scores.b2Score} / 20 (${scores.b2CorrectCount}/5 benar)</td></tr>
+                <tr><th>Bagian III (Rubrik HOTS)</th><td style="text-align:center;">${scores.b3Score} / 50</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Predikat & Analisis Topik -->
+          <div class="print-section-avoid" style="margin-bottom:12px;">
+            <div style="font-size:9pt; font-weight:800; margin-bottom:4px;">1. Analisis Penguasaan Materi Per Topik &nbsp;<span style="font-weight:500; color:#334155;">(Predikat: ${predikat})</span></div>
+            <table class="print-table">
+              <thead>
+                <tr>
+                  <th>Topik Materi</th>
+                  <th style="text-align:center; width:16%;">Butir Dikuasai</th>
+                  <th style="text-align:center; width:18%;">Skor Poin</th>
+                  <th style="text-align:center; width:12%;">Persentase</th>
+                  <th>Rekomendasi Belajar</th>
+                </tr>
+              </thead>
+              <tbody>${topicRows}</tbody>
+            </table>
+          </div>
+
+          <!-- Rekap 20 Soal (2 Kolom Kompak agar muat 1 halaman A4) -->
+          <div class="print-section-avoid" style="margin-bottom:10px;">
+            <div style="font-size:9pt; font-weight:800; margin-bottom:4px;">2. Rincian Hasil Pengerjaan Bagian I (No. 1–10) &amp; Bagian II (No. 11–15)</div>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; align-items:start;">
+              <table class="print-table">
+                <thead>
+                  <tr>
+                    <th style="width:10%; text-align:center;">No</th>
+                    <th>Topik</th>
+                    <th style="width:20%;">Jawab</th>
+                    <th style="width:20%;">Kunci</th>
+                    <th style="width:24%; text-align:center;">Status</th>
+                  </tr>
+                </thead>
+                <tbody>${b1Rows}</tbody>
+              </table>
+
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <table class="print-table">
+                  <thead>
+                    <tr>
+                      <th style="width:10%; text-align:center;">No</th>
+                      <th>Topik</th>
+                      <th style="width:16%; text-align:center;">Jawab</th>
+                      <th style="width:16%; text-align:center;">Kunci</th>
+                      <th style="width:26%; text-align:center;">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>${b2Rows}</tbody>
+                </table>
+
+                <div>
+                  <div style="font-size:8.5pt; font-weight:800; margin-bottom:3px;">3. Rekap Bagian III — Uraian HOTS (No. 16–20)</div>
+                  <table class="print-table">
+                    <thead>
+                      <tr>
+                        <th style="width:10%; text-align:center;">No</th>
+                        <th>Topik</th>
+                        <th>Catatan</th>
+                        <th style="text-align:center;">Rubrik</th>
+                        <th style="text-align:center;">Skor</th>
+                      </tr>
+                    </thead>
+                    <tbody>${b3Rows}</tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer Verifikasi -->
+          <div class="print-section-avoid" style="margin-top:10px; padding-top:8px; border-top:1px dashed #94a3b8; display:flex; justify-content:space-between; align-items:flex-end; font-size:8pt; color:#475569;">
+            <div>
+              <div>ID Sesi: <span style="font-family:monospace;">${escapeHtml(appState.sessionId || '-')}</span></div>
+              <div>Dokumen bukti latihan mandiri siswa SMA Don Bosco II Pulomas.</div>
+            </div>
+            <div style="text-align:right;">
+              <div>Guru Matematika Kelas X,</div>
+              <div style="margin-top:18px; font-weight:700; color:#0f172a;">Bernadet Intan Dewi Safitri, S.Pd</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // 15. INITIALIZE APPLICATION ON LOAD
+    window.addEventListener('DOMContentLoaded', () => {
+      loadStateFromStorage();
+      renderKisiKisiTable();
+      restoreBagian1Inputs();
+      renderBagian2Matching();
+      renderBagian3Essays();
+
+      if (appState.isLoggedIn && hasValidStudentIdentity()) {
+        showLMSShell();
+        startOrResumeSimulationTimer();
+      } else {
+        showLoginScreen();
+      }
+
+      setTimeout(() => triggerMathRender(), 150);
+    });
+  </script>
+</body>
+</html>
