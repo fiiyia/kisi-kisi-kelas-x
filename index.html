@@ -205,6 +205,19 @@
       padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0.5rem));
     }
 
+    /* Clickable SVG graphs for mobile zoom */
+    #view-bagian1 svg[role="img"],
+    #view-bagian2 svg[role="img"],
+    #view-bagian3 svg[role="img"] {
+      cursor: zoom-in;
+      transition: transform 150ms ease;
+    }
+    #view-bagian1 svg[role="img"]:hover,
+    #view-bagian2 svg[role="img"]:hover,
+    #view-bagian3 svg[role="img"]:hover {
+      transform: scale(1.015);
+    }
+
     /* Print Layout Stylesheet — Compact 1-2 Page A4 Official Report */
     @page {
       size: A4 portrait;
@@ -925,6 +938,72 @@
               </button>
             </div>
 
+            <!-- Ringkasan Rumus & Jebakan Umum UAS (Otomatis tersembunyi pada Mode Simulasi UAS) -->
+            <div id="rumusPentingCard" class="mt-6 rounded-2xl border border-brand-200 bg-brand-50/50 p-4 sm:p-5">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center gap-2.5">
+                  <span class="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h3 class="text-sm sm:text-base font-extrabold text-brand-950">Ringkasan Rumus Penting &amp; Jebakan Umum UAS Kelas X</h3>
+                    <p class="text-xs text-brand-800">Pelajari catatan cepat ini sebelum mulai latihan (otomatis disembunyikan saat Simulasi UAS).</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  id="btnToggleRumus"
+                  onclick="toggleRumusCard()"
+                  class="px-3.5 py-1.5 rounded-xl bg-white border border-brand-200 hover:bg-brand-100 text-xs font-bold text-brand-900 transition"
+                >
+                  Sembunyikan Rumus
+                </button>
+              </div>
+
+              <div id="rumusPentingBody" class="mt-4 grid grid-cols-1 lg:grid-cols-3 gap-3.5">
+                <div class="p-4 rounded-xl bg-white border border-poli-200 space-y-2">
+                  <div class="text-xs font-extrabold text-poli-900 uppercase tracking-wide">1. Eksponen &amp; Logaritma (30%)</div>
+                  <ul class="text-xs text-slate-700 space-y-1.5 list-disc pl-4">
+                    <li>Pertumbuhan / Peluruhan: $f(t) = a \cdot b^t$</li>
+                    <li>${}^a\log(b \cdot c) = {}^a\log b + {}^a\log c$</li>
+                    <li>${}^a\log\left(\frac{b}{c}\right) = {}^a\log b - {}^a\log c$</li>
+                    <li>${}^a\log a^n = n$ dan $a^x = b \iff x = {}^a\log b$</li>
+                  </ul>
+                  <div class="p-2.5 rounded-lg bg-poli-50 border border-poli-200/80 text-[11px] text-poli-900">
+                    <strong>Jebakan Umum:</strong> Samakan basis pangkat dahulu (misal $4 = 2^2, 8 = 2^3$) dan perhatikan arah ketaksamaan saat peluruhan!
+                  </div>
+                </div>
+
+                <div class="p-4 rounded-xl bg-white border border-matriks-200 space-y-2">
+                  <div class="text-xs font-extrabold text-matriks-900 uppercase tracking-wide">2. SPtLDV &amp; Program Linear (50%)</div>
+                  <ul class="text-xs text-slate-700 space-y-1.5 list-disc pl-4">
+                    <li>Garis melalui $(0, a)$ &amp; $(b, 0)$: $ax + by = ab$</li>
+                    <li>Uji titik $(0,0)$ untuk menentukan tanda $\le$ atau $\ge$</li>
+                    <li>Cari titik pojok potong dengan eliminasi / substitusi</li>
+                    <li>Uji semua titik pojok ke fungsi objektif $f(x, y)$</li>
+                  </ul>
+                  <div class="p-2.5 rounded-lg bg-matriks-50 border border-matriks-200/80 text-[11px] text-matriks-900">
+                    <strong>Jebakan Umum:</strong> Jangan lupa <strong>konversi satuan</strong> ($\text{m} \to \text{cm}$, $\text{L} \to \text{ml}$) dan bedakan kata <em>maksimal</em> ($\le$) vs <em>sedikitnya</em> ($\ge$).
+                  </div>
+                </div>
+
+                <div class="p-4 rounded-xl bg-white border border-translasi-200 space-y-2">
+                  <div class="text-xs font-extrabold text-translasi-900 uppercase tracking-wide">3. Persamaan Kuadrat (20%)</div>
+                  <ul class="text-xs text-slate-700 space-y-1.5 list-disc pl-4">
+                    <li>Bentuk baku: $ax^2 + bx + c = 0$</li>
+                    <li>Rumus ABC: $x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$</li>
+                    <li>Diskriminan: $D = b^2 - 4ac$</li>
+                    <li>Bingkai seragam lebar $x$: $(p + 2x)(l + 2x)$</li>
+                  </ul>
+                  <div class="p-2.5 rounded-lg bg-translasi-50 border border-translasi-200/80 text-[11px] text-translasi-900">
+                    <strong>Jebakan Umum:</strong> Pada soal bingkai/jalan setapak sekeliling, tambahkan <strong>$2x$</strong> (bukan $x$), dan pilih hanya akar positif ($x > 0$) untuk ukuran panjang/lebar!
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Filter Controls -->
             <div class="mt-6 pt-5 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4">
               <div>
@@ -1183,13 +1262,25 @@
                   </div>
                 </div>
 
-                <!-- Action Buttons (Sync Cloud, Print PDF, Re-edit) -->
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 no-print">
+                <!-- Action Buttons (Copy WA/GCR, Sync Cloud, Print PDF, Reset) -->
+                <div class="flex flex-wrap items-stretch sm:items-center gap-2 no-print">
+                  <button
+                    type="button"
+                    id="btnCopySummary"
+                    onclick="copySummaryReport()"
+                    class="px-3.5 py-2.5 rounded-xl border-2 border-slate-300 bg-white hover:bg-slate-50 text-slate-800 text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5 min-h-[44px]"
+                  >
+                    <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" />
+                    </svg>
+                    <span id="btnCopySummaryText">Salin Laporan</span>
+                  </button>
+
                   <button
                     type="button"
                     id="btnSyncSupabase"
                     onclick="syncSubmissionToSupabase(false)"
-                    class="px-4 py-2.5 rounded-xl border-2 border-matriks-600 bg-matriks-50 hover:bg-matriks-100 text-matriks-900 text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 min-h-[44px]"
+                    class="px-3.5 py-2.5 rounded-xl border-2 border-matriks-600 bg-matriks-50 hover:bg-matriks-100 text-matriks-900 text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5 min-h-[44px]"
                   >
                     <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
@@ -1200,12 +1291,23 @@
                   <button
                     type="button"
                     onclick="window.print()"
-                    class="px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 min-h-[44px]"
+                    class="px-3.5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5 min-h-[44px]"
                   >
                     <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0021 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 00-1.913-.247M6.34 18H5.25A2.25 2.25 0 013 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 011.913-.247m10.5 0a48.536 48.536 0 00-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5zm-3 0h.008v.008H15V10.5z" />
                     </svg>
-                    <span>Cetak / Simpan PDF</span>
+                    <span>Cetak / PDF</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onclick="resetCurrentPractice()"
+                    class="px-3.5 py-2.5 rounded-xl border-2 border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-950 text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5 min-h-[44px]"
+                  >
+                    <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                    </svg>
+                    <span>Ulangi Latihan</span>
                   </button>
                 </div>
               </div>
@@ -1267,6 +1369,7 @@
                   Persentase ketepatan dihitung berdasarkan perolehan poin pada masing-masing topik dibandingkan bobot maksimal topik tersebut:
                 </p>
                 <div id="topicMasteryContainer" class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+                <div id="autoStudyRecommendation" class="mt-4 p-4 rounded-xl border border-brand-200 bg-brand-50/60 text-xs sm:text-sm text-brand-950"></div>
               </div>
             </div>
 
@@ -1309,6 +1412,17 @@
         </section>
 
       </main>
+    </div>
+  </div>
+
+  <!-- SVG GRAPH LIGHTBOX MODAL (MOBILE-FRIENDLY ZOOM) -->
+  <div id="svgZoomModal" onclick="if (event.target === this) closeSvgZoomModal()" class="hidden fixed inset-0 z-50 bg-sidebar-950/80 backdrop-blur-xs flex items-center justify-center p-4 no-print" role="dialog" aria-modal="true" aria-label="Perbesar Grafik DHP">
+    <div class="w-full max-w-2xl bg-white rounded-2xl shadow-elevated border border-slate-200 overflow-hidden">
+      <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200 bg-slate-50">
+        <span id="svgZoomCaption" class="text-xs sm:text-sm font-extrabold text-slate-900 truncate">Perbesar Grafik DHP</span>
+        <button type="button" onclick="closeSvgZoomModal()" class="px-3 py-1 rounded-lg bg-slate-200 hover:bg-slate-300 text-xs font-bold text-slate-900 transition">Tutup</button>
+      </div>
+      <div id="svgZoomContent" class="p-4 sm:p-6 bg-white flex items-center justify-center overflow-auto max-h-[80vh]"></div>
     </div>
   </div>
 
@@ -2422,13 +2536,18 @@
         }
       }
 
-      // Show/hide hints & update package descriptions depending on mode
+      // Show/hide hints, rumus card & update package descriptions depending on mode
       const isSimulasi = appState.student.mode === 'simulasi';
       const activeSet = getActiveSet();
       document.querySelectorAll('.hint-btn').forEach((btn) => {
         if (isSimulasi) btn.classList.add('hidden');
         else btn.classList.remove('hidden');
       });
+      const rumusCard = document.getElementById('rumusPentingCard');
+      if (rumusCard) {
+        if (isSimulasi) rumusCard.classList.add('hidden');
+        else rumusCard.classList.remove('hidden');
+      }
       document.querySelectorAll('.paket-mode-badge').forEach((el) => {
         el.textContent = activeSet.badge;
         el.className = isSimulasi
@@ -2455,6 +2574,7 @@
 
     function updateTimerDisplay() {
       const timerText = document.getElementById('headerTimerText');
+      const modeBadge = document.getElementById('headerModeBadge');
       if (!timerText) return;
       if (appState.student.mode !== 'simulasi') {
         timerText.textContent = 'Mode Belajar';
@@ -2464,6 +2584,13 @@
         ? appState.timer.remainingSeconds
         : EXAM_DURATION_SECONDS;
       timerText.textContent = formatSecondsToHHMMSS(sec);
+      if (modeBadge) {
+        if (sec <= 15 * 60 && !appState.isSubmitted) {
+          modeBadge.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-red-400 bg-red-50 text-red-900 text-xs sm:text-sm font-mono font-bold tabular-nums animate-pulse';
+        } else {
+          modeBadge.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-amber-300 bg-amber-50 text-amber-950 text-xs sm:text-sm font-mono font-bold tabular-nums';
+        }
+      }
     }
 
     function startOrResumeSimulationTimer() {
@@ -2502,7 +2629,7 @@
           appState.timer.targetEndTime = null;
           saveStateToStorage();
           alert('Waktu Simulasi UAS (120 menit) telah habis! Jawabanmu akan dikumpulkan secara otomatis.');
-          submitAndOpenResults();
+          submitAndOpenResults(true);
           return false;
         }
         return true;
@@ -3038,11 +3165,61 @@
       }
     }
 
-    // 14. SUBMIT & RENDER EVALUATION RESULTS
-    function submitAndOpenResults() {
+    // 14. SUBMIT, HELPERS & RENDER EVALUATION RESULTS
+    function toggleRumusCard() {
+      const body = document.getElementById('rumusPentingBody');
+      const btn = document.getElementById('btnToggleRumus');
+      if (!body || !btn) return;
+      const hidden = body.classList.toggle('hidden');
+      btn.textContent = hidden ? 'Tampilkan Rumus' : 'Sembunyikan Rumus';
+      if (!hidden) triggerMathRender(body);
+    }
+
+    function openSvgZoomModal(svgEl) {
+      const modal = document.getElementById('svgZoomModal');
+      const content = document.getElementById('svgZoomContent');
+      const caption = document.getElementById('svgZoomCaption');
+      if (!modal || !content || !svgEl) return;
+      const cloned = svgEl.cloneNode(true);
+      cloned.setAttribute('class', 'w-full h-auto max-h-[70vh]');
+      content.innerHTML = '';
+      content.appendChild(cloned);
+      if (caption) caption.textContent = svgEl.getAttribute('aria-label') || 'Perbesar Grafik DHP';
+      modal.classList.remove('hidden');
+    }
+
+    function closeSvgZoomModal() {
+      const modal = document.getElementById('svgZoomModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function getUnansweredNumbers() {
+      const missing = [];
+      for (let i = 1; i <= 10; i++) {
+        if ((appState.answers.bagian1[i] || '').trim() === '') missing.push(i);
+      }
+      for (let i = 11; i <= 15; i++) {
+        if ((appState.answers.bagian2[i] || '').trim() === '') missing.push(i);
+      }
+      for (let i = 16; i <= 20; i++) {
+        const hasSub = ['a', 'b', 'c'].some((sub) => (appState.answers.bagian3Text[`${i}_${sub}`] || '').trim() !== '');
+        if (!hasSub) missing.push(i);
+      }
+      return missing;
+    }
+
+    function submitAndOpenResults(forceAuto = false) {
       if (!hasValidStudentIdentity()) {
         showLoginScreen();
         return;
+      }
+      if (!forceAuto) {
+        const missing = getUnansweredNumbers();
+        if (missing.length > 0) {
+          const preview = missing.length <= 8 ? missing.join(', ') : `${missing.slice(0, 8).join(', ')}, dst.`;
+          const ok = confirm(`Masih ada ${missing.length} soal yang belum diisi (No. ${preview}).\n\nYakin ingin mengumpulkan jawaban sekarang?`);
+          if (!ok) return;
+        }
       }
       appState.isSubmitted = true;
       appState.student.completedAt = new Date().toLocaleString('id-ID', {
@@ -3057,6 +3234,84 @@
       updateLMSChromeUI();
       navigateLMS('hasil');
       syncSubmissionToSupabase(false);
+    }
+
+    function copySummaryReport() {
+      const scores = calculateScores();
+      const activeSet = getActiveSet();
+      const predikat = getReadinessPredicate(scores.totalScore);
+      const tE = scores.topicStats['Eksponen & Logaritma'];
+      const tS = scores.topicStats['SPtLDV'];
+      const tK = scores.topicStats['Persamaan Kuadrat'];
+      const lines = [
+        '*BUKTI LATIHAN SAS MATEMATIKA KELAS X*',
+        'SMA Don Bosco II Pulomas',
+        `Nama: ${appState.student.nama || '-'}`,
+        `Kelas / Absen: ${appState.student.kelas || '-'} / No. ${appState.student.noAbsen || '-'}`,
+        `Paket / Mode: ${activeSet.badge}`,
+        `Waktu Selesai: ${appState.student.completedAt || '-'}`,
+        '--------------------------------',
+        `Total Skor: *${scores.totalScore} / 100*`,
+        `• Bagian I (LKPD): ${scores.b1Score}/30 (${scores.b1CorrectCount}/10 benar)`,
+        `• Bagian II (Menjodohkan): ${scores.b2Score}/20 (${scores.b2CorrectCount}/5 benar)`,
+        `• Bagian III (Rubrik HOTS): ${scores.b3Score}/50`,
+        '--------------------------------',
+        `• Eksponen & Logaritma: ${tE.earned}/${tE.max} (${Math.round((tE.earned / tE.max) * 100)}%)`,
+        `• SPtLDV: ${tS.earned}/${tS.max} (${Math.round((tS.earned / tS.max) * 100)}%)`,
+        `• Persamaan Kuadrat: ${tK.earned}/${tK.max} (${Math.round((tK.earned / tK.max) * 100)}%)`,
+        `Predikat: ${predikat}`
+      ].join('\n');
+
+      const doneFeedback = () => {
+        const label = document.getElementById('btnCopySummaryText');
+        if (label) {
+          label.textContent = 'Laporan Tersalin!';
+          setTimeout(() => { label.textContent = 'Salin Laporan'; }, 2200);
+        }
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(lines).then(doneFeedback).catch(() => {
+          fallbackCopyText(lines);
+          doneFeedback();
+        });
+      } else {
+        fallbackCopyText(lines);
+        doneFeedback();
+      }
+    }
+
+    function fallbackCopyText(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    function resetCurrentPractice() {
+      const activeSet = getActiveSet();
+      const ok = confirm(`Ulangi seluruh soal pada ${activeSet.badge}?\n\nSemua jawaban dan centang rubrik pada mode ini akan dikosongkan agar kamu bisa berlatih ulang dari awal.`);
+      if (!ok) return;
+      appState.isSubmitted = false;
+      appState.student.completedAt = null;
+      appState.student.startedAt = new Date().toISOString();
+      appState.answers = { bagian1: {}, bagian2: {}, bagian3Text: {}, bagian3Rubric: {} };
+      if (appState.student.mode === 'simulasi') {
+        appState.timer.remainingSeconds = EXAM_DURATION_SECONDS;
+        appState.timer.targetEndTime = Date.now() + EXAM_DURATION_SECONDS * 1000;
+      }
+      saveStateToStorage();
+      renderBagian1LKPD();
+      renderBagian2Matching();
+      renderBagian3Essays();
+      updateLMSChromeUI();
+      startOrResumeSimulationTimer();
+      navigateLMS('bagian1');
+      syncSubmissionToSupabase(true);
     }
 
     function getReadinessPredicate(score) {
@@ -3105,6 +3360,28 @@
           </div>
         `;
       }).join('');
+
+      // Rekomendasi belajar otomatis berdasarkan topik terlemah
+      const recEl = document.getElementById('autoStudyRecommendation');
+      if (recEl) {
+        const topicTips = {
+          'Eksponen & Logaritma': 'Latih kembali cara menyamakan basis pangkat, menggunakan sifat logaritma (${}^a\\log(b \\cdot c)$), serta mengevaluasi fungsi pertumbuhan/peluruhan.',
+          'SPtLDV': 'Fokus latih kembali cara menentukan persamaan garis dari grafik DHP, konversi satuan (m ke cm / L ke ml), pencarian titik pojok, dan uji fungsi objektif.',
+          'Persamaan Kuadrat': 'Latih kembali pemfaktoran persamaan kuadrat ($a > 1$), ketelitian tanda pada Rumus ABC, dan pemodelan lebar bingkai/jalan setapak ($+2x$).'
+        };
+        const ranked = topics
+          .map((t) => ({ name: t.name, pct: Math.round((scores.topicStats[t.name].earned / scores.topicStats[t.name].max) * 100) }))
+          .sort((a, b) => a.pct - b.pct);
+        const weakest = ranked[0];
+        if (weakest.pct >= 80) {
+          recEl.className = 'mt-4 p-4 rounded-xl border border-emerald-300 bg-emerald-50 text-xs sm:text-sm text-emerald-950';
+          recEl.innerHTML = `<strong>Rekomendasi Belajar:</strong> Luar biasa! Seluruh topik sudah dikuasai $\\ge 80\\%$. Coba tantang dirimu di <strong>Mode Simulasi UAS (120 Menit)</strong> dengan paket soal berbeda untuk menjaga ketepatan di bawah batas waktu.`;
+        } else {
+          recEl.className = 'mt-4 p-4 rounded-xl border border-amber-300 bg-amber-50 text-xs sm:text-sm text-amber-950';
+          recEl.innerHTML = `<strong>Prioritas Belajar Sebelum UAS — ${weakest.name} (${weakest.pct}%):</strong> ${topicTips[weakest.name]}`;
+        }
+        triggerMathRender(recEl);
+      }
     }
 
     function renderResultsTab() {
@@ -3125,7 +3402,9 @@
         ? `${appState.student.kelas} • Absen ${appState.student.noAbsen || '-'}`
         : '-';
       document.getElementById('resultModeName').textContent =
-        appState.student.mode === 'simulasi' ? 'Mode Simulasi UAS (120 Menit)' : 'Mode Belajar Mandiri';
+        appState.student.mode === 'simulasi'
+          ? 'Paket B — Simulasi UAS (120 Menit)'
+          : 'Paket A — Mode Belajar Mandiri';
       document.getElementById('resultCompletedAt').textContent = appState.student.completedAt || '-';
 
       updateScoreSummaryCards();
@@ -3229,7 +3508,9 @@
       const nama = escapeHtml(appState.student.nama || '-');
       const kelas = escapeHtml(appState.student.kelas || '-');
       const absen = escapeHtml(appState.student.noAbsen || '-');
-      const modeText = appState.student.mode === 'simulasi' ? 'Simulasi SAS/UAS (120 Menit)' : 'Mode Belajar Mandiri';
+      const modeText = appState.student.mode === 'simulasi'
+        ? 'Paket B — Simulasi SAS/UAS (120 Menit)'
+        : 'Paket A — Mode Belajar Mandiri';
       const waktuSelesai = escapeHtml(appState.student.completedAt || new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' }));
       const predikat = getReadinessPredicate(scores.totalScore);
 
@@ -3445,6 +3726,15 @@
       }
 
       setTimeout(() => triggerMathRender(), 150);
+
+      // Click-to-zoom delegation for DHP SVG graphs & Escape key close
+      document.addEventListener('click', (e) => {
+        const svg = e.target.closest('#view-bagian1 svg[role="img"], #view-bagian2 svg[role="img"], #view-bagian3 svg[role="img"]');
+        if (svg) openSvgZoomModal(svg);
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeSvgZoomModal();
+      });
     });
   </script>
 </body>
