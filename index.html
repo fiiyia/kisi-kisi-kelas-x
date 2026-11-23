@@ -488,7 +488,7 @@
                   />
                 </div>
                 <p class="mt-1 text-xs text-slate-600">
-                  Timer mundur <strong>120 menit</strong> tanpa tombol petunjuk.
+                  <strong>Paket soal berbeda</strong> + timer mundur <strong>120 menit</strong> tanpa petunjuk.
                 </p>
               </label>
             </div>
@@ -805,7 +805,7 @@
               <h3 class="mt-3 text-base font-extrabold text-slate-900 group-hover:text-brand-700 transition">
                 Bagian I — Isian LKPD
               </h3>
-              <p class="mt-1 text-xs text-slate-600">
+              <p id="dashB1Desc" class="mt-1 text-xs text-slate-600">
                 10 rumpang dalam 3 wacana kontekstual (Video OSIS, Kerajinan Bazar + Grafik DHP, Panggung Pentas Seni).
               </p>
             </button>
@@ -822,7 +822,7 @@
               <h3 class="mt-3 text-base font-extrabold text-slate-900 group-hover:text-brand-700 transition">
                 Bagian II — Menjodohkan
               </h3>
-              <p class="mt-1 text-xs text-slate-600">
+              <p id="dashB2Desc" class="mt-1 text-xs text-slate-600">
                 5 soal pilihan pasangan huruf A–G (Eksponen, ${}^2\log$, Grafik DHP, Uji Titik Pojok, Akar Persamaan Kuadrat).
               </p>
             </button>
@@ -839,7 +839,7 @@
               <h3 class="mt-3 text-base font-extrabold text-slate-900 group-hover:text-brand-700 transition">
                 Bagian III — Uraian HOTS
               </h3>
-              <p class="mt-1 text-xs text-slate-600">
+              <p id="dashB3Desc" class="mt-1 text-xs text-slate-600">
                 5 soal mendalam (Peluruhan Obat, Grafik DHP Terbuka, Konveksi Maksimum, Pupuk Minimum, PK &amp; Bingkai Poster).
               </p>
             </button>
@@ -1002,322 +1002,16 @@
                   Lengkapi kotak rumpang di dalam kalimat berikut dengan jawaban yang tepat. Estimasi waktu: <strong>30 menit</strong> (10 &times; 3 poin = 30 poin).
                 </p>
               </div>
-              <span class="px-3.5 py-1.5 rounded-xl bg-brand-50 border border-brand-200 text-brand-900 text-xs font-mono font-bold tabular-nums">
-                Bobot: 30 Poin
-              </span>
-            </div>
-
-            <!-- KARTU NARASI 1: EKSPONEN & LOGARITMA (No. 1-3) -->
-            <div class="mt-6 rounded-2xl border border-poli-200 bg-poli-50/40 p-4 sm:p-6">
-              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-                <span class="px-3 py-1 rounded-lg bg-poli-600 text-white text-xs font-bold">
-                  Wacana 1 (No. 1–3) &bull; Eksponen &amp; Logaritma: Pelipatan Penonton Video OSIS
+              <div class="flex items-center gap-2">
+                <span class="paket-mode-badge px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold">Paket Latihan</span>
+                <span class="px-3.5 py-1.5 rounded-xl bg-brand-50 border border-brand-200 text-brand-900 text-xs font-mono font-bold tabular-nums">
+                  Bobot: 30 Poin
                 </span>
-                <span class="text-xs font-mono font-bold text-poli-900 tabular-nums">3 Soal &times; 3 Poin = 9 Poin</span>
-              </div>
-
-              <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
-                <p>
-                  Pengurus OSIS mengunggah video kampanye literasi di media sosial sekolah. Pada saat awal diunggah ($t = 0$ jam), video tersebut telah ditonton oleh $100$ orang. Karena dibagikan secara berantai, jumlah penonton bertambah mengikuti model eksponen berikut (dengan $t$ menyatakan waktu dalam jam):
-                </p>
-                <div class="bg-white p-3.5 rounded-xl border border-poli-200/80 text-sm overflow-x-auto shadow-sm">
-                  $$V(t) = 100 \cdot 3^t$$
-                </div>
-
-                <!-- Soal 1 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-poli-50 text-poli-900 border border-poli-200 text-xs font-mono font-bold">
-                      Nomor 1 &bull; C2 &bull; 3 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(1)" class="hint-btn text-xs font-bold text-poli-600 hover:text-poli-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Berdasarkan model tersebut, jumlah penonton video setelah $t = 3$ jam adalah $V(3) =$
-                    <input id="input-q1" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 1" oninput="handleBagian1Input(1, this.value)" class="lkpd-inline-input" /> orang.
-                  </p>
-                  <div id="hint-1" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 1:</strong> Substitusikan $t = 3$ ke fungsi $V(t) = 100 \cdot 3^t$, lalu hitung $3^3 = 27$ dan kalikan dengan $100$.
-                  </div>
-                </div>
-
-                <!-- Soal 2 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-poli-50 text-poli-900 border border-poli-200 text-xs font-mono font-bold">
-                      Nomor 2 &bull; C3 &bull; 3 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(2)" class="hint-btn text-xs font-bold text-poli-600 hover:text-poli-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Apabila total penonton video telah mencapai $8.100$ orang, maka lama waktu yang telah berlalu sejak video diunggah adalah $t =$
-                    <input id="input-q2" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 2" oninput="handleBagian1Input(2, this.value)" class="lkpd-inline-input" /> jam.
-                  </p>
-                  <div id="hint-2" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 2:</strong> Selesaikan $100 \cdot 3^t = 8.100 \implies 3^t = 81$. Nyatakan $81$ sebagai perpangkatan basis $3$.
-                  </div>
-                </div>
-
-                <!-- Soal 3 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-poli-50 text-poli-900 border border-poli-200 text-xs font-mono font-bold">
-                      Nomor 3 &bull; C3 &bull; 3 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(3)" class="hint-btn text-xs font-bold text-poli-600 hover:text-poli-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Untuk menaksir waktu saat jumlah penonton menjadi $18$ kali lipat dari jumlah awal, panitia perlu menghitung nilai ${}^3\log 18$. Jika diketahui ${}^3\log 2 \approx 0,63$, maka nilai taksiran ${}^3\log 18 \approx$
-                    <input id="input-q3" type="text" inputmode="decimal" placeholder="Contoh: 2,63" aria-label="Jawaban Nomor 3" oninput="handleBagian1Input(3, this.value)" class="lkpd-inline-input" />.
-                  </p>
-                  <div id="hint-3" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 3:</strong> Uraikan $18 = 9 \times 2 = 3^2 \times 2$, lalu gunakan sifat ${}^3\log(a \cdot b) = {}^3\log a + {}^3\log b$.
-                  </div>
-                </div>
               </div>
             </div>
 
-            <!-- KARTU NARASI 2: SPtLDV + GRAFIK SVG 1 (No. 4-8) -->
-            <div class="mt-6 rounded-2xl border border-matriks-200 bg-matriks-50/40 p-4 sm:p-6">
-              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-                <span class="px-3 py-1 rounded-lg bg-matriks-700 text-white text-xs font-bold">
-                  Wacana 2 (No. 4–8) &bull; SPtLDV: Produksi Kerajinan Bazar OSIS
-                </span>
-                <span class="text-xs font-mono font-bold text-matriks-900 tabular-nums">5 Soal &times; 3 Poin = 15 Poin</span>
-              </div>
-
-              <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
-                <p>
-                  Untuk menggalang dana bazar sekolah, pengurus OSIS memproduksi <strong>Gantungan Kunci</strong> ($x$ buah) dan <strong>Pin Akrilik</strong> ($y$ buah) dengan kendala bahan dan waktu sebagai berikut:
-                </p>
-                <ul class="list-disc pl-5 space-y-1 text-sm">
-                  <li>Total produksi gabungan maksimal $10$ buah: $x + y \le 10$.</li>
-                  <li>Pembuatan $1$ gantungan kunci butuh $1$ jam dan $1$ pin akrilik butuh $3$ jam, dengan total waktu kerja tersedia maksimal $18$ jam.</li>
-                  <li>Banyak produk tidak negatif: $x \ge 0,\; y \ge 0$.</li>
-                  <li>Harga jual: Gantungan Kunci $\text{Rp}15.000$/buah dan Pin Akrilik $\text{Rp}25.000$/buah, sehingga fungsi pendapatan $f(x, y) = 15.000x + 25.000y$.</li>
-                </ul>
-
-                <!-- Grafik SVG 1: DHP Produksi Kerajinan OSIS -->
-                <div class="bg-white p-4 rounded-xl border border-matriks-200/80 shadow-sm">
-                  <div class="text-xs font-bold text-matriks-900 mb-2">Grafik 1 — Daerah Himpunan Penyelesaian (DHP) Produksi Kerajinan OSIS:</div>
-                  <div class="w-full overflow-x-auto flex justify-center">
-                    <svg viewBox="0 0 420 270" class="w-full max-w-md h-auto" role="img" aria-label="Grafik DHP garis x + y = 10 dan x + 3y = 18">
-                      <!-- Grid lines -->
-                      <g stroke="#e2e8f0" stroke-width="1">
-                        <line x1="86" y1="30" x2="86" y2="230" />
-                        <line x1="122" y1="30" x2="122" y2="230" />
-                        <line x1="158" y1="30" x2="158" y2="230" />
-                        <line x1="194" y1="30" x2="194" y2="230" />
-                        <line x1="230" y1="30" x2="230" y2="230" />
-                        <line x1="266" y1="30" x2="266" y2="230" />
-                        <line x1="302" y1="30" x2="302" y2="230" />
-                        <line x1="338" y1="30" x2="338" y2="230" />
-                        <line x1="374" y1="30" x2="374" y2="230" />
-                        <line x1="50" y1="194" x2="395" y2="194" />
-                        <line x1="50" y1="158" x2="395" y2="158" />
-                        <line x1="50" y1="122" x2="395" y2="122" />
-                        <line x1="50" y1="86" x2="395" y2="86" />
-                        <line x1="50" y1="50" x2="395" y2="50" />
-                      </g>
-                      <!-- Shaded DHP Polygon: (0,0), (10,0), (6,4), (0,6) -->
-                      <polygon points="50,230 230,230 158,158 50,122" fill="#2d8a60" fill-opacity="0.22" stroke="none" />
-                      <!-- Axes -->
-                      <line x1="50" y1="230" x2="400" y2="230" stroke="#0f172a" stroke-width="2" />
-                      <line x1="50" y1="230" x2="50" y2="24" stroke="#0f172a" stroke-width="2" />
-                      <polygon points="400,230 392,226 392,234" fill="#0f172a" />
-                      <polygon points="50,24 46,32 54,32" fill="#0f172a" />
-                      <!-- Axis labels -->
-                      <text x="403" y="234" font-size="12" font-weight="700" fill="#0f172a">X</text>
-                      <text x="45" y="18" font-size="12" font-weight="700" fill="#0f172a">Y</text>
-                      <!-- Line 1: x + y = 10 -->
-                      <line x1="50" y1="50" x2="230" y2="230" stroke="#c2414b" stroke-width="2.4" />
-                      <text x="86" y="72" font-size="11" font-weight="700" fill="#a6323c">x + y = 10</text>
-                      <!-- Line 2: x + 3y = 18 -->
-                      <line x1="50" y1="122" x2="374" y2="230" stroke="#1f734e" stroke-width="2.4" />
-                      <text x="242" y="180" font-size="11" font-weight="700" fill="#144932">x + 3y = 18</text>
-                      <!-- DHP Text -->
-                      <text x="98" y="198" font-size="13" font-weight="800" fill="#103a28">DHP</text>
-                      <!-- Corner Points -->
-                      <circle cx="50" cy="230" r="3.5" fill="#0f172a" />
-                      <circle cx="230" cy="230" r="4" fill="#c2414b" />
-                      <circle cx="50" cy="50" r="3.5" fill="#c2414b" />
-                      <circle cx="374" cy="230" r="3.5" fill="#1f734e" />
-                      <circle cx="50" cy="122" r="4" fill="#1f734e" />
-                      <circle cx="158" cy="158" r="4.5" fill="#0f291e" stroke="#ffffff" stroke-width="1.5" />
-                      <!-- Ticks & Coordinate Labels -->
-                      <text x="38" y="244" font-size="11" font-weight="600" fill="#334155">0</text>
-                      <text x="223" y="246" font-size="11" font-weight="700" fill="#0f172a">10</text>
-                      <text x="367" y="246" font-size="11" font-weight="700" fill="#0f172a">18</text>
-                      <text x="28" y="54" font-size="11" font-weight="700" fill="#0f172a">10</text>
-                      <text x="20" y="126" font-size="11" font-weight="700" fill="#144932">y₀</text>
-                      <text x="166" y="152" font-size="11.5" font-weight="800" fill="#0f291e">B(x_B, y_B)</text>
-                    </svg>
-                  </div>
-                </div>
-
-                <!-- Soal 4 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">
-                      Nomor 4 &bull; C2 &bull; 3 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(4)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Model pertidaksamaan linear untuk kendala waktu pembuatan kerajinan adalah
-                    <input id="input-q4" type="text" placeholder="Contoh: x + 3y <= 18" aria-label="Jawaban Nomor 4" oninput="handleBagian1Input(4, this.value)" class="lkpd-inline-input" style="max-width: 13.5rem;" />
-                    <span class="inline-flex items-center gap-1 align-middle ml-1">
-                      <button type="button" onclick="insertSymbolIntoInput('input-q4', '≤')" class="px-2 py-1 rounded-md border border-matriks-300 bg-matriks-50 hover:bg-matriks-100 text-matriks-900 font-mono text-xs font-bold" title="Sisipkan simbol ≤">≤</button>
-                      <button type="button" onclick="insertSymbolIntoInput('input-q4', '≥')" class="px-2 py-1 rounded-md border border-matriks-300 bg-matriks-50 hover:bg-matriks-100 text-matriks-900 font-mono text-xs font-bold" title="Sisipkan simbol ≥">≥</button>
-                    </span>.
-                  </p>
-                  <div id="hint-4" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 4:</strong> $1$ gantungan kunci butuh $1$ jam ($x$), $1$ pin butuh $3$ jam ($3y$), dan kata "maksimal $18$ jam" menggunakan tanda $\le$. Boleh ketik <code>&lt;=</code> atau klik tombol <code>≤</code>.
-                  </div>
-                </div>
-
-                <!-- Soal 5 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">
-                      Nomor 5 &bull; C2 &bull; 3 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(5)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Garis batas kendala waktu $x + 3y = 18$ memotong sumbu-$Y$ pada titik $(0, y_0)$. Nilai $y_0$ tersebut adalah
-                    <input id="input-q5" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 5" oninput="handleBagian1Input(5, this.value)" class="lkpd-inline-input" />.
-                  </p>
-                  <div id="hint-5" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 5:</strong> Titik potong sumbu-$Y$ terjadi saat $x = 0$, sehingga $0 + 3y_0 = 18$.
-                  </div>
-                </div>
-
-                <!-- Soal 6 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">
-                      Nomor 6 &bull; C3 &bull; 3 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(6)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Titik pojok $B(x_B, y_B)$ merupakan titik potong garis $x + y = 10$ dan $x + 3y = 18$. Nilai absis $x_B$ dari titik potong tersebut adalah
-                    <input id="input-q6" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 6" oninput="handleBagian1Input(6, this.value)" class="lkpd-inline-input" />.
-                  </p>
-                  <div id="hint-6" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 6:</strong> Eliminasi $x$ dari $(x + 3y = 18)$ dan $(x + y = 10)$ untuk menemukan $y_B$, lalu substitusikan kembali untuk memperoleh $x_B$.
-                  </div>
-                </div>
-
-                <!-- Soal 7 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">
-                      Nomor 7 &bull; C3 &bull; 3 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(7)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Sementara itu, nilai ordinat $y_B$ dari titik pojok $B(x_B, y_B)$ tersebut adalah
-                    <input id="input-q7" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 7" oninput="handleBagian1Input(7, this.value)" class="lkpd-inline-input" />.
-                  </p>
-                  <div id="hint-7" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 7:</strong> Kurangkan $(x + 3y = 18) - (x + y = 10)$ sehingga diperoleh $2y = 8$.
-                  </div>
-                </div>
-
-                <!-- Soal 8 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">
-                      Nomor 8 &bull; C3 &bull; 3 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(8)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Dengan menguji semua titik pojok DHP ke fungsi pendapatan $f(x, y) = 15.000x + 25.000y$, pendapatan maksimum yang dapat diperoleh pengurus OSIS adalah $\text{Rp}$
-                    <input id="input-q8" type="text" inputmode="numeric" placeholder="Contoh: 190000" aria-label="Jawaban Nomor 8" oninput="handleBagian1Input(8, this.value)" class="lkpd-inline-input" />.
-                  </p>
-                  <div id="hint-8" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 8:</strong> Uji titik pojok $(10, 0)$, $(6, 4)$, dan $(0, 6)$ ke $f(x, y) = 15.000x + 25.000y$, lalu ambil nilai terbesar. Boleh ditulis dengan atau tanpa titik pemisah ribuan.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- KARTU NARASI 3: PERSAMAAN KUADRAT (No. 9-10) -->
-            <div class="mt-6 rounded-2xl border border-translasi-200 bg-translasi-50/50 p-4 sm:p-6">
-              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-                <span class="px-3 py-1 rounded-lg bg-translasi-700 text-white text-xs font-bold">
-                  Wacana 3 (No. 9–10) &bull; Persamaan Kuadrat: Desain Panggung Pentas Seni
-                </span>
-                <span class="text-xs font-mono font-bold text-translasi-900 tabular-nums">2 Soal &times; 3 Poin = 6 Poin</span>
-              </div>
-
-              <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
-                <p>
-                  Panitia Pentas Seni SMA Don Bosco II merancang panggung berbentuk persegi panjang dengan panjang $(x + 4)\text{ meter}$ dan lebar $x\text{ meter}$ (untuk $x > 0$). Luas panggung yang direncanakan adalah $96\text{ m}^2$, sehingga diperoleh persamaan kuadrat:
-                </p>
-                <div class="bg-white p-3.5 rounded-xl border border-translasi-200/80 text-sm overflow-x-auto shadow-sm">
-                  $$x(x + 4) = 96 \iff x^2 + 4x - 96 = 0$$
-                </div>
-
-                <!-- Soal 9 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-translasi-50 text-translasi-900 border border-translasi-200 text-xs font-mono font-bold">
-                      Nomor 9 &bull; C3 &bull; 3 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(9)" class="hint-btn text-xs font-bold text-translasi-700 hover:text-translasi-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Jika persamaan kuadrat $x^2 + 4x - 96 = 0$ difaktorkan menjadi $(x + 12)(x - p) = 0$, maka nilai bilangan bulat positif $p$ adalah
-                    <input id="input-q9" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 9" oninput="handleBagian1Input(9, this.value)" class="lkpd-inline-input" />.
-                  </p>
-                  <div id="hint-9" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 9:</strong> Cari bilangan $p$ sehingga $12 \times (-p) = -96$ dan $12 - p = 4$.
-                  </div>
-                </div>
-
-                <!-- Soal 10 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-translasi-50 text-translasi-900 border border-translasi-200 text-xs font-mono font-bold">
-                      Nomor 10 &bull; C3 &bull; 3 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(10)" class="hint-btn text-xs font-bold text-translasi-700 hover:text-translasi-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Berdasarkan lebar panggung $x > 0$ yang memenuhi, keliling panggung pentas seni tersebut adalah
-                    <input id="input-q10" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 10" oninput="handleBagian1Input(10, this.value)" class="lkpd-inline-input" /> meter.
-                  </p>
-                  <div id="hint-10" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 10:</strong> Karena lebar $x = 8\text{ m}$ dan panjang $x + 4 = 12\text{ m}$, hitung keliling persegi panjang $K = 2(\text{panjang} + \text{lebar})$.
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!-- Kontainer Dinamis Wacana 1-3 (Berbeda antara Mode Belajar & Mode Simulasi UAS) -->
+            <div id="bagian1WacanaContainer" class="mt-6 space-y-6"></div>
 
             <div class="mt-6 flex justify-end">
               <button
@@ -1890,13 +1584,485 @@
       }
     ];
 
+    // 4B. DATA PAKET B — MODE SIMULASI UAS (20 SOAL BERBEDA, TIPE & BOBOT SETARA)
+    const BAGIAN1_WACANA_BELAJAR_HTML = `
+      <!-- KARTU NARASI 1: EKSPONEN & LOGARITMA (No. 1-3) -->
+      <div class="rounded-2xl border border-poli-200 bg-poli-50/40 p-4 sm:p-6">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <span class="px-3 py-1 rounded-lg bg-poli-600 text-white text-xs font-bold">Wacana 1 (No. 1–3) &bull; Eksponen &amp; Logaritma: Pelipatan Penonton Video OSIS</span>
+          <span class="text-xs font-mono font-bold text-poli-900 tabular-nums">3 Soal &times; 3 Poin = 9 Poin</span>
+        </div>
+        <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
+          <p>Pengurus OSIS mengunggah video kampanye literasi di media sosial sekolah. Pada saat awal diunggah ($t = 0$ jam), video tersebut telah ditonton oleh $100$ orang. Karena dibagikan secara berantai, jumlah penonton bertambah mengikuti model eksponen berikut (dengan $t$ menyatakan waktu dalam jam):</p>
+          <div class="bg-white p-3.5 rounded-xl border border-poli-200/80 text-sm overflow-x-auto shadow-sm">$$V(t) = 100 \\cdot 3^t$$</div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-poli-50 text-poli-900 border border-poli-200 text-xs font-mono font-bold">Nomor 1 &bull; C2 &bull; 3 Poin</span>
+              <button type="button" onclick="toggleHint(1)" class="hint-btn text-xs font-bold text-poli-600 hover:text-poli-900 underline">Petunjuk (Hint)</button>
+            </div>
+            <p class="leading-loose">Berdasarkan model tersebut, jumlah penonton video setelah $t = 3$ jam adalah $V(3) =$ <input id="input-q1" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 1" oninput="handleBagian1Input(1, this.value)" class="lkpd-inline-input" /> orang.</p>
+            <div id="hint-1" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. 1:</strong> Substitusikan $t = 3$ ke fungsi $V(t) = 100 \\cdot 3^t$, lalu hitung $3^3 = 27$ dan kalikan dengan $100$.</div>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-poli-50 text-poli-900 border border-poli-200 text-xs font-mono font-bold">Nomor 2 &bull; C3 &bull; 3 Poin</span>
+              <button type="button" onclick="toggleHint(2)" class="hint-btn text-xs font-bold text-poli-600 hover:text-poli-900 underline">Petunjuk (Hint)</button>
+            </div>
+            <p class="leading-loose">Apabila total penonton video telah mencapai $8.100$ orang, maka lama waktu yang telah berlalu sejak video diunggah adalah $t =$ <input id="input-q2" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 2" oninput="handleBagian1Input(2, this.value)" class="lkpd-inline-input" /> jam.</p>
+            <div id="hint-2" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. 2:</strong> Selesaikan $100 \\cdot 3^t = 8.100 \\implies 3^t = 81$. Nyatakan $81$ sebagai perpangkatan basis $3$.</div>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-poli-50 text-poli-900 border border-poli-200 text-xs font-mono font-bold">Nomor 3 &bull; C3 &bull; 3 Poin</span>
+              <button type="button" onclick="toggleHint(3)" class="hint-btn text-xs font-bold text-poli-600 hover:text-poli-900 underline">Petunjuk (Hint)</button>
+            </div>
+            <p class="leading-loose">Untuk menaksir waktu saat jumlah penonton menjadi $18$ kali lipat dari jumlah awal, panitia perlu menghitung nilai \${}^3\\log 18$. Jika diketahui \${}^3\\log 2 \\approx 0,63$, maka nilai taksiran \${}^3\\log 18 \\approx$ <input id="input-q3" type="text" inputmode="decimal" placeholder="Contoh: 2,63" aria-label="Jawaban Nomor 3" oninput="handleBagian1Input(3, this.value)" class="lkpd-inline-input" />.</p>
+            <div id="hint-3" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. 3:</strong> Uraikan $18 = 9 \\times 2 = 3^2 \\times 2$, lalu gunakan sifat \${}^3\\log(a \\cdot b) = {}^3\\log a + {}^3\\log b$.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KARTU NARASI 2: SPtLDV + GRAFIK SVG 1 (No. 4-8) -->
+      <div class="rounded-2xl border border-matriks-200 bg-matriks-50/40 p-4 sm:p-6">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <span class="px-3 py-1 rounded-lg bg-matriks-700 text-white text-xs font-bold">Wacana 2 (No. 4–8) &bull; SPtLDV: Produksi Kerajinan Bazar OSIS</span>
+          <span class="text-xs font-mono font-bold text-matriks-900 tabular-nums">5 Soal &times; 3 Poin = 15 Poin</span>
+        </div>
+        <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
+          <p>Untuk menggalang dana bazar sekolah, pengurus OSIS memproduksi <strong>Gantungan Kunci</strong> ($x$ buah) dan <strong>Pin Akrilik</strong> ($y$ buah) dengan kendala bahan dan waktu sebagai berikut:</p>
+          <ul class="list-disc pl-5 space-y-1 text-sm">
+            <li>Total produksi gabungan maksimal $10$ buah: $x + y \\le 10$.</li>
+            <li>Pembuatan $1$ gantungan kunci butuh $1$ jam dan $1$ pin akrilik butuh $3$ jam, dengan total waktu kerja tersedia maksimal $18$ jam.</li>
+            <li>Banyak produk tidak negatif: $x \\ge 0,\\; y \\ge 0$.</li>
+            <li>Harga jual: Gantungan Kunci $\\text{Rp}15.000$/buah dan Pin Akrilik $\\text{Rp}25.000$/buah, sehingga fungsi pendapatan $f(x, y) = 15.000x + 25.000y$.</li>
+          </ul>
+          <div class="bg-white p-4 rounded-xl border border-matriks-200/80 shadow-sm">
+            <div class="text-xs font-bold text-matriks-900 mb-2">Grafik 1 — Daerah Himpunan Penyelesaian (DHP) Produksi Kerajinan OSIS:</div>
+            <div class="w-full overflow-x-auto flex justify-center">
+              <svg viewBox="0 0 420 270" class="w-full max-w-md h-auto" role="img" aria-label="Grafik DHP garis x + y = 10 dan x + 3y = 18">
+                <g stroke="#e2e8f0" stroke-width="1">
+                  <line x1="86" y1="30" x2="86" y2="230" /><line x1="122" y1="30" x2="122" y2="230" /><line x1="158" y1="30" x2="158" y2="230" /><line x1="194" y1="30" x2="194" y2="230" /><line x1="230" y1="30" x2="230" y2="230" /><line x1="266" y1="30" x2="266" y2="230" /><line x1="302" y1="30" x2="302" y2="230" /><line x1="338" y1="30" x2="338" y2="230" /><line x1="374" y1="30" x2="374" y2="230" />
+                  <line x1="50" y1="194" x2="395" y2="194" /><line x1="50" y1="158" x2="395" y2="158" /><line x1="50" y1="122" x2="395" y2="122" /><line x1="50" y1="86" x2="395" y2="86" /><line x1="50" y1="50" x2="395" y2="50" />
+                </g>
+                <polygon points="50,230 230,230 158,158 50,122" fill="#2d8a60" fill-opacity="0.22" stroke="none" />
+                <line x1="50" y1="230" x2="400" y2="230" stroke="#0f172a" stroke-width="2" /><line x1="50" y1="230" x2="50" y2="24" stroke="#0f172a" stroke-width="2" />
+                <polygon points="400,230 392,226 392,234" fill="#0f172a" /><polygon points="50,24 46,32 54,32" fill="#0f172a" />
+                <text x="403" y="234" font-size="12" font-weight="700" fill="#0f172a">X</text><text x="45" y="18" font-size="12" font-weight="700" fill="#0f172a">Y</text>
+                <line x1="50" y1="50" x2="230" y2="230" stroke="#c2414b" stroke-width="2.4" /><text x="86" y="72" font-size="11" font-weight="700" fill="#a6323c">x + y = 10</text>
+                <line x1="50" y1="122" x2="374" y2="230" stroke="#1f734e" stroke-width="2.4" /><text x="242" y="180" font-size="11" font-weight="700" fill="#144932">x + 3y = 18</text>
+                <text x="98" y="198" font-size="13" font-weight="800" fill="#103a28">DHP</text>
+                <circle cx="50" cy="230" r="3.5" fill="#0f172a" /><circle cx="230" cy="230" r="4" fill="#c2414b" /><circle cx="50" cy="50" r="3.5" fill="#c2414b" /><circle cx="374" cy="230" r="3.5" fill="#1f734e" /><circle cx="50" cy="122" r="4" fill="#1f734e" /><circle cx="158" cy="158" r="4.5" fill="#0f291e" stroke="#ffffff" stroke-width="1.5" />
+                <text x="38" y="244" font-size="11" font-weight="600" fill="#334155">0</text><text x="223" y="246" font-size="11" font-weight="700" fill="#0f172a">10</text><text x="367" y="246" font-size="11" font-weight="700" fill="#0f172a">18</text><text x="28" y="54" font-size="11" font-weight="700" fill="#0f172a">10</text><text x="20" y="126" font-size="11" font-weight="700" fill="#144932">y₀</text><text x="166" y="152" font-size="11.5" font-weight="800" fill="#0f291e">B(x_B, y_B)</text>
+              </svg>
+            </div>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">Nomor 4 &bull; C2 &bull; 3 Poin</span>
+              <button type="button" onclick="toggleHint(4)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">Petunjuk (Hint)</button>
+            </div>
+            <p class="leading-loose">Model pertidaksamaan linear untuk kendala waktu pembuatan kerajinan adalah <input id="input-q4" type="text" placeholder="Contoh: x + 3y <= 18" aria-label="Jawaban Nomor 4" oninput="handleBagian1Input(4, this.value)" class="lkpd-inline-input" style="max-width: 13.5rem;" /> <span class="inline-flex items-center gap-1 align-middle ml-1"><button type="button" onclick="insertSymbolIntoInput('input-q4', '≤')" class="px-2 py-1 rounded-md border border-matriks-300 bg-matriks-50 hover:bg-matriks-100 text-matriks-900 font-mono text-xs font-bold" title="Sisipkan simbol ≤">≤</button><button type="button" onclick="insertSymbolIntoInput('input-q4', '≥')" class="px-2 py-1 rounded-md border border-matriks-300 bg-matriks-50 hover:bg-matriks-100 text-matriks-900 font-mono text-xs font-bold" title="Sisipkan simbol ≥">≥</button></span>.</p>
+            <div id="hint-4" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. 4:</strong> $1$ gantungan kunci butuh $1$ jam ($x$), $1$ pin butuh $3$ jam ($3y$), dan kata "maksimal $18$ jam" menggunakan tanda $\\le$.</div>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">Nomor 5 &bull; C2 &bull; 3 Poin</span>
+              <button type="button" onclick="toggleHint(5)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">Petunjuk (Hint)</button>
+            </div>
+            <p class="leading-loose">Garis batas kendala waktu $x + 3y = 18$ memotong sumbu-$Y$ pada titik $(0, y_0)$. Nilai $y_0$ tersebut adalah <input id="input-q5" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 5" oninput="handleBagian1Input(5, this.value)" class="lkpd-inline-input" />.</p>
+            <div id="hint-5" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. 5:</strong> Titik potong sumbu-$Y$ terjadi saat $x = 0$, sehingga $0 + 3y_0 = 18$.</div>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">Nomor 6 &bull; C3 &bull; 3 Poin</span>
+              <button type="button" onclick="toggleHint(6)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">Petunjuk (Hint)</button>
+            </div>
+            <p class="leading-loose">Titik pojok $B(x_B, y_B)$ merupakan titik potong garis $x + y = 10$ dan $x + 3y = 18$. Nilai absis $x_B$ dari titik potong tersebut adalah <input id="input-q6" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 6" oninput="handleBagian1Input(6, this.value)" class="lkpd-inline-input" />.</p>
+            <div id="hint-6" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. 6:</strong> Eliminasi $x$ dari $(x + 3y = 18)$ dan $(x + y = 10)$ untuk menemukan $y_B$, lalu substitusikan kembali untuk memperoleh $x_B$.</div>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">Nomor 7 &bull; C3 &bull; 3 Poin</span>
+              <button type="button" onclick="toggleHint(7)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">Petunjuk (Hint)</button>
+            </div>
+            <p class="leading-loose">Sementara itu, nilai ordinat $y_B$ dari titik pojok $B(x_B, y_B)$ tersebut adalah <input id="input-q7" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 7" oninput="handleBagian1Input(7, this.value)" class="lkpd-inline-input" />.</p>
+            <div id="hint-7" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. 7:</strong> Kurangkan $(x + 3y = 18) - (x + y = 10)$ sehingga diperoleh $2y = 8$.</div>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">Nomor 8 &bull; C3 &bull; 3 Poin</span>
+              <button type="button" onclick="toggleHint(8)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">Petunjuk (Hint)</button>
+            </div>
+            <p class="leading-loose">Dengan menguji semua titik pojok DHP ke fungsi pendapatan $f(x, y) = 15.000x + 25.000y$, pendapatan maksimum yang dapat diperoleh pengurus OSIS adalah $\\text{Rp}$ <input id="input-q8" type="text" inputmode="numeric" placeholder="Contoh: 190000" aria-label="Jawaban Nomor 8" oninput="handleBagian1Input(8, this.value)" class="lkpd-inline-input" />.</p>
+            <div id="hint-8" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. 8:</strong> Uji titik pojok $(10, 0)$, $(6, 4)$, dan $(0, 6)$ ke $f(x, y) = 15.000x + 25.000y$, lalu ambil nilai terbesar.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KARTU NARASI 3: PERSAMAAN KUADRAT (No. 9-10) -->
+      <div class="rounded-2xl border border-translasi-200 bg-translasi-50/50 p-4 sm:p-6">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <span class="px-3 py-1 rounded-lg bg-translasi-700 text-white text-xs font-bold">Wacana 3 (No. 9–10) &bull; Persamaan Kuadrat: Desain Panggung Pentas Seni</span>
+          <span class="text-xs font-mono font-bold text-translasi-900 tabular-nums">2 Soal &times; 3 Poin = 6 Poin</span>
+        </div>
+        <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
+          <p>Panitia Pentas Seni SMA Don Bosco II merancang panggung berbentuk persegi panjang dengan panjang $(x + 4)\\text{ meter}$ dan lebar $x\\text{ meter}$ (untuk $x > 0$). Luas panggung yang direncanakan adalah $96\\text{ m}^2$, sehingga diperoleh persamaan kuadrat:</p>
+          <div class="bg-white p-3.5 rounded-xl border border-translasi-200/80 text-sm overflow-x-auto shadow-sm">$$x(x + 4) = 96 \\iff x^2 + 4x - 96 = 0$$</div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-translasi-50 text-translasi-900 border border-translasi-200 text-xs font-mono font-bold">Nomor 9 &bull; C3 &bull; 3 Poin</span>
+              <button type="button" onclick="toggleHint(9)" class="hint-btn text-xs font-bold text-translasi-700 hover:text-translasi-900 underline">Petunjuk (Hint)</button>
+            </div>
+            <p class="leading-loose">Jika persamaan kuadrat $x^2 + 4x - 96 = 0$ difaktorkan menjadi $(x + 12)(x - p) = 0$, maka nilai bilangan bulat positif $p$ adalah <input id="input-q9" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 9" oninput="handleBagian1Input(9, this.value)" class="lkpd-inline-input" />.</p>
+            <div id="hint-9" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. 9:</strong> Cari bilangan $p$ sehingga $12 \\times (-p) = -96$ dan $12 - p = 4$.</div>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-translasi-50 text-translasi-900 border border-translasi-200 text-xs font-mono font-bold">Nomor 10 &bull; C3 &bull; 3 Poin</span>
+              <button type="button" onclick="toggleHint(10)" class="hint-btn text-xs font-bold text-translasi-700 hover:text-translasi-900 underline">Petunjuk (Hint)</button>
+            </div>
+            <p class="leading-loose">Berdasarkan lebar panggung $x > 0$ yang memenuhi, keliling panggung pentas seni tersebut adalah <input id="input-q10" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 10" oninput="handleBagian1Input(10, this.value)" class="lkpd-inline-input" /> meter.</p>
+            <div id="hint-10" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. 10:</strong> Karena lebar $x = 8\\text{ m}$ dan panjang $x + 4 = 12\\text{ m}$, hitung keliling persegi panjang $K = 2(\\text{panjang} + \\text{lebar})$.</div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const BAGIAN1_WACANA_SIMULASI_HTML = `
+      <!-- KARTU NARASI 1 (SIMULASI): EKSPONEN & LOGARITMA (No. 1-3) -->
+      <div class="rounded-2xl border border-poli-200 bg-poli-50/40 p-4 sm:p-6">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <span class="px-3 py-1 rounded-lg bg-poli-600 text-white text-xs font-bold">Wacana 1 (No. 1–3) &bull; Eksponen &amp; Logaritma: Pertumbuhan Koloni Ragi di Lab Biologi</span>
+          <span class="text-xs font-mono font-bold text-poli-900 tabular-nums">3 Soal &times; 3 Poin = 9 Poin</span>
+        </div>
+        <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
+          <p>Dalam praktikum biologi, sebuah cawan petri awalnya berisi $50$ sel ragi ($t = 0$ jam). Jumlah sel ragi membelah menjadi dua kali lipat setiap $1$ jam mengikuti model eksponen berikut (dengan $t$ menyatakan waktu dalam jam):</p>
+          <div class="bg-white p-3.5 rounded-xl border border-poli-200/80 text-sm overflow-x-auto shadow-sm">$$N(t) = 50 \\cdot 2^t$$</div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-poli-50 text-poli-900 border border-poli-200 text-xs font-mono font-bold">Nomor 1 &bull; C2 &bull; 3 Poin</span>
+            </div>
+            <p class="leading-loose">Berdasarkan model tersebut, jumlah sel ragi setelah $t = 4$ jam adalah $N(4) =$ <input id="input-q1" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 1" oninput="handleBagian1Input(1, this.value)" class="lkpd-inline-input" /> sel.</p>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-poli-50 text-poli-900 border border-poli-200 text-xs font-mono font-bold">Nomor 2 &bull; C3 &bull; 3 Poin</span>
+            </div>
+            <p class="leading-loose">Apabila jumlah sel ragi telah mencapai $3.200$ sel, maka lama waktu pengamatan yang telah berlalu adalah $t =$ <input id="input-q2" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 2" oninput="handleBagian1Input(2, this.value)" class="lkpd-inline-input" /> jam.</p>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-poli-50 text-poli-900 border border-poli-200 text-xs font-mono font-bold">Nomor 3 &bull; C3 &bull; 3 Poin</span>
+            </div>
+            <p class="leading-loose">Untuk menaksir waktu saat sel ragi menjadi $24$ kali lipat dari jumlah awal, diperlukan nilai \${}^2\\log 24$. Jika diketahui \${}^2\\log 3 \\approx 1,58$, maka nilai taksiran \${}^2\\log 24 \\approx$ <input id="input-q3" type="text" inputmode="decimal" placeholder="Contoh: 4,58" aria-label="Jawaban Nomor 3" oninput="handleBagian1Input(3, this.value)" class="lkpd-inline-input" />.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- KARTU NARASI 2 (SIMULASI): SPtLDV + GRAFIK SVG B1 (No. 4-8) -->
+      <div class="rounded-2xl border border-matriks-200 bg-matriks-50/40 p-4 sm:p-6">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <span class="px-3 py-1 rounded-lg bg-matriks-700 text-white text-xs font-bold">Wacana 2 (No. 4–8) &bull; SPtLDV: Produksi Kue Kering &amp; Kue Bolu UMKM</span>
+          <span class="text-xs font-mono font-bold text-matriks-900 tabular-nums">5 Soal &times; 3 Poin = 15 Poin</span>
+        </div>
+        <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
+          <p>Sebuah usaha rumahan memproduksi <strong>Kue Kering</strong> ($x$ toples) dan <strong>Kue Bolu</strong> ($y$ loyang) setiap hari dengan kendala produksi sebagai berikut:</p>
+          <ul class="list-disc pl-5 space-y-1 text-sm">
+            <li>Total produksi gabungan maksimal $12$ kemasan per hari: $x + y \\le 12$.</li>
+            <li>Pemanggangan $1$ toples kue kering butuh $2$ jam oven dan $1$ loyang kue bolu butuh $1$ jam oven, dengan total waktu oven tersedia maksimal $20$ jam per hari.</li>
+            <li>Banyak produksi tidak negatif: $x \\ge 0,\\; y \\ge 0$.</li>
+            <li>Keuntungan: Kue Kering $\\text{Rp}30.000$/toples dan Kue Bolu $\\text{Rp}20.000$/loyang, sehingga fungsi keuntungan $f(x, y) = 30.000x + 20.000y$.</li>
+          </ul>
+          <div class="bg-white p-4 rounded-xl border border-matriks-200/80 shadow-sm">
+            <div class="text-xs font-bold text-matriks-900 mb-2">Grafik 1 — Daerah Himpunan Penyelesaian (DHP) Produksi Kue UMKM:</div>
+            <div class="w-full overflow-x-auto flex justify-center">
+              <svg viewBox="0 0 420 270" class="w-full max-w-md h-auto" role="img" aria-label="Grafik DHP garis x + y = 12 dan 2x + y = 20">
+                <g stroke="#e2e8f0" stroke-width="1">
+                  <line x1="98" y1="30" x2="98" y2="230" /><line x1="146" y1="30" x2="146" y2="230" /><line x1="194" y1="30" x2="194" y2="230" /><line x1="242" y1="30" x2="242" y2="230" /><line x1="290" y1="30" x2="290" y2="230" /><line x1="338" y1="30" x2="338" y2="230" />
+                  <line x1="50" y1="190" x2="380" y2="190" /><line x1="50" y1="150" x2="380" y2="150" /><line x1="50" y1="110" x2="380" y2="110" /><line x1="50" y1="70" x2="380" y2="70" /><line x1="50" y1="30" x2="380" y2="30" />
+                </g>
+                <polygon points="50,230 290,230 242,190 50,110" fill="#2d8a60" fill-opacity="0.22" stroke="none" />
+                <line x1="50" y1="230" x2="395" y2="230" stroke="#0f172a" stroke-width="2" /><line x1="50" y1="230" x2="50" y2="18" stroke="#0f172a" stroke-width="2" />
+                <polygon points="395,230 387,226 387,234" fill="#0f172a" /><polygon points="50,18 46,26 54,26" fill="#0f172a" />
+                <text x="398" y="234" font-size="12" font-weight="700" fill="#0f172a">X</text><text x="45" y="13" font-size="12" font-weight="700" fill="#0f172a">Y</text>
+                <line x1="50" y1="110" x2="338" y2="230" stroke="#c2414b" stroke-width="2.4" /><text x="275" y="198" font-size="11" font-weight="700" fill="#a6323c">x + y = 12</text>
+                <line x1="50" y1="30" x2="290" y2="230" stroke="#1f734e" stroke-width="2.4" /><text x="115" y="74" font-size="11" font-weight="700" fill="#144932">2x + y = 20</text>
+                <text x="118" y="196" font-size="13" font-weight="800" fill="#103a28">DHP</text>
+                <circle cx="50" cy="230" r="3.5" fill="#0f172a" /><circle cx="338" cy="230" r="3.5" fill="#c2414b" /><circle cx="50" cy="110" r="4" fill="#c2414b" /><circle cx="290" cy="230" r="4" fill="#1f734e" /><circle cx="50" cy="30" r="3.5" fill="#1f734e" /><circle cx="242" cy="190" r="4.5" fill="#0f291e" stroke="#ffffff" stroke-width="1.5" />
+                <text x="38" y="244" font-size="11" font-weight="600" fill="#334155">0</text><text x="284" y="246" font-size="11" font-weight="700" fill="#144932">x₀</text><text x="331" y="246" font-size="11" font-weight="700" fill="#0f172a">12</text><text x="28" y="114" font-size="11" font-weight="700" fill="#0f172a">12</text><text x="28" y="34" font-size="11" font-weight="700" fill="#0f172a">20</text><text x="249" y="182" font-size="11.5" font-weight="800" fill="#0f291e">B(x_B, y_B)</text>
+              </svg>
+            </div>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">Nomor 4 &bull; C2 &bull; 3 Poin</span>
+            </div>
+            <p class="leading-loose">Model pertidaksamaan linear untuk kendala waktu oven harian adalah <input id="input-q4" type="text" placeholder="Contoh: 2x + y <= 20" aria-label="Jawaban Nomor 4" oninput="handleBagian1Input(4, this.value)" class="lkpd-inline-input" style="max-width: 13.5rem;" /> <span class="inline-flex items-center gap-1 align-middle ml-1"><button type="button" onclick="insertSymbolIntoInput('input-q4', '≤')" class="px-2 py-1 rounded-md border border-matriks-300 bg-matriks-50 hover:bg-matriks-100 text-matriks-900 font-mono text-xs font-bold" title="Sisipkan simbol ≤">≤</button><button type="button" onclick="insertSymbolIntoInput('input-q4', '≥')" class="px-2 py-1 rounded-md border border-matriks-300 bg-matriks-50 hover:bg-matriks-100 text-matriks-900 font-mono text-xs font-bold" title="Sisipkan simbol ≥">≥</button></span>.</p>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">Nomor 5 &bull; C2 &bull; 3 Poin</span>
+            </div>
+            <p class="leading-loose">Garis batas kendala waktu oven $2x + y = 20$ memotong sumbu-$X$ pada titik $(x_0, 0)$. Nilai $x_0$ tersebut adalah <input id="input-q5" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 5" oninput="handleBagian1Input(5, this.value)" class="lkpd-inline-input" />.</p>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">Nomor 6 &bull; C3 &bull; 3 Poin</span>
+            </div>
+            <p class="leading-loose">Titik pojok $B(x_B, y_B)$ merupakan titik potong garis $x + y = 12$ dan $2x + y = 20$. Nilai absis $x_B$ dari titik potong tersebut adalah <input id="input-q6" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 6" oninput="handleBagian1Input(6, this.value)" class="lkpd-inline-input" />.</p>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">Nomor 7 &bull; C3 &bull; 3 Poin</span>
+            </div>
+            <p class="leading-loose">Sementara itu, nilai ordinat $y_B$ dari titik pojok $B(x_B, y_B)$ tersebut adalah <input id="input-q7" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 7" oninput="handleBagian1Input(7, this.value)" class="lkpd-inline-input" />.</p>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">Nomor 8 &bull; C3 &bull; 3 Poin</span>
+            </div>
+            <p class="leading-loose">Dengan menguji seluruh titik pojok DHP ke fungsi keuntungan $f(x, y) = 30.000x + 20.000y$, keuntungan maksimum per hari adalah $\\text{Rp}$ <input id="input-q8" type="text" inputmode="numeric" placeholder="Contoh: 320000" aria-label="Jawaban Nomor 8" oninput="handleBagian1Input(8, this.value)" class="lkpd-inline-input" />.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- KARTU NARASI 3 (SIMULASI): PERSAMAAN KUADRAT (No. 9-10) -->
+      <div class="rounded-2xl border border-translasi-200 bg-translasi-50/50 p-4 sm:p-6">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <span class="px-3 py-1 rounded-lg bg-translasi-700 text-white text-xs font-bold">Wacana 3 (No. 9–10) &bull; Persamaan Kuadrat: Desain Kebun Hidroponik Sekolah</span>
+          <span class="text-xs font-mono font-bold text-translasi-900 tabular-nums">2 Soal &times; 3 Poin = 6 Poin</span>
+        </div>
+        <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
+          <p>Ekstrakurikuler IPA merancang kebun hidroponik berbentuk persegi panjang dengan panjang $(x + 6)\\text{ meter}$ dan lebar $x\\text{ meter}$ (untuk $x > 0$). Luas kebun yang direncanakan adalah $72\\text{ m}^2$, sehingga diperoleh persamaan kuadrat:</p>
+          <div class="bg-white p-3.5 rounded-xl border border-translasi-200/80 text-sm overflow-x-auto shadow-sm">$$x(x + 6) = 72 \\iff x^2 + 6x - 72 = 0$$</div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-translasi-50 text-translasi-900 border border-translasi-200 text-xs font-mono font-bold">Nomor 9 &bull; C3 &bull; 3 Poin</span>
+            </div>
+            <p class="leading-loose">Jika persamaan kuadrat $x^2 + 6x - 72 = 0$ difaktorkan menjadi $(x + 12)(x - q) = 0$, maka nilai bilangan bulat positif $q$ adalah <input id="input-q9" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 9" oninput="handleBagian1Input(9, this.value)" class="lkpd-inline-input" />.</p>
+          </div>
+          <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-translasi-50 text-translasi-900 border border-translasi-200 text-xs font-mono font-bold">Nomor 10 &bull; C3 &bull; 3 Poin</span>
+            </div>
+            <p class="leading-loose">Berdasarkan lebar kebun $x > 0$ yang memenuhi, keliling kebun hidroponik tersebut adalah <input id="input-q10" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 10" oninput="handleBagian1Input(10, this.value)" class="lkpd-inline-input" /> meter.</p>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const BAGIAN1_SIMULASI_QUESTIONS = [
+      { no: 1, topik: 'Eksponen & Logaritma', skor: 3, promptShort: 'Jumlah sel ragi setelah $t = 4$ jam pada model $N(t) = 50 \\cdot 2^t$', acceptedAnswers: ['800', '800sel'], displayAnswer: '800', explanation: 'Substitusikan $t = 4$ ke fungsi eksponen: $$N(4) = 50 \\cdot 2^4 = 50 \\cdot 16 = 800\\text{ sel}$$' },
+      { no: 2, topik: 'Eksponen & Logaritma', skor: 3, promptShort: 'Lama waktu $t$ (jam) saat jumlah sel ragi mencapai $3.200$ sel', acceptedAnswers: ['6', '6jam'], displayAnswer: '6', explanation: 'Selesaikan persamaan eksponen: $$50 \\cdot 2^t = 3.200 \\implies 2^t = 64 \\implies 2^t = 2^6 \\implies t = 6\\text{ jam}$$' },
+      { no: 3, topik: 'Eksponen & Logaritma', skor: 3, promptShort: 'Nilai taksiran ${}^2\\log 24$ jika diketahui ${}^2\\log 3 \\approx 1,58$', acceptedAnswers: ['4.58', '4,58'], displayAnswer: '4,58', explanation: 'Uraikan $24 = 8 \\times 3 = 2^3 \\times 3$, lalu gunakan sifat logaritma: $${}^2\\log 24 = {}^2\\log(2^3 \\cdot 3) = {}^2\\log 2^3 + {}^2\\log 3 = 3 + 1,58 = 4,58$$' },
+      { no: 4, topik: 'SPtLDV', skor: 3, promptShort: 'Model pertidaksamaan linear untuk kendala waktu oven harian (maksimal $20$ jam)', acceptedAnswers: ['2x+y<=20', '2x+1y<=20', 'y+2x<=20', '1y+2x<=20'], displayAnswer: '2x + y ≤ 20', explanation: 'Kue kering ($x$) butuh $2$ jam oven dan kue bolu ($y$) butuh $1$ jam oven dengan batas maksimal $20$ jam, sehingga modelnya $2x + y \\le 20$.' },
+      { no: 5, topik: 'SPtLDV', skor: 3, promptShort: 'Nilai $x_0$ pada titik potong sumbu-$X$ garis $2x + y = 20$', acceptedAnswers: ['10', '(10,0)'], displayAnswer: '10', explanation: 'Saat memotong sumbu-$X$, nilai $y = 0$: $$2x_0 + 0 = 20 \\implies x_0 = \\frac{20}{2} = 10$$ Titik potongnya adalah $(10, 0)$.' },
+      { no: 6, topik: 'SPtLDV', skor: 3, promptShort: 'Nilai absis $x_B$ dari titik potong garis $x + y = 12$ dan $2x + y = 20$', acceptedAnswers: ['8'], displayAnswer: '8', explanation: 'Eliminasi $y$: $(2x + y) - (x + y) = 20 - 12 \\implies x_B = 8$.' },
+      { no: 7, topik: 'SPtLDV', skor: 3, promptShort: 'Nilai ordinat $y_B$ dari titik potong garis $x + y = 12$ dan $2x + y = 20$', acceptedAnswers: ['4'], displayAnswer: '4', explanation: 'Substitusikan $x_B = 8$ ke $x + y = 12 \\implies y_B = 12 - 8 = 4$. Jadi koordinat titik pojok $B(8, 4)$.' },
+      { no: 8, topik: 'SPtLDV', skor: 3, promptShort: 'Keuntungan maksimum harian dari fungsi $f(x, y) = 30.000x + 20.000y$', acceptedAnswers: ['320000', 'rp320000'], displayAnswer: '320.000', explanation: 'Uji titik pojok DHP ke $f(x, y) = 30.000x + 20.000y$: $(10, 0) \\to 300.000$; $(0, 12) \\to 240.000$; $(8, 4) \\to 30.000(8) + 20.000(4) = 240.000 + 80.000 = 320.000$. Jadi keuntungan maksimum adalah $\\text{Rp}320.000$.' },
+      { no: 9, topik: 'Persamaan Kuadrat', skor: 3, promptShort: 'Nilai bilangan bulat positif $q$ pada pemfaktoran $x^2 + 6x - 72 = (x + 12)(x - q) = 0$', acceptedAnswers: ['6'], displayAnswer: '6', explanation: 'Faktorkan $x^2 + 6x - 72 = 0$: karena $12 \\times (-6) = -72$ dan $12 + (-6) = 6$, maka $(x + 12)(x - 6) = 0$. Jadi $q = 6$.' },
+      { no: 10, topik: 'Persamaan Kuadrat', skor: 3, promptShort: 'Keliling kebun hidroponik persegi panjang dengan lebar $x$ dan panjang $(x + 6)$ meter', acceptedAnswers: ['36', '36m', '36meter'], displayAnswer: '36', explanation: 'Dari $(x + 12)(x - 6) = 0$ dan $x > 0$, diperoleh lebar $x = 6\\text{ m}$ dan panjang $= 6 + 6 = 12\\text{ m}$. Maka kelilingnya $K = 2(12 + 6) = 36\\text{ m}$.' }
+    ];
+
+    const SVG_GRAFIK_SIMULASI_2 = `
+      <div class="mt-3 bg-slate-50 p-3 rounded-xl border border-slate-200 flex justify-center">
+        <svg viewBox="0 0 340 230" class="w-full max-w-xs h-auto" role="img" aria-label="Grafik DHP tertutup melalui (0,9)-(3,0) dan (0,4)-(8,0)">
+          <g stroke="#e2e8f0" stroke-width="1">
+            <line x1="105" y1="25" x2="105" y2="195" /><line x1="165" y1="25" x2="165" y2="195" /><line x1="225" y1="25" x2="225" y2="195" /><line x1="285" y1="25" x2="285" y2="195" />
+            <line x1="45" y1="159" x2="310" y2="159" /><line x1="45" y1="123" x2="310" y2="123" /><line x1="45" y1="87" x2="310" y2="87" /><line x1="45" y1="51" x2="310" y2="51" />
+          </g>
+          <polygon points="45,195 135,195 105,141 45,123" fill="#2d8a60" fill-opacity="0.24" />
+          <line x1="45" y1="195" x2="318" y2="195" stroke="#0f172a" stroke-width="2" /><line x1="45" y1="195" x2="45" y2="18" stroke="#0f172a" stroke-width="2" />
+          <polygon points="318,195 310,191 310,199" fill="#0f172a" /><polygon points="45,18 41,26 49,26" fill="#0f172a" />
+          <text x="321" y="199" font-size="11" font-weight="700" fill="#0f172a">X</text><text x="41" y="13" font-size="11" font-weight="700" fill="#0f172a">Y</text>
+          <line x1="45" y1="33" x2="135" y2="195" stroke="#c2414b" stroke-width="2.2" />
+          <line x1="45" y1="123" x2="285" y2="195" stroke="#1f734e" stroke-width="2.2" />
+          <circle cx="45" cy="33" r="3.5" fill="#c2414b" /><circle cx="135" cy="195" r="3.5" fill="#c2414b" />
+          <circle cx="45" cy="123" r="3.5" fill="#1f734e" /><circle cx="285" cy="195" r="3.5" fill="#1f734e" />
+          <circle cx="105" cy="141" r="4" fill="#0f291e" stroke="#ffffff" stroke-width="1.2" />
+          <text x="64" y="170" font-size="12" font-weight="800" fill="#103a28">DHP</text>
+          <text x="33" y="209" font-size="10.5" font-weight="600" fill="#334155">0</text>
+          <text x="131" y="211" font-size="11" font-weight="700" fill="#0f172a">3</text>
+          <text x="281" y="211" font-size="11" font-weight="700" fill="#0f172a">8</text>
+          <text x="30" y="127" font-size="11" font-weight="700" fill="#0f172a">4</text>
+          <text x="30" y="37" font-size="11" font-weight="700" fill="#0f172a">9</text>
+        </svg>
+      </div>
+    `;
+
+    const BAGIAN2_SIMULASI_OPTIONS = [
+      { code: 'A', labelLatex: '$3x + y \\le 9,\\; x + 2y \\le 8,\\; x \\ge 0,\\; y \\ge 0$' },
+      { code: 'B', labelLatex: '$x = 4$' },
+      { code: 'C', labelLatex: '$x = -\\frac{5}{2} \\text{ atau } x = 1$' },
+      { code: 'D', labelLatex: '$38$' },
+      { code: 'E', labelLatex: '$x = 2$' },
+      { code: 'F', labelLatex: '$5$' },
+      { code: 'G', labelLatex: '$x + 3y \\le 9,\\; 2x + y \\le 8,\\; x \\ge 0,\\; y \\ge 0$' }
+    ];
+
+    const BAGIAN2_SIMULASI_QUESTIONS = [
+      { no: 11, topik: 'Eksponen & Logaritma', level: 'C3', skor: 4, questionLatex: 'Nilai $x$ yang memenuhi persamaan eksponen $9^{x-1} = 27^{x-2}$ adalah ....', hint: 'Ubah kedua ruas ke basis $3$: $9 = 3^2$ dan $27 = 3^3$, lalu samakan pangkatnya.', correctOption: 'B', explanation: 'Samakan bilangan pokok ke basis $3$: $$(3^2)^{x-1} = (3^3)^{x-2} \\implies 2x - 2 = 3x - 6 \\implies x = 4$$ Jawaban yang tepat adalah <strong>B ($x = 4$)</strong>.' },
+      { no: 12, topik: 'Eksponen & Logaritma', level: 'C3', skor: 4, questionLatex: 'Nilai dari ${}^3\\log 54 + {}^3\\log 18 - {}^3\\log 4$ adalah ....', hint: 'Gabungkan menggunakan sifat logaritma basis sama: ${}^3\\log\\left(\\frac{54 \\times 18}{4}\\right)$.', correctOption: 'F', explanation: 'Gabungkan ke dalam satu logaritma basis $3$: $${}^3\\log\\left(\\frac{54 \\times 18}{4}\\right) = {}^3\\log(27 \\times 9) = {}^3\\log 243 = {}^3\\log 3^5 = 5$$ Jawaban yang tepat adalah <strong>F ($5$)</strong>.' },
+      { no: 13, topik: 'SPtLDV', level: 'C3', skor: 4, questionLatex: 'Perhatikan grafik DHP tertutup di bawah ini. Sistem pertidaksamaan linear dua variabel yang sesuai dengan daerah yang diarsir adalah ....' + SVG_GRAFIK_SIMULASI_2, hint: 'Garis 1 melalui $(0,9)$ dan $(3,0) \\implies 3x + y = 9$. Garis 2 melalui $(0,4)$ dan $(8,0) \\implies x + 2y = 8$.', correctOption: 'A', explanation: 'Garis 1 melalui $(0,9)$ dan $(3,0)$: $9x + 3y \\le 27 \\iff 3x + y \\le 9$. Garis 2 melalui $(0,4)$ dan $(8,0)$: $4x + 8y \\le 32 \\iff x + 2y \\le 8$. Karena DHP di kuadran I memuat $(0,0)$, sistemnya adalah $3x + y \\le 9,\\; x + 2y \\le 8,\\; x \\ge 0,\\; y \\ge 0$. Jawaban yang tepat adalah <strong>A</strong>.' },
+      { no: 14, topik: 'SPtLDV', level: 'C3', skor: 4, questionLatex: 'Diketahui titik-titik pojok suatu DHP adalah $O(0, 0)$, $A(6, 0)$, $B(4, 3)$, dan $C(0, 5)$. Nilai <strong>maksimum</strong> fungsi objektif $f(x, y) = 5x + 6y$ adalah ....', hint: 'Substitusikan setiap titik pojok ke $f(x, y) = 5x + 6y$, lalu ambil nilai terbesar.', correctOption: 'D', explanation: 'Uji titik pojok ke $f(x, y) = 5x + 6y$: $O(0,0) \\to 0$; $A(6,0) \\to 30$; $B(4,3) \\to 5(4) + 6(3) = 20 + 18 = 38$; $C(0,5) \\to 30$. Nilai maksimumnya adalah $38$. Jawaban yang tepat adalah <strong>D ($38$)</strong>.' },
+      { no: 15, topik: 'Persamaan Kuadrat', level: 'C3', skor: 4, questionLatex: 'Himpunan penyelesaian (akar-akar) dari persamaan kuadrat $2x^2 + 3x - 5 = 0$ adalah ....', hint: 'Faktorkan $2x^2 + 3x - 5 = 0$ menjadi $(2x + 5)(x - 1) = 0$.', correctOption: 'C', explanation: 'Dengan pemfaktoran: $$2x^2 + 3x - 5 = 0 \\implies (2x + 5)(x - 1) = 0 \\implies x = -\\frac{5}{2} \\text{ atau } x = 1$$ Jawaban yang tepat adalah <strong>C ($x = -\\frac{5}{2} \\text{ atau } x = 1$)</strong>.' }
+    ];
+
+    const SVG_GRAFIK_SIMULASI_3 = `
+      <div class="mt-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex justify-center">
+        <svg viewBox="0 0 360 260" class="w-full max-w-sm h-auto" role="img" aria-label="Grafik DHP terbuka ke kanan atas melalui (0,15)-(5,0) dan (0,5)-(10,0)">
+          <g stroke="#e2e8f0" stroke-width="1">
+            <line x1="93" y1="21" x2="93" y2="225" /><line x1="141" y1="21" x2="141" y2="225" /><line x1="189" y1="21" x2="189" y2="225" /><line x1="237" y1="21" x2="237" y2="225" /><line x1="285" y1="21" x2="285" y2="225" /><line x1="333" y1="21" x2="333" y2="225" />
+            <line x1="45" y1="189" x2="333" y2="189" /><line x1="45" y1="153" x2="333" y2="153" /><line x1="45" y1="117" x2="333" y2="117" /><line x1="45" y1="81" x2="333" y2="81" /><line x1="45" y1="45" x2="333" y2="45" />
+          </g>
+          <polygon points="45,45 141,189 285,225 333,225 333,21 45,21" fill="#2d8a60" fill-opacity="0.22" />
+          <line x1="45" y1="225" x2="342" y2="225" stroke="#0f172a" stroke-width="2" /><line x1="45" y1="225" x2="45" y2="14" stroke="#0f172a" stroke-width="2" />
+          <polygon points="342,225 334,221 334,229" fill="#0f172a" /><polygon points="45,14 41,22 49,22" fill="#0f172a" />
+          <text x="345" y="229" font-size="11" font-weight="700" fill="#0f172a">X</text><text x="41" y="10" font-size="11" font-weight="700" fill="#0f172a">Y</text>
+          <line x1="45" y1="45" x2="165" y2="225" stroke="#c2414b" stroke-width="2.2" />
+          <line x1="45" y1="165" x2="285" y2="225" stroke="#1f734e" stroke-width="2.2" />
+          <circle cx="45" cy="45" r="3.8" fill="#c2414b" /><circle cx="165" cy="225" r="3.5" fill="#c2414b" />
+          <circle cx="45" cy="165" r="3.5" fill="#1f734e" /><circle cx="285" cy="225" r="3.8" fill="#1f734e" />
+          <circle cx="141" cy="189" r="4.2" fill="#0f291e" stroke="#ffffff" stroke-width="1.3" />
+          <text x="210" y="108" font-size="13" font-weight="800" fill="#103a28">DHP</text>
+          <text x="33" y="239" font-size="10.5" font-weight="600" fill="#334155">0</text>
+          <text x="161" y="241" font-size="11" font-weight="700" fill="#0f172a">5</text>
+          <text x="278" y="241" font-size="11" font-weight="700" fill="#0f172a">10</text>
+          <text x="30" y="169" font-size="11" font-weight="700" fill="#0f172a">5</text>
+          <text x="23" y="49" font-size="11" font-weight="700" fill="#0f172a">15</text>
+        </svg>
+      </div>
+    `;
+
+    const BAGIAN3_SIMULASI_QUESTIONS = [
+      {
+        no: 16, topik: 'Eksponen & Logaritma', level: 'C4', skor: 13,
+        title: 'Penyusutan Nilai Mesin Percetakan & Evaluasi Waktu Jual',
+        stemLatex: 'Sebuah mesin percetakan dibeli dengan nilai awal $192$ juta rupiah. Nilai jual mesin menyusut menjadi setengahnya setiap $1$ periode mengikuti fungsi eksponen: $$M(t) = 192 \\cdot \\left(\\frac{1}{2}\\right)^t$$ (dalam juta rupiah), dengan $t$ menyatakan banyak periode. Diketahui nilai pendekatan ${}^2\\log 3 \\approx 1,58$.',
+        subQuestions: [
+          { id: 'a', label: 'a. Hitunglah nilai jual mesin setelah $t = 3$ periode! (3 poin)' },
+          { id: 'b', label: 'b. Tentukan banyak periode $t$ saat nilai mesin tepat tersisa $6$ juta rupiah! (4 poin)' },
+          { id: 'c', label: 'c. Perusahaan ingin menjual mesin sebelum nilainya turun di bawah $16$ juta rupiah. Taksirlah nilai $t$ saat $M(t) = 16$ juta menggunakan ${}^2\\log 3 \\approx 1,58$, lalu simpulkan apakah pada $t = 4$ nilai mesin masih berada di atas $16$ juta rupiah! (6 poin)' }
+        ],
+        hint: 'Untuk sub-soal (c), ubah $192 \\cdot (\\frac{1}{2})^t = 16$ menjadi $2^t = 12$, lalu gunakan $t = {}^2\\log 12 = {}^2\\log(4 \\times 3) = 2 + {}^2\\log 3$.',
+        rubricItems: [
+          { id: '16_1', points: 3, text: 'Menghitung nilai mesin setelah $3$ periode: $M(3) = 192 \\cdot (\\frac{1}{2})^3 = \\frac{192}{8} = 24$ juta rupiah.' },
+          { id: '16_2', points: 2, text: 'Menyusun persamaan eksponen $192 \\cdot (\\frac{1}{2})^t = 6 \\iff (\\frac{1}{2})^t = \\frac{1}{32}$.' },
+          { id: '16_3', points: 2, text: 'Menemukan waktu saat nilai tersisa $6$ juta rupiah yaitu $t = 5$ periode.' },
+          { id: '16_4', points: 3, text: 'Menyelesaikan $2^t = 12$ menggunakan logaritma: $t = {}^2\\log 12 = {}^2\\log 2^2 + {}^2\\log 3 \\approx 2 + 1,58 = 3,58$ periode.' },
+          { id: '16_5', points: 3, text: 'Menyimpulkan bahwa pada $t = 4$ nilai mesin <strong>sudah di bawah $16$ juta</strong> ($M(4) = 12$ juta), sehingga mesin harus dijual sebelum $t = 3,58$.' }
+        ],
+        solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Nilai Mesin Setelah 3 Periode):</strong></p><p>$$M(3) = 192 \\cdot \\left(\\frac{1}{2}\\right)^3 = \\frac{192}{8} = 24\\text{ juta rupiah}$$</p><p><strong>Langkah b (Waktu Saat Tersisa $6$ Juta):</strong></p><p>$$192 \\cdot \\left(\\frac{1}{2}\\right)^t = 6 \\implies \\left(\\frac{1}{2}\\right)^t = \\frac{6}{192} = \\frac{1}{32} = \\left(\\frac{1}{2}\\right)^5 \\implies t = 5\\text{ periode}$$</p><p><strong>Langkah c (Taksiran Waktu $M(t) = 16$ Juta &amp; Kesimpulan):</strong></p><p>$$192 \\cdot \\left(\\frac{1}{2}\\right)^t = 16 \\implies \\left(\\frac{1}{2}\\right)^t = \\frac{1}{12} \\implies 2^t = 12$$</p><p>$$t = {}^2\\log 12 = {}^2\\log(4 \\times 3) = {}^2\\log 2^2 + {}^2\\log 3 \\approx 2 + 1,58 = 3,58\\text{ periode}$$</p><p><strong>Kesimpulan:</strong> Pada $t = 4$, nilai mesin sudah turun menjadi $M(4) = 12$ juta $< 16$ juta. Jadi pada $t = 4$ nilai mesin <strong>tidak lagi di atas $16$ juta</strong> (harus dijual sebelum $t = 3,58$).</p></div>`
+      },
+      {
+        no: 17, topik: 'SPtLDV', level: 'C4', skor: 8,
+        title: 'Analisis Grafik DHP Terbuka & Nilai Minimum Fungsi Objektif',
+        stemLatex: 'Perhatikan grafik Daerah Himpunan Penyelesaian (DHP) terbuka ke kanan atas berikut dengan fungsi objektif $f(x, y) = 4x + 5y$:' + SVG_GRAFIK_SIMULASI_3,
+        subQuestions: [
+          { id: 'a', label: 'a. Tentukan sistem pertidaksamaan linear dua variabel (SPtLDV) yang membentuk DHP terbuka pada grafik tersebut! (3 poin)' },
+          { id: 'b', label: 'b. Tentukan seluruh koordinat titik pojok DHP tersebut (termasuk titik potong kedua garis batas)! (3 poin)' },
+          { id: 'c', label: 'c. Hitunglah nilai minimum fungsi objektif $f(x, y) = 4x + 5y$ pada DHP tersebut! (2 poin)' }
+        ],
+        hint: 'Garis 1 melalui $(0,15)$ dan $(5,0) \\implies 3x + y = 15$. Garis 2 melalui $(0,5)$ dan $(10,0) \\implies x + 2y = 10$.',
+        rubricItems: [
+          { id: '17_1', points: 3, text: 'Menyusun SPtLDV dengan tepat: $3x + y \\ge 15$, $x + 2y \\ge 10$, $x \\ge 0$, dan $y \\ge 0$.' },
+          { id: '17_2', points: 3, text: 'Menentukan ketiga titik pojok DHP terbuka secara lengkap yaitu $(0, 15)$, $(4, 3)$, dan $(10, 0)$.' },
+          { id: '17_3', points: 2, text: 'Menguji titik pojok ke $f(x, y) = 4x + 5y$ dan menemukan nilai minimum sebesar $31$ pada titik $(4, 3)$.' }
+        ],
+        solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Menentukan SPtLDV):</strong></p><p>&bull; Garis 1 melalui $(0, 15)$ dan $(5, 0)$: $15x + 5y = 75 \\iff 3x + y = 15 \\implies 3x + y \\ge 15$.</p><p>&bull; Garis 2 melalui $(0, 5)$ dan $(10, 0)$: $5x + 10y = 50 \\iff x + 2y = 10 \\implies x + 2y \\ge 10$.</p><p>&bull; Syarat kuadran I: $x \\ge 0,\\; y \\ge 0$.</p><p><strong>Langkah b (Titik Pojok DHP):</strong></p><p>Substitusi $y = 15 - 3x$ ke $x + 2y = 10$: $x + 30 - 6x = 10 \\implies 5x = 20 \\implies x = 4,\\; y = 3$. Titik pojoknya: $(0, 15)$, $(4, 3)$, dan $(10, 0)$.</p><p><strong>Langkah c (Uji Nilai Minimum $f(x,y) = 4x + 5y$):</strong></p><p>&bull; $(0, 15) \\to 75$<br/>&bull; $(4, 3) \\to 4(4) + 5(3) = 16 + 15 = 31$ <strong>(Minimum)</strong><br/>&bull; $(10, 0) \\to 40$</p><p>Jadi nilai minimumnya adalah <strong>$31$</strong> di titik $(4, 3)$.</p></div>`
+      },
+      {
+        no: 18, topik: 'SPtLDV', level: 'C4', skor: 9,
+        title: 'Optimasi Maksimum Kedai Minuman Sehat (Konversi Satuan)',
+        stemLatex: 'Sebuah kedai minuman sehat memproduksi <strong>Jus Mangga</strong> ($x$ botol) dan <strong>Jus Alpukat</strong> ($y$ botol) setiap hari dengan persediaan bahan sebagai berikut:<br/>&bull; <strong>Air Mineral:</strong> $1$ botol Jus Mangga butuh $200\\text{ ml}$ dan $1$ botol Jus Alpukat butuh $100\\text{ ml}$, sedangkan persediaan air mineral adalah $8\\text{ liter}$.<br/>&bull; <strong>Susu Cair:</strong> $1$ botol Jus Mangga butuh $50\\text{ ml}$ dan $1$ botol Jus Alpukat butuh $100\\text{ ml}$, sedangkan persediaan susu cair adalah $5\\text{ liter}$.<br/>Keuntungan setiap $1$ botol Jus Mangga adalah $\\text{Rp}6.000$ dan setiap $1$ botol Jus Alpukat adalah $\\text{Rp}8.000$.',
+        subQuestions: [
+          { id: 'a', label: 'a. Lakukan konversi satuan (liter ke mililiter), lalu susunlah model SPtLDV yang paling sederhana beserta fungsi objektif keuntungannya! (3 poin)' },
+          { id: 'b', label: 'b. Gambarkan sketsa DHP pada kertas burammu, lalu tentukan seluruh koordinat titik pojok DHP tersebut! (3 poin)' },
+          { id: 'c', label: 'c. Tentukan banyak botol Jus Mangga dan Jus Alpukat agar keuntungan maksimum, serta hitung besar keuntungan maksimumnya! (3 poin)' }
+        ],
+        hint: 'Ingat $1\\text{ liter} = 1.000\\text{ ml}$: persediaan air $8\\text{ L} = 8.000\\text{ ml}$ dan susu $5\\text{ L} = 5.000\\text{ ml}$.',
+        rubricItems: [
+          { id: '18_1', points: 3, text: 'Mengonversi satuan ($8\\text{ L} = 8.000\\text{ ml}$, $5\\text{ L} = 5.000\\text{ ml}$) dan menyusun SPtLDV: $2x + y \\le 80$, $x + 2y \\le 100$, $x \\ge 0$, $y \\ge 0$, serta $f(x, y) = 6.000x + 8.000y$.' },
+          { id: '18_2', points: 3, text: 'Menentukan seluruh koordinat titik pojok DHP tertutup: $(0, 0)$, $(40, 0)$, $(20, 40)$, dan $(0, 50)$.' },
+          { id: '18_3', points: 3, text: 'Menguji seluruh titik pojok dan menyimpulkan keuntungan maksimum $\\text{Rp}440.000$ saat memproduksi $20$ botol Jus Mangga dan $40$ botol Jus Alpukat.' }
+        ],
+        solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Konversi Satuan &amp; Model SPtLDV):</strong></p><p>&bull; Air Mineral ($8\\text{ L} = 8.000\\text{ ml}$): $200x + 100y \\le 8.000 \\iff 2x + y \\le 80$</p><p>&bull; Susu Cair ($5\\text{ L} = 5.000\\text{ ml}$): $50x + 100y \\le 5.000 \\iff x + 2y \\le 100$</p><p>&bull; Syarat: $x \\ge 0,\\; y \\ge 0$ dengan fungsi keuntungan $f(x, y) = 6.000x + 8.000y$.</p><p><strong>Langkah b (Titik Pojok DHP):</strong></p><p>Titik potong $2x + y = 80$ dan $x + 2y = 100$: substitusi $y = 80 - 2x \\implies x + 160 - 4x = 100 \\implies x = 20$ dan $y = 40$. Titik pojok: $(0,0)$, $(40,0)$, $(20,40)$, dan $(0,50)$.</p><p><strong>Langkah c (Uji Keuntungan Maksimum):</strong></p><p>&bull; $(40, 0) \\to \\text{Rp}240.000$<br/>&bull; $(20, 40) \\to 6.000(20) + 8.000(40) = 120.000 + 320.000 = \\text{Rp}440.000$ <strong>(Maksimum)</strong><br/>&bull; $(0, 50) \\to \\text{Rp}400.000$</p><p>Jadi keuntungan maksimum adalah <strong>$\\text{Rp}440.000$</strong> dengan memproduksi <strong>$20$ botol Jus Mangga dan $40$ botol Jus Alpukat</strong>.</p></div>`
+      },
+      {
+        no: 19, topik: 'SPtLDV', level: 'C5', skor: 10,
+        title: 'Optimasi Minimum Suplemen Vitamin & Evaluasi Anggaran (HOTS)',
+        stemLatex: 'Seorang atlet membutuhkan sedikitnya $16\\text{ unit}$ <strong>Vitamin C</strong> dan $14\\text{ unit}$ <strong>Vitamin D</strong> setiap minggu. Di apotek tersedia dua jenis tablet suplemen:<br/>&bull; <strong>Tablet A</strong> (harga $\\text{Rp}5.000$/butir) mengandung $4\\text{ unit}$ Vitamin C dan $2\\text{ unit}$ Vitamin D.<br/>&bull; <strong>Tablet B</strong> (harga $\\text{Rp}4.000$/butir) mengandung $2\\text{ unit}$ Vitamin C dan $2\\text{ unit}$ Vitamin D.<br/>Saat ini atlet tersebut hanya menyiapkan anggaran mingguan sebesar $\\text{Rp}25.000$.',
+        subQuestions: [
+          { id: 'a', label: 'a. Buatlah model SPtLDV dan fungsi objektif biaya pembelian suplemen (misalkan $x$ = banyak Tablet A dan $y$ = banyak Tablet B)! (3 poin)' },
+          { id: 'b', label: 'b. Tentukan seluruh koordinat titik pojok DHP terbuka dan hitunglah biaya minimum pembelian suplemen! (4 poin)' },
+          { id: 'c', label: 'c. Evaluasilah apakah anggaran atlet sebesar $\\text{Rp}25.000$ mencukupi! Jika belum mencukupi, berapa rupiah kekurangan dananya? (3 poin)' }
+        ],
+        hint: 'Susun kendala Vitamin C ($4x + 2y \\ge 16 \\iff 2x + y \\ge 8$) dan Vitamin D ($2x + 2y \\ge 14 \\iff x + y \\ge 7$).',
+        rubricItems: [
+          { id: '19_1', points: 3, text: 'Menyusun SPtLDV: $2x + y \\ge 8$, $x + y \\ge 7$, $x \\ge 0$, $y \\ge 0$, dan fungsi biaya $Z(x, y) = 5.000x + 4.000y$.' },
+          { id: '19_2', points: 2, text: 'Menentukan ketiga titik pojok DHP terbuka secara tepat: $(0, 8)$, $(1, 6)$, dan $(7, 0)$.' },
+          { id: '19_3', points: 2, text: 'Menghitung biaya tiap titik pojok dan menemukan biaya minimum $\\text{Rp}29.000$ ($1$ Tablet A dan $6$ Tablet B).' },
+          { id: '19_4', points: 3, text: 'Menyimpulkan bahwa anggaran $\\text{Rp}25.000$ <strong>tidak mencukupi</strong>, dengan kekurangan dana sebesar $\\text{Rp}29.000 - \\text{Rp}25.000 = \\text{Rp}4.000$.' }
+        ],
+        solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Model SPtLDV &amp; Fungsi Biaya):</strong></p><p>&bull; Vitamin C: $4x + 2y \\ge 16 \\iff 2x + y \\ge 8$<br/>&bull; Vitamin D: $2x + 2y \\ge 14 \\iff x + y \\ge 7$<br/>&bull; Syarat: $x \\ge 0,\\; y \\ge 0$ dengan fungsi biaya $Z(x, y) = 5.000x + 4.000y$.</p><p><strong>Langkah b (Titik Pojok DHP Terbuka &amp; Biaya Minimum):</strong></p><p>Titik potong $(2x + y = 8) - (x + y = 7) \\implies x = 1$ dan $y = 6$. Titik pojok: $(0, 8)$, $(1, 6)$, dan $(7, 0)$.</p><p>&bull; $(0, 8) \\to \\text{Rp}32.000$<br/>&bull; $(1, 6) \\to 5.000(1) + 4.000(6) = \\text{Rp}29.000$ <strong>(Minimum)</strong><br/>&bull; $(7, 0) \\to \\text{Rp}35.000$</p><p><strong>Langkah c (Evaluasi Kecukupan Anggaran):</strong></p><p>Karena biaya minimum adalah $\\text{Rp}29.000$ sedangkan anggaran atlet hanya $\\text{Rp}25.000$, maka anggaran <strong>tidak mencukupi</strong> dengan kekurangan sebesar $\\text{Rp}29.000 - \\text{Rp}25.000 = \\text{Rp}4.000$.</p></div>`
+      },
+      {
+        no: 20, topik: 'Persamaan Kuadrat', level: 'C4', skor: 10,
+        title: 'Pemfaktoran ($a > 1$), Rumus ABC Bentuk Akar & Aplikasi Bingkai Lukisan',
+        stemLatex: 'Selesaikan ketiga permasalahan persamaan kuadrat berikut secara sistematis:',
+        subQuestions: [
+          { id: 'a', label: 'a. Tentukan himpunan penyelesaian dari $3x^2 - 7x - 6 = 0$ menggunakan metode pemfaktoran! (3 poin)' },
+          { id: 'b', label: 'b. Tentukan akar-akar dari $x^2 - 6x + 4 = 0$ menggunakan Rumus ABC dalam bentuk akar paling sederhana! (3 poin)' },
+          { id: 'c', label: 'c. Sebuah lukisan berukuran $10\\text{ cm} \\times 6\\text{ cm}$ diberi bingkai seragam selebar $x\\text{ cm}$ di sekelilingnya sehingga luas total lukisan beserta bingkai menjadi $140\\text{ cm}^2$. Susunlah persamaan kuadratnya dan tentukan lebar bingkai $x$! (4 poin)' }
+        ],
+        hint: 'Pada sub-soal (c), ukuran total beserta bingkai adalah $(10 + 2x)\\text{ cm}$ dan $(6 + 2x)\\text{ cm}$.',
+        rubricItems: [
+          { id: '20_1', points: 3, text: 'Memfaktorkan $3x^2 - 7x - 6 = (3x + 2)(x - 3) = 0$ dan menentukan akar $x = -\\frac{2}{3}$ atau $x = 3$.' },
+          { id: '20_2', points: 3, text: 'Menggunakan Rumus ABC pada $x^2 - 6x + 4 = 0$ dengan $D = 20$ dan menyederhanakan akar menjadi $x = 3 \\pm \\sqrt{5}$.' },
+          { id: '20_3', points: 2, text: 'Menyusun persamaan luas bingkai $(10 + 2x)(6 + 2x) = 140$ hingga bentuk baku $x^2 + 8x - 20 = 0$.' },
+          { id: '20_4', points: 2, text: 'Memfaktorkan $(x + 10)(x - 2) = 0$ dan menyimpulkan lebar bingkai yang memenuhi adalah $x = 2\\text{ cm}$ (karena $x > 0$).' }
+        ],
+        solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Pemfaktoran $3x^2 - 7x - 6 = 0$):</strong></p><p>$$(3x + 2)(x - 3) = 0 \\implies x = -\\frac{2}{3} \\text{ atau } x = 3$$</p><p><strong>Langkah b (Rumus ABC untuk $x^2 - 6x + 4 = 0$):</strong></p><p>$a = 1,\\; b = -6,\\; c = 4 \\implies D = (-6)^2 - 4(1)(4) = 36 - 16 = 20$</p><p>$$x_{1,2} = \\frac{6 \\pm \\sqrt{20}}{2} = \\frac{6 \\pm 2\\sqrt{5}}{2} = 3 \\pm \\sqrt{5}$$</p><p><strong>Langkah c (Aplikasi Bingkai Lukisan):</strong></p><p>$$(10 + 2x)(6 + 2x) = 140 \\implies 60 + 32x + 4x^2 = 140 \\implies 4x^2 + 32x - 80 = 0$$</p><p>Bagi $4$: $$x^2 + 8x - 20 = 0 \\implies (x + 10)(x - 2) = 0$$</p><p>Karena $x > 0$, maka lebar bingkai adalah <strong>$x = 2\\text{ cm}$</strong>.</p></div>`
+      }
+    ];
+
+    const QUESTION_SETS = {
+      belajar: {
+        badge: 'Paket A — Latihan',
+        dashB1: '10 rumpang dalam 3 wacana kontekstual (Video OSIS, Kerajinan Bazar + Grafik DHP, Panggung Pentas Seni).',
+        dashB2: '5 soal pilihan pasangan huruf A–G (Eksponen, ${}^2\\log$, Grafik DHP, Uji Titik Pojok, Akar Persamaan Kuadrat).',
+        dashB3: '5 soal mendalam (Peluruhan Obat, Grafik DHP Terbuka, Konveksi Maksimum, Pupuk Minimum, PK & Bingkai Poster).',
+        bagian1Html: BAGIAN1_WACANA_BELAJAR_HTML,
+        bagian1: BAGIAN1_QUESTIONS,
+        bagian2Options: BAGIAN2_OPTIONS,
+        bagian2: BAGIAN2_QUESTIONS,
+        bagian3: BAGIAN3_QUESTIONS
+      },
+      simulasi: {
+        badge: 'Paket B — Simulasi UAS',
+        dashB1: '10 rumpang dalam 3 wacana baru (Koloni Ragi, Kue UMKM + Grafik DHP, Kebun Hidroponik).',
+        dashB2: '5 soal baru pilihan pasangan huruf A–G (Eksponen, ${}^3\\log$, Grafik DHP, Uji Titik Pojok, Akar PK).',
+        dashB3: '5 soal uraian baru (Penyusutan Mesin, Grafik DHP Terbuka, Minuman Sehat, Suplemen Minimum, Bingkai Lukisan).',
+        bagian1Html: BAGIAN1_WACANA_SIMULASI_HTML,
+        bagian1: BAGIAN1_SIMULASI_QUESTIONS,
+        bagian2Options: BAGIAN2_SIMULASI_OPTIONS,
+        bagian2: BAGIAN2_SIMULASI_QUESTIONS,
+        bagian3: BAGIAN3_SIMULASI_QUESTIONS
+      }
+    };
+
+    function getActiveSet() {
+      return appState.student.mode === 'simulasi' ? QUESTION_SETS.simulasi : QUESTION_SETS.belajar;
+    }
+
     // 5. STATE MANAGEMENT & DETERMINISTIC STUDENT SESSION ID
-    function buildStudentSessionId(kelas, noAbsen) {
+    function buildStudentSessionId(kelas, noAbsen, mode = 'belajar') {
       if (!ALLOWED_CLASSES.includes(kelas) || !noAbsen) {
         return `uas_x_temp_${Date.now()}`;
       }
       const paddedAbsen = String(parseInt(noAbsen, 10)).padStart(2, '0');
-      return `${kelas.toLowerCase()}_absen_${paddedAbsen}`;
+      const suffix = mode === 'simulasi' ? '_simulasi' : '';
+      return `${kelas.toLowerCase()}_absen_${paddedAbsen}${suffix}`;
     }
 
     function getDefaultState() {
@@ -1952,7 +2118,7 @@
           appState.student.kelas = 'X-1';
         }
         if (appState.student.kelas && appState.student.noAbsen) {
-          appState.sessionId = buildStudentSessionId(appState.student.kelas, appState.student.noAbsen);
+          appState.sessionId = buildStudentSessionId(appState.student.kelas, appState.student.noAbsen, appState.student.mode);
         }
         if (!VIEW_METADATA[appState.activeView]) {
           appState.activeView = 'dashboard';
@@ -2025,7 +2191,7 @@
     }
 
     function isBagian1Correct(questionNo) {
-      const q = BAGIAN1_QUESTIONS.find((item) => item.no === questionNo);
+      const q = getActiveSet().bagian1.find((item) => item.no === questionNo);
       if (!q) return false;
       const userRaw = appState.answers.bagian1[questionNo] || '';
       const normUser = normalizeAnswer(userRaw);
@@ -2034,13 +2200,14 @@
     }
 
     function isBagian2Correct(questionNo) {
-      const q = BAGIAN2_QUESTIONS.find((item) => item.no === questionNo);
+      const q = getActiveSet().bagian2.find((item) => item.no === questionNo);
       if (!q) return false;
       const userChoice = (appState.answers.bagian2[questionNo] || '').trim().toUpperCase();
       return userChoice === q.correctOption;
     }
 
     function calculateScores() {
+      const activeSet = getActiveSet();
       let b1Score = 0;
       let b1CorrectCount = 0;
       let b2Score = 0;
@@ -2053,7 +2220,7 @@
         'Persamaan Kuadrat': { earned: 0, max: 20, correctItems: 0, totalItems: 4 }
       };
 
-      BAGIAN1_QUESTIONS.forEach((q) => {
+      activeSet.bagian1.forEach((q) => {
         if (isBagian1Correct(q.no)) {
           b1Score += q.skor;
           b1CorrectCount += 1;
@@ -2062,7 +2229,7 @@
         }
       });
 
-      BAGIAN2_QUESTIONS.forEach((q) => {
+      activeSet.bagian2.forEach((q) => {
         if (isBagian2Correct(q.no)) {
           b2Score += q.skor;
           b2CorrectCount += 1;
@@ -2071,7 +2238,7 @@
         }
       });
 
-      BAGIAN3_QUESTIONS.forEach((q) => {
+      activeSet.bagian3.forEach((q) => {
         let qEarned = 0;
         q.rubricItems.forEach((r) => {
           if (appState.answers.bagian3Rubric[r.id]) {
@@ -2255,12 +2422,25 @@
         }
       }
 
-      // Show/hide hints depending on mode
+      // Show/hide hints & update package descriptions depending on mode
       const isSimulasi = appState.student.mode === 'simulasi';
+      const activeSet = getActiveSet();
       document.querySelectorAll('.hint-btn').forEach((btn) => {
         if (isSimulasi) btn.classList.add('hidden');
         else btn.classList.remove('hidden');
       });
+      document.querySelectorAll('.paket-mode-badge').forEach((el) => {
+        el.textContent = activeSet.badge;
+        el.className = isSimulasi
+          ? 'paket-mode-badge px-3 py-1.5 rounded-xl bg-amber-100 border border-amber-300 text-amber-950 text-xs font-bold'
+          : 'paket-mode-badge px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-bold';
+      });
+      const d1Desc = document.getElementById('dashB1Desc');
+      const d2Desc = document.getElementById('dashB2Desc');
+      const d3Desc = document.getElementById('dashB3Desc');
+      if (d1Desc) d1Desc.textContent = activeSet.dashB1;
+      if (d2Desc) d2Desc.innerHTML = activeSet.dashB2;
+      if (d3Desc) d3Desc.textContent = activeSet.dashB3;
     }
 
     // 9. SIMULATION TIMER (120 MINUTES)
@@ -2428,7 +2608,7 @@
       if (!isValid) return;
 
       const selectedMode = document.querySelector('input[name="modeLatihan"]:checked')?.value || 'belajar';
-      const newSessionId = buildStudentSessionId(kelas, noAbsenNum);
+      const newSessionId = buildStudentSessionId(kelas, noAbsenNum, selectedMode);
       const switchedStudent = appState.sessionId && appState.sessionId !== newSessionId;
       const modeChanged = appState.student.mode !== selectedMode;
 
@@ -2495,7 +2675,7 @@
       }
 
       saveStateToStorage();
-      restoreBagian1Inputs();
+      renderBagian1LKPD();
       renderBagian2Matching();
       renderBagian3Essays();
       if (startLabel) startLabel.textContent = 'Masuk ke Dashboard LMS';
@@ -2563,6 +2743,15 @@
     }
 
     // 12. RENDER & HANDLE BAGIAN I, II, III
+    function renderBagian1LKPD() {
+      const container = document.getElementById('bagian1WacanaContainer');
+      if (container) {
+        container.innerHTML = getActiveSet().bagian1Html;
+        restoreBagian1Inputs();
+        triggerMathRender(container);
+      }
+    }
+
     function restoreBagian1Inputs() {
       for (let i = 1; i <= 10; i++) {
         const el = document.getElementById(`input-q${i}`);
@@ -2594,15 +2783,16 @@
     function renderBagian2Matching() {
       const qContainer = document.getElementById('matchingQuestionsContainer');
       const optContainer = document.getElementById('matchingOptionsList');
+      const activeSet = getActiveSet();
 
-      optContainer.innerHTML = BAGIAN2_OPTIONS.map((opt) => `
+      optContainer.innerHTML = activeSet.bagian2Options.map((opt) => `
         <div class="flex items-center gap-3 p-3 rounded-xl bg-white border border-brand-200/80 shadow-sm">
           <span class="w-8 h-8 rounded-lg bg-brand-700 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">${opt.code}</span>
           <div class="text-sm font-bold text-slate-900 overflow-x-auto">${opt.labelLatex}</div>
         </div>
       `).join('');
 
-      qContainer.innerHTML = BAGIAN2_QUESTIONS.map((q) => {
+      qContainer.innerHTML = activeSet.bagian2.map((q) => {
         const currentVal = appState.answers.bagian2[q.no] || '';
         return `
           <div class="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-slate-50/70 space-y-3.5 shadow-sm">
@@ -2621,7 +2811,7 @@
                 ${currentVal ? `<span class="text-xs font-mono font-bold text-brand-700">Terpilih: Pilihan ${currentVal}</span>` : `<span class="text-xs text-slate-500">Belum dipilih</span>`}
               </div>
               <div class="flex flex-wrap items-center gap-2">
-                ${BAGIAN2_OPTIONS.map((opt) => {
+                ${activeSet.bagian2Options.map((opt) => {
                   const isSelected = currentVal === opt.code;
                   const btnClass = isSelected
                     ? 'bg-brand-600 text-white border-brand-600 shadow-sm'
@@ -2669,7 +2859,7 @@
 
     function renderBagian3Essays() {
       const container = document.getElementById('essayQuestionsContainer');
-      container.innerHTML = BAGIAN3_QUESTIONS.map((q) => `
+      container.innerHTML = getActiveSet().bagian3.map((q) => `
         <div class="p-4 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50/70 space-y-4 shadow-sm">
           <div class="flex flex-wrap items-center justify-between gap-2">
             <div class="flex flex-wrap items-center gap-2">
@@ -2785,7 +2975,7 @@
     function buildSupabasePayload() {
       const scores = calculateScores();
       const absenNum = parseInt(appState.student.noAbsen, 10) || 0;
-      const sessionId = appState.sessionId || buildStudentSessionId(appState.student.kelas, absenNum);
+      const sessionId = appState.sessionId || buildStudentSessionId(appState.student.kelas, absenNum, appState.student.mode);
       return {
         session_id: sessionId,
         nama_lengkap: appState.student.nama,
@@ -2812,7 +3002,7 @@
     async function syncSubmissionToSupabase(silentMode = false) {
       if (!hasValidStudentIdentity()) return false;
       if (!appState.sessionId) {
-        appState.sessionId = buildStudentSessionId(appState.student.kelas, appState.student.noAbsen);
+        appState.sessionId = buildStudentSessionId(appState.student.kelas, appState.student.noAbsen, appState.student.mode);
         saveStateToStorage();
       }
       updateSupabaseStatusUI('loading', 'Menyimpan data isian & skor ke Supabase...');
@@ -2942,8 +3132,9 @@
       updateSupabaseStatusUI(appState.lastSyncedAt ? 'success' : 'idle');
       renderPrintOfficialReport();
 
+      const activeSet = getActiveSet();
       const rubricContainer = document.getElementById('selfAssessmentRubricContainer');
-      rubricContainer.innerHTML = BAGIAN3_QUESTIONS.map((q) => {
+      rubricContainer.innerHTML = activeSet.bagian3.map((q) => {
         const earnedForQ = q.rubricItems.reduce((acc, r) => acc + (appState.answers.bagian3Rubric[r.id] ? r.points : 0), 0);
         return `
           <div class="p-4 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50/70 space-y-4 print-break-inside-avoid">
@@ -2984,7 +3175,7 @@
       }).join('');
 
       const objContainer = document.getElementById('objectiveSolutionsContainer');
-      const b1Html = BAGIAN1_QUESTIONS.map((q) => {
+      const b1Html = activeSet.bagian1.map((q) => {
         const userAns = (appState.answers.bagian1[q.no] || '').trim();
         const correct = isBagian1Correct(q.no);
         const badgeClass = correct ? 'bg-emerald-100 text-emerald-900 border-emerald-300' : 'bg-red-100 text-red-900 border-red-300';
@@ -3005,7 +3196,7 @@
         `;
       }).join('');
 
-      const b2Html = BAGIAN2_QUESTIONS.map((q) => {
+      const b2Html = activeSet.bagian2.map((q) => {
         const userAns = (appState.answers.bagian2[q.no] || '').trim();
         const correct = isBagian2Correct(q.no);
         const badgeClass = correct ? 'bg-emerald-100 text-emerald-900 border-emerald-300' : 'bg-red-100 text-red-900 border-red-300';
@@ -3042,8 +3233,9 @@
       const waktuSelesai = escapeHtml(appState.student.completedAt || new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' }));
       const predikat = getReadinessPredicate(scores.totalScore);
 
+      const activeSet = getActiveSet();
       // Tabel Rekap Bagian I (No. 1-10)
-      const b1Rows = BAGIAN1_QUESTIONS.map((q) => {
+      const b1Rows = activeSet.bagian1.map((q) => {
         const userAns = (appState.answers.bagian1[q.no] || '').trim();
         const ok = isBagian1Correct(q.no);
         return `
@@ -3058,7 +3250,7 @@
       }).join('');
 
       // Tabel Rekap Bagian II (No. 11-15)
-      const b2Rows = BAGIAN2_QUESTIONS.map((q) => {
+      const b2Rows = activeSet.bagian2.map((q) => {
         const userAns = (appState.answers.bagian2[q.no] || '').trim();
         const ok = isBagian2Correct(q.no);
         return `
@@ -3073,7 +3265,7 @@
       }).join('');
 
       // Tabel Rekap Bagian III (No. 16-20)
-      const b3Rows = BAGIAN3_QUESTIONS.map((q) => {
+      const b3Rows = activeSet.bagian3.map((q) => {
         const earned = q.rubricItems.reduce((acc, r) => acc + (appState.answers.bagian3Rubric[r.id] ? r.points : 0), 0);
         const filledCount = q.subQuestions.filter((sub) => (appState.answers.bagian3Text[`${q.no}_${sub.id}`] || '').trim() !== '').length;
         const checkedCount = q.rubricItems.filter((r) => appState.answers.bagian3Rubric[r.id]).length;
@@ -3241,7 +3433,7 @@
     window.addEventListener('DOMContentLoaded', () => {
       loadStateFromStorage();
       renderKisiKisiTable();
-      restoreBagian1Inputs();
+      renderBagian1LKPD();
       renderBagian2Matching();
       renderBagian3Essays();
 
