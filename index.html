@@ -517,6 +517,21 @@
             </svg>
           </button>
         </form>
+
+        <!-- Akses Khusus Guru (PIN) -->
+        <div class="mt-6 pt-5 border-t border-slate-200 flex items-center justify-between gap-3">
+          <span class="text-xs text-slate-500">Khusus Guru Pengampu:</span>
+          <button
+            type="button"
+            onclick="openTeacherPinModal()"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-300 bg-slate-50 hover:bg-slate-100 hover:border-brand-500 text-xs font-bold text-slate-800 transition"
+          >
+            <svg class="w-4 h-4 text-brand-700 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+            </svg>
+            <span>Portal Rekap Nilai Guru</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1412,6 +1427,239 @@
         </section>
 
       </main>
+    </div>
+  </div>
+
+  <!-- =================================================================== -->
+  <!-- SCREEN 3: DASHBOARD REKAP NILAI GURU (#teacherDashboardScreen)      -->
+  <!-- =================================================================== -->
+  <div id="teacherDashboardScreen" class="hidden min-h-screen lms-canvas-bg no-print">
+    <!-- Top Header -->
+    <header class="sticky top-0 z-30 bg-sidebar-950 text-white border-b border-sidebar-800 px-4 sm:px-6 lg:px-8 py-3.5 shadow-md">
+      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shrink-0 shadow-sm">
+            <img src="./logo-don-bosco.png" alt="Logo SMA Don Bosco II Pulomas" class="w-full h-full object-contain" />
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm sm:text-base font-extrabold text-white leading-tight truncate">
+              Dashboard Rekap Nilai Guru — Matematika Kelas X
+            </div>
+            <div class="text-xs text-brand-200 truncate">
+              SMA Don Bosco II Pulomas &bull; Sumber Data: Supabase (<code>hasil_latihan_uas_x</code>)
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onclick="loadTeacherDashboardData()"
+            class="px-3.5 py-2 rounded-xl bg-sidebar-800 hover:bg-sidebar-700 border border-sidebar-700 text-xs sm:text-sm font-bold text-white transition flex items-center gap-1.5"
+          >
+            <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+            </svg>
+            <span>Muat Ulang</span>
+          </button>
+
+          <button
+            type="button"
+            onclick="exportTeacherCSV()"
+            class="px-3.5 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-xs sm:text-sm font-bold text-white transition flex items-center gap-1.5 shadow-sm"
+          >
+            <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            <span>Ekspor Excel (.CSV)</span>
+          </button>
+
+          <button
+            type="button"
+            onclick="closeTeacherDashboard()"
+            class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-xs sm:text-sm font-bold text-white transition"
+          >
+            Keluar
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
+      <!-- Status Banner -->
+      <div id="teacherStatusBanner" class="hidden p-3.5 rounded-xl border text-xs sm:text-sm font-semibold"></div>
+
+      <!-- Summary Stats Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-card">
+          <div class="text-xs font-bold text-slate-500">Total Data Siswa (Sesuai Filter)</div>
+          <div id="tStatTotal" class="mt-1.5 text-3xl font-extrabold text-slate-900 font-mono tabular-nums">0</div>
+          <div id="tStatSub" class="mt-1 text-xs text-slate-600">0 selesai &bull; 0 mengerjakan</div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-sidebar-950 text-white border border-sidebar-800 shadow-card">
+          <div class="text-xs font-bold text-brand-200">Rata-Rata Skor Total</div>
+          <div class="mt-1.5 flex items-baseline gap-1.5">
+            <span id="tStatAvgTotal" class="text-3xl font-extrabold text-white font-mono tabular-nums">0</span>
+            <span class="text-xs font-semibold text-brand-200">/ 100</span>
+          </div>
+          <div id="tStatHighLow" class="mt-1 text-xs text-brand-100/80">Tertinggi: - &bull; Terendah: -</div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-poli-200 shadow-card">
+          <div class="text-xs font-bold text-poli-900">Rata-Rata Eksponen &amp; Logaritma</div>
+          <div class="mt-1.5 flex items-baseline justify-between">
+            <span id="tStatAvgEks" class="text-2xl font-extrabold text-poli-900 font-mono tabular-nums">0%</span>
+            <span id="tStatAvgEksPt" class="text-xs font-mono text-slate-500">0 / 30 pt</span>
+          </div>
+          <div class="w-full h-2 bg-poli-100 rounded-full mt-2 overflow-hidden">
+            <div id="tStatBarEks" class="h-full bg-poli-600 rounded-full transition-all" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-matriks-200 shadow-card space-y-2.5">
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold text-matriks-900">
+              <span>SPtLDV (50 pt)</span>
+              <span id="tStatAvgSpt" class="font-mono tabular-nums">0%</span>
+            </div>
+            <div class="w-full h-2 bg-matriks-100 rounded-full mt-1 overflow-hidden">
+              <div id="tStatBarSpt" class="h-full bg-matriks-600 rounded-full transition-all" style="width: 0%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold text-translasi-900">
+              <span>Pers. Kuadrat (20 pt)</span>
+              <span id="tStatAvgPk" class="font-mono tabular-nums">0%</span>
+            </div>
+            <div class="w-full h-2 bg-translasi-100 rounded-full mt-1 overflow-hidden">
+              <div id="tStatBarPk" class="h-full bg-translasi-600 rounded-full transition-all" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter & Search Bar -->
+      <div class="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-card">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          <div>
+            <label for="tFilterKelas" class="block text-xs font-bold text-slate-700 mb-1">Kelas</label>
+            <select id="tFilterKelas" onchange="renderTeacherTable()" class="w-full px-3 py-2.5 rounded-xl border-2 border-slate-200 text-sm font-semibold bg-white text-slate-900">
+              <option value="ALL">Semua Kelas (X-1 s.d. X-4)</option>
+              <option value="X-1">Kelas X-1</option>
+              <option value="X-2">Kelas X-2</option>
+              <option value="X-3">Kelas X-3</option>
+              <option value="X-4">Kelas X-4</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="tFilterMode" class="block text-xs font-bold text-slate-700 mb-1">Mode / Paket</label>
+            <select id="tFilterMode" onchange="renderTeacherTable()" class="w-full px-3 py-2.5 rounded-xl border-2 border-slate-200 text-sm font-semibold bg-white text-slate-900">
+              <option value="ALL">Semua Mode</option>
+              <option value="belajar">Mode Belajar (Paket A)</option>
+              <option value="simulasi">Simulasi UAS (Paket B)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="tFilterStatus" class="block text-xs font-bold text-slate-700 mb-1">Status</label>
+            <select id="tFilterStatus" onchange="renderTeacherTable()" class="w-full px-3 py-2.5 rounded-xl border-2 border-slate-200 text-sm font-semibold bg-white text-slate-900">
+              <option value="ALL">Semua Status</option>
+              <option value="submitted">Sudah Kumpulkan</option>
+              <option value="progress">Sedang Mengerjakan</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="tSortBy" class="block text-xs font-bold text-slate-700 mb-1">Urutkan</label>
+            <select id="tSortBy" onchange="renderTeacherTable()" class="w-full px-3 py-2.5 rounded-xl border-2 border-slate-200 text-sm font-semibold bg-white text-slate-900">
+              <option value="kelas_absen">Kelas &amp; No. Absen</option>
+              <option value="skor_desc">Skor Tertinggi</option>
+              <option value="skor_asc">Skor Terendah</option>
+              <option value="updated_desc">Terbaru Diperbarui</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="tSearchInput" class="block text-xs font-bold text-slate-700 mb-1">Cari Nama / Absen</label>
+            <input id="tSearchInput" type="text" oninput="renderTeacherTable()" placeholder="Ketik nama atau absen..." class="w-full px-3 py-2.5 rounded-xl border-2 border-slate-200 text-sm font-semibold bg-white text-slate-900" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Table -->
+      <div class="bg-white rounded-2xl border border-slate-200/90 shadow-card overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-100/90 border-b border-slate-200 text-xs font-extrabold text-slate-700">
+                <th class="py-3.5 px-3 text-center">Kelas</th>
+                <th class="py-3.5 px-3 text-center">Absen</th>
+                <th class="py-3.5 px-4">Nama Lengkap</th>
+                <th class="py-3.5 px-3">Paket / Mode</th>
+                <th class="py-3.5 px-3 text-center">Status</th>
+                <th class="py-3.5 px-3 text-center">Bag I (/30)</th>
+                <th class="py-3.5 px-3 text-center">Bag II (/20)</th>
+                <th class="py-3.5 px-3 text-center">Bag III (/50)</th>
+                <th class="py-3.5 px-3 text-center">Total</th>
+                <th class="py-3.5 px-3 text-center">Topik (E/S/K)</th>
+                <th class="py-3.5 px-3">Diperbarui</th>
+                <th class="py-3.5 px-3 text-center">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="teacherTableBody" class="divide-y divide-slate-200 text-xs sm:text-sm"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL PIN GURU -->
+  <div id="teacherPinModal" onclick="if (event.target === this) closeTeacherPinModal()" class="hidden fixed inset-0 z-50 bg-sidebar-950/75 backdrop-blur-xs flex items-center justify-center p-4 no-print" role="dialog" aria-modal="true" aria-label="Verifikasi PIN Guru">
+    <div class="w-full max-w-sm bg-white rounded-2xl shadow-elevated border border-slate-200 p-6 space-y-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-base font-extrabold text-slate-900">Portal Rekap Nilai Guru</h3>
+          <p class="text-xs text-slate-500">Masukkan PIN khusus guru pengampu</p>
+        </div>
+      </div>
+
+      <form onsubmit="handleTeacherPinSubmit(event)" class="space-y-3">
+        <div>
+          <input
+            id="inputTeacherPin"
+            type="password"
+            autocomplete="off"
+            placeholder="Masukkan PIN Guru..."
+            class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-brand-600 text-sm font-mono font-bold text-slate-900"
+          />
+          <p id="teacherPinError" class="hidden mt-1.5 text-xs font-semibold text-red-700">PIN tidak sesuai. Silakan coba lagi.</p>
+        </div>
+        <div class="flex items-center justify-end gap-2 pt-1">
+          <button type="button" onclick="closeTeacherPinModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs font-bold text-slate-700">Batal</button>
+          <button type="submit" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-xs font-bold text-white shadow-sm">Masuk Dashboard</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL DETAIL JAWABAN SISWA (GURU) -->
+  <div id="teacherDetailModal" onclick="if (event.target === this) closeTeacherDetailModal()" class="hidden fixed inset-0 z-50 bg-sidebar-950/75 backdrop-blur-xs flex items-center justify-center p-4 no-print" role="dialog" aria-modal="true" aria-label="Detail Jawaban Siswa">
+    <div class="w-full max-w-3xl bg-white rounded-2xl shadow-elevated border border-slate-200 overflow-hidden flex flex-col max-h-[88vh]">
+      <div class="flex items-center justify-between px-5 py-3.5 border-b border-slate-200 bg-slate-50">
+        <div>
+          <h3 id="teacherDetailTitle" class="text-sm sm:text-base font-extrabold text-slate-900">Detail Jawaban Siswa</h3>
+          <p id="teacherDetailSub" class="text-xs text-slate-600">-</p>
+        </div>
+        <button type="button" onclick="closeTeacherDetailModal()" class="px-3.5 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 text-xs font-bold text-slate-900">Tutup</button>
+      </div>
+      <div id="teacherDetailBody" class="p-5 overflow-y-auto space-y-4 text-xs sm:text-sm"></div>
     </div>
   </div>
 
@@ -3733,9 +3981,354 @@
         if (svg) openSvgZoomModal(svg);
       });
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeSvgZoomModal();
+        if (e.key === 'Escape') {
+          closeSvgZoomModal();
+          closeTeacherPinModal();
+          closeTeacherDetailModal();
+        }
       });
     });
+
+    // 16. PORTAL REKAP NILAI GURU (PIN-PROTECTED + SUPABASE + CSV EXPORT)
+    const TEACHER_PIN_SHA256 = '0ee9f8ce26759135ca5033b9efdefb27be8b92918c83f994ce196714cd21586a';
+    const TEACHER_PIN_FALLBACK = '826c1f45_c1d6dbdf';
+    let teacherAllRows = [];
+
+    function computeFallbackHash(str) {
+      let h1 = 2166136261;
+      let h2 = 5381;
+      for (let i = 0; i < str.length; i++) {
+        const c = str.charCodeAt(i);
+        h1 = Math.imul(h1 ^ c, 16777619) >>> 0;
+        h2 = ((h2 << 5) + h2 + c) >>> 0;
+      }
+      return `${h1.toString(16)}_${h2.toString(16)}`;
+    }
+
+    async function verifyTeacherPin(pinRaw) {
+      const pin = String(pinRaw || '').trim();
+      if (!pin) return false;
+      try {
+        if (window.crypto && window.crypto.subtle) {
+          const data = new TextEncoder().encode(pin);
+          const hashBuf = await window.crypto.subtle.digest('SHA-256', data);
+          const hex = Array.from(new Uint8Array(hashBuf))
+            .map((b) => b.toString(16).padStart(2, '0'))
+            .join('');
+          return hex === TEACHER_PIN_SHA256;
+        }
+      } catch (e) {}
+      return computeFallbackHash(pin) === TEACHER_PIN_FALLBACK;
+    }
+
+    function openTeacherPinModal() {
+      const modal = document.getElementById('teacherPinModal');
+      const input = document.getElementById('inputTeacherPin');
+      const err = document.getElementById('teacherPinError');
+      if (err) err.classList.add('hidden');
+      if (input) input.value = '';
+      if (modal) modal.classList.remove('hidden');
+      setTimeout(() => { if (input) input.focus(); }, 50);
+    }
+
+    function closeTeacherPinModal() {
+      const modal = document.getElementById('teacherPinModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    async function handleTeacherPinSubmit(event) {
+      event.preventDefault();
+      const input = document.getElementById('inputTeacherPin');
+      const err = document.getElementById('teacherPinError');
+      const valid = await verifyTeacherPin(input ? input.value : '');
+      if (!valid) {
+        if (err) err.classList.remove('hidden');
+        if (input) input.select();
+        return;
+      }
+      closeTeacherPinModal();
+      openTeacherDashboard();
+    }
+
+    function openTeacherDashboard() {
+      document.getElementById('lmsLoginScreen').classList.add('hidden');
+      document.getElementById('lmsAppShell').classList.add('hidden');
+      document.getElementById('teacherDashboardScreen').classList.remove('hidden');
+      loadTeacherDashboardData();
+    }
+
+    function closeTeacherDashboard() {
+      document.getElementById('teacherDashboardScreen').classList.add('hidden');
+      showLoginScreen();
+    }
+
+    async function loadTeacherDashboardData() {
+      const banner = document.getElementById('teacherStatusBanner');
+      const tbody = document.getElementById('teacherTableBody');
+      if (banner) {
+        banner.className = 'p-3.5 rounded-xl border border-brand-200 bg-brand-50 text-xs sm:text-sm font-semibold text-brand-900';
+        banner.textContent = 'Memuat data rekap nilai siswa Kelas X dari Supabase...';
+      }
+      if (tbody) {
+        tbody.innerHTML = '<tr><td colspan="12" class="py-10 text-center text-slate-500 font-semibold">Memuat data dari Cloud Supabase...</td></tr>';
+      }
+
+      try {
+        const baseRest = SUPABASE_CONFIG.restUrl.replace(/\/+$/, '');
+        const endpoint = `${baseRest}/${SUPABASE_CONFIG.table}?select=*&order=kelas.asc,no_absen.asc&limit=1000`;
+        const response = await fetch(endpoint, {
+          method: 'GET',
+          headers: {
+            apikey: SUPABASE_CONFIG.anonKey,
+            Authorization: `Bearer ${SUPABASE_CONFIG.anonKey}`
+          }
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${await response.text()}`);
+        }
+        const rows = await response.json();
+        teacherAllRows = Array.isArray(rows) ? rows : [];
+        if (banner) {
+          const nowStr = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+          banner.className = 'p-3.5 rounded-xl border border-emerald-300 bg-emerald-50 text-xs sm:text-sm font-semibold text-emerald-900';
+          banner.textContent = `Data berhasil dimuat dari Supabase (${teacherAllRows.length} baris data) • Diperbarui pukul ${nowStr}.`;
+        }
+        renderTeacherTable();
+      } catch (err) {
+        console.error('Teacher dashboard load error:', err);
+        if (banner) {
+          banner.className = 'p-3.5 rounded-xl border border-red-300 bg-red-50 text-xs sm:text-sm font-semibold text-red-900';
+          banner.textContent = 'Gagal memuat data dari Supabase. Pastikan tabel hasil_latihan_uas_x sudah dibuat & koneksi internet aktif.';
+        }
+        if (tbody) {
+          tbody.innerHTML = '<tr><td colspan="12" class="py-10 text-center text-red-700 font-semibold">Gagal mengambil data. Klik tombol "Muat Ulang" untuk mencoba lagi.</td></tr>';
+        }
+      }
+    }
+
+    function getFilteredTeacherRows() {
+      const fKelas = document.getElementById('tFilterKelas')?.value || 'ALL';
+      const fMode = document.getElementById('tFilterMode')?.value || 'ALL';
+      const fStatus = document.getElementById('tFilterStatus')?.value || 'ALL';
+      const sortBy = document.getElementById('tSortBy')?.value || 'kelas_absen';
+      const q = (document.getElementById('tSearchInput')?.value || '').trim().toLowerCase();
+
+      const filtered = teacherAllRows.filter((r) => {
+        if (fKelas !== 'ALL' && r.kelas !== fKelas) return false;
+        if (fMode !== 'ALL' && r.mode_latihan !== fMode) return false;
+        if (fStatus === 'submitted' && !r.is_submitted) return false;
+        if (fStatus === 'progress' && r.is_submitted) return false;
+        if (q) {
+          const matchName = String(r.nama_lengkap || '').toLowerCase().includes(q);
+          const matchAbsen = String(r.no_absen || '').includes(q);
+          if (!matchName && !matchAbsen) return false;
+        }
+        return true;
+      });
+
+      filtered.sort((a, b) => {
+        if (sortBy === 'skor_desc') return (b.total_skor || 0) - (a.total_skor || 0);
+        if (sortBy === 'skor_asc') return (a.total_skor || 0) - (b.total_skor || 0);
+        if (sortBy === 'updated_desc') return new Date(b.updated_at || b.waktu_selesai || 0) - new Date(a.updated_at || a.waktu_selesai || 0);
+        const kCmp = String(a.kelas || '').localeCompare(String(b.kelas || ''));
+        if (kCmp !== 0) return kCmp;
+        return (a.no_absen || 0) - (b.no_absen || 0);
+      });
+
+      return filtered;
+    }
+
+    function renderTeacherTable() {
+      const rows = getFilteredTeacherRows();
+      const tbody = document.getElementById('teacherTableBody');
+
+      // Update summary stats
+      const count = rows.length;
+      const submittedCount = rows.filter((r) => r.is_submitted).length;
+      const avgTotal = count ? Math.round((rows.reduce((a, r) => a + (r.total_skor || 0), 0) / count) * 10) / 10 : 0;
+      const scoresList = rows.map((r) => r.total_skor || 0);
+      const maxSkor = count ? Math.max(...scoresList) : '-';
+      const minSkor = count ? Math.min(...scoresList) : '-';
+
+      const avgEksPt = count ? Math.round((rows.reduce((a, r) => a + (r.skor_eksponen_logaritma || 0), 0) / count) * 10) / 10 : 0;
+      const avgSptPt = count ? Math.round((rows.reduce((a, r) => a + (r.skor_sptldv || 0), 0) / count) * 10) / 10 : 0;
+      const avgPkPt = count ? Math.round((rows.reduce((a, r) => a + (r.skor_persamaan_kuadrat || 0), 0) / count) * 10) / 10 : 0;
+
+      const pctEks = Math.round((avgEksPt / 30) * 100);
+      const pctSpt = Math.round((avgSptPt / 50) * 100);
+      const pctPk = Math.round((avgPkPt / 20) * 100);
+
+      document.getElementById('tStatTotal').textContent = count;
+      document.getElementById('tStatSub').textContent = `${submittedCount} selesai • ${count - submittedCount} mengerjakan`;
+      document.getElementById('tStatAvgTotal').textContent = avgTotal;
+      document.getElementById('tStatHighLow').textContent = `Tertinggi: ${maxSkor} • Terendah: ${minSkor}`;
+      document.getElementById('tStatAvgEks').textContent = `${pctEks}%`;
+      document.getElementById('tStatAvgEksPt').textContent = `${avgEksPt} / 30 pt`;
+      document.getElementById('tStatBarEks').style.width = `${pctEks}%`;
+      document.getElementById('tStatAvgSpt').textContent = `${pctSpt}% (${avgSptPt}/50)`;
+      document.getElementById('tStatBarSpt').style.width = `${pctSpt}%`;
+      document.getElementById('tStatAvgPk').textContent = `${pctPk}% (${avgPkPt}/20)`;
+      document.getElementById('tStatBarPk').style.width = `${pctPk}%`;
+
+      if (!tbody) return;
+      if (count === 0) {
+        tbody.innerHTML = '<tr><td colspan="12" class="py-10 text-center text-slate-500 font-semibold">Belum ada data siswa yang cocok dengan filter ini.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = rows.map((r) => {
+        const modeBadge = r.mode_latihan === 'simulasi'
+          ? '<span class="px-2 py-0.5 rounded-md bg-amber-100 text-amber-950 border border-amber-200 text-[11px] font-bold">Simulasi (B)</span>'
+          : '<span class="px-2 py-0.5 rounded-md bg-brand-50 text-brand-900 border border-brand-200 text-[11px] font-bold">Belajar (A)</span>';
+        const statusBadge = r.is_submitted
+          ? '<span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-900 text-[11px] font-bold">Selesai</span>'
+          : '<span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[11px] font-semibold">Progres</span>';
+        const updatedStr = r.updated_at || r.waktu_selesai
+          ? new Date(r.updated_at || r.waktu_selesai).toLocaleString('id-ID', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })
+          : '-';
+        const totalColor = (r.total_skor || 0) >= 75 ? 'text-emerald-800 bg-emerald-50' : (r.total_skor || 0) >= 60 ? 'text-amber-900 bg-amber-50' : 'text-red-800 bg-red-50';
+
+        return `
+          <tr class="hover:bg-slate-50 transition">
+            <td class="py-3 px-3 text-center font-mono font-bold text-slate-900">${escapeHtml(r.kelas || '-')}</td>
+            <td class="py-3 px-3 text-center font-mono font-bold text-slate-700 tabular-nums">${r.no_absen || '-'}</td>
+            <td class="py-3 px-4 font-bold text-slate-900">${escapeHtml(r.nama_lengkap || '-')}</td>
+            <td class="py-3 px-3">${modeBadge}</td>
+            <td class="py-3 px-3 text-center">${statusBadge}</td>
+            <td class="py-3 px-3 text-center font-mono tabular-nums">${r.skor_bagian_1 ?? 0}</td>
+            <td class="py-3 px-3 text-center font-mono tabular-nums">${r.skor_bagian_2 ?? 0}</td>
+            <td class="py-3 px-3 text-center font-mono tabular-nums">${r.skor_bagian_3 ?? 0}</td>
+            <td class="py-3 px-3 text-center"><span class="px-2.5 py-1 rounded-lg font-mono font-extrabold tabular-nums ${totalColor}">${r.total_skor ?? 0}</span></td>
+            <td class="py-3 px-3 text-center font-mono text-[11px] text-slate-600 tabular-nums">${r.skor_eksponen_logaritma ?? 0} / ${r.skor_sptldv ?? 0} / ${r.skor_persamaan_kuadrat ?? 0}</td>
+            <td class="py-3 px-3 text-xs text-slate-600 whitespace-nowrap tabular-nums">${updatedStr}</td>
+            <td class="py-3 px-3 text-center">
+              <button type="button" onclick="openTeacherDetailModal('${escapeHtml(r.session_id || '')}')" class="px-2.5 py-1 rounded-lg bg-brand-50 hover:bg-brand-100 border border-brand-200 text-brand-900 text-xs font-bold transition">Detail</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function openTeacherDetailModal(sessionId) {
+      const row = teacherAllRows.find((r) => r.session_id === sessionId);
+      if (!row) return;
+      const modal = document.getElementById('teacherDetailModal');
+      const titleEl = document.getElementById('teacherDetailTitle');
+      const subEl = document.getElementById('teacherDetailSub');
+      const bodyEl = document.getElementById('teacherDetailBody');
+
+      const modeLabel = row.mode_latihan === 'simulasi' ? 'Paket B — Simulasi UAS (120 Menit)' : 'Paket A — Mode Belajar';
+      titleEl.textContent = `${row.nama_lengkap || '-'} (${row.kelas || '-'} • Absen ${row.no_absen || '-'})`;
+      subEl.textContent = `${modeLabel} • Total Skor: ${row.total_skor ?? 0}/100 • Status: ${row.is_submitted ? 'Selesai' : 'Sedang Mengerjakan'}`;
+
+      const b1 = row.jawaban_bagian_1 || {};
+      const b2 = row.jawaban_bagian_2 || {};
+      const b3Text = row.jawaban_bagian_3_teks || {};
+      const b3Rubric = row.jawaban_bagian_3_rubrik || {};
+      const qSet = row.mode_latihan === 'simulasi' ? QUESTION_SETS.simulasi : QUESTION_SETS.belajar;
+
+      const b1Html = qSet.bagian1.map((q) => `
+        <div class="flex items-center justify-between gap-2 py-1 border-b border-slate-100">
+          <span class="font-mono font-bold text-slate-700">No. ${q.no}</span>
+          <span class="font-mono text-slate-900">${escapeHtml(b1[q.no] || '-')}</span>
+          <span class="font-mono text-emerald-700 text-xs">Kunci: ${escapeHtml(q.displayAnswer)}</span>
+        </div>
+      `).join('');
+
+      const b2Html = qSet.bagian2.map((q) => `
+        <div class="flex items-center justify-between gap-2 py-1 border-b border-slate-100">
+          <span class="font-mono font-bold text-slate-700">No. ${q.no}</span>
+          <span class="font-mono text-slate-900">Pilih: ${escapeHtml(b2[q.no] || '-')}</span>
+          <span class="font-mono text-emerald-700 text-xs">Kunci: ${q.correctOption}</span>
+        </div>
+      `).join('');
+
+      const b3Html = qSet.bagian3.map((q) => {
+        const earned = q.rubricItems.reduce((acc, r) => acc + (b3Rubric[r.id] ? r.points : 0), 0);
+        const checkedCnt = q.rubricItems.filter((r) => b3Rubric[r.id]).length;
+        const subs = ['a', 'b', 'c'].map((sub) => {
+          const txt = (b3Text[`${q.no}_${sub}`] || '').trim();
+          return `<div class="text-xs text-slate-700"><strong>(${sub}):</strong> <span class="whitespace-pre-line">${txt ? escapeHtml(txt) : '<em class="text-slate-400">Kosong</em>'}</span></div>`;
+        }).join('');
+        return `
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="font-bold text-slate-900">No. ${q.no} (${q.topik})</span>
+              <span class="font-mono text-xs font-bold text-brand-800">Rubrik: ${checkedCnt}/${q.rubricItems.length} (${earned}/${q.skor} pt)</span>
+            </div>
+            ${subs}
+          </div>
+        `;
+      }).join('');
+
+      bodyEl.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl border border-slate-200 bg-white space-y-1">
+            <div class="text-xs font-extrabold text-slate-800 mb-2">Bagian I — Isian LKPD (${row.skor_bagian_1 ?? 0}/30)</div>
+            ${b1Html}
+          </div>
+          <div class="p-4 rounded-xl border border-slate-200 bg-white space-y-1">
+            <div class="text-xs font-extrabold text-slate-800 mb-2">Bagian II — Menjodohkan (${row.skor_bagian_2 ?? 0}/20)</div>
+            ${b2Html}
+          </div>
+        </div>
+        <div class="space-y-2.5">
+          <div class="text-xs font-extrabold text-slate-800">Bagian III — Catatan Uraian HOTS &amp; Cek Rubrik Mandiri (${row.skor_bagian_3 ?? 0}/50)</div>
+          ${b3Html}
+        </div>
+      `;
+      modal.classList.remove('hidden');
+    }
+
+    function closeTeacherDetailModal() {
+      const modal = document.getElementById('teacherDetailModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function exportTeacherCSV() {
+      const rows = getFilteredTeacherRows();
+      if (rows.length === 0) {
+        alert('Tidak ada data untuk diekspor pada filter saat ini.');
+        return;
+      }
+      const headers = [
+        'Kelas', 'No_Absen', 'Nama_Lengkap', 'Mode_Paket', 'Status',
+        'Skor_Bag_1_Max30', 'Skor_Bag_2_Max20', 'Skor_Bag_3_Max50', 'Total_Skor_Max100',
+        'Skor_Eksponen_Log_Max30', 'Skor_SPtLDV_Max50', 'Skor_Pers_Kuadrat_Max20',
+        'Waktu_Mulai', 'Waktu_Diperbarui'
+      ];
+      const csvEscape = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
+      const lines = [headers.join(',')];
+      rows.forEach((r) => {
+        lines.push([
+          csvEscape(r.kelas),
+          r.no_absen ?? 0,
+          csvEscape(r.nama_lengkap),
+          csvEscape(r.mode_latihan === 'simulasi' ? 'Simulasi UAS (Paket B)' : 'Mode Belajar (Paket A)'),
+          csvEscape(r.is_submitted ? 'Selesai' : 'Sedang Mengerjakan'),
+          r.skor_bagian_1 ?? 0,
+          r.skor_bagian_2 ?? 0,
+          r.skor_bagian_3 ?? 0,
+          r.total_skor ?? 0,
+          r.skor_eksponen_logaritma ?? 0,
+          r.skor_sptldv ?? 0,
+          r.skor_persamaan_kuadrat ?? 0,
+          csvEscape(r.waktu_mulai || ''),
+          csvEscape(r.updated_at || r.waktu_selesai || '')
+        ].join(','));
+      });
+      const blob = new Blob(['\uFEFF' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const fKelas = document.getElementById('tFilterKelas')?.value || 'ALL';
+      const dateTag = new Date().toISOString().slice(0, 10);
+      a.href = url;
+      a.download = `Rekap_UAS_Matematika_X_${fKelas}_${dateTag}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
   </script>
 </body>
 </html>
